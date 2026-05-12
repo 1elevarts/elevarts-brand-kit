@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ELEVARTS — Brand Book</title>
+<meta name="description" content="Brand book ELEVARTS — identitate vizuală, logo system, palette, tipografie, voce, aplicații. Sursa de adevăr pentru identitatea de marcă." />
+<meta name="theme-color" content="#131120" />
+
+<!-- Favicons (app-icon style: rainbow logo în cerc alb cu margine mov) -->
+<link rel="icon" type="image/png" sizes="16x16"   href="assets/favicon/favicon-16.png" />
+<link rel="icon" type="image/png" sizes="32x32"   href="assets/favicon/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="48x48"   href="assets/favicon/favicon-48.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180"      href="assets/favicon/apple-touch-icon.png" />
+<link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+
+<!-- OpenGraph -->
+<meta property="og:title" content="ELEVARTS — Brand Book" />
+<meta property="og:description" content="Identitate vizuală premium, logo, palette, tipografie, voce, aplicații." />
+<meta property="og:image" content="assets/logos/wordmark/color/wordmark-1024.png" />
+<meta property="og:type" content="website" />
+
+<!-- Google Fonts script fallback -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Water+Brush&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============ FONTS ============ */
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Thin.otf')     format('opentype'); font-weight: 100; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Light.otf')    format('opentype'); font-weight: 300; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Regular.otf')  format('opentype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Medium.otf')   format('opentype'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Semibold.otf') format('opentype'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Bold.otf')     format('opentype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Gotham'; src: url('assets/fonts/gotham/GothamLight.ttf')  format('truetype'); font-weight: 300; font-display: swap; }
+  @font-face { font-family: 'Gotham'; src: url('assets/fonts/gotham/GothamBook.ttf')   format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Gotham'; src: url('assets/fonts/gotham/GothamMedium.ttf') format('truetype'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Gotham'; src: url('assets/fonts/gotham/GothamBold.ttf')   format('truetype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Lonally Qoma'; src: url('assets/fonts/lonally/LonallyQoma-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+
+  /* ============ TOKENS ============ */
+  :root {
+    --purple: #645faa;
+    --magenta: #862d91;
+    --dark: #131120;
+    --white: #ffffff;
+    --red: #D6413A;
+    --pink: #DE607D;
+    --magenta2: #C94895;
+    --purple2: #7A4294;
+    --periwinkle: #626AB1;
+    --lightblue: #6BA3D7;
+    --coral: #E17B62;
+    --peach: #EEA172;
+    --gradient-hero: linear-gradient(135deg, #645faa 0%, #862d91 100%);
+    --gradient-wordmark: linear-gradient(90deg, #D6413A 0%, #862d91 35%, #7A4294 65%, #6BA3D7 100%);
+    --grid-gap: 24px;
+    --section-py: 120px;
+    --shadow-card: 0 1px 3px rgba(19,17,32,0.04), 0 12px 32px -12px rgba(19,17,32,0.08);
+    --shadow-hover: 0 10px 40px -10px rgba(134,45,145,0.25);
+  }
+
+  /* ============ RESET ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Gotham', system-ui, sans-serif;
+    font-weight: 400;
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ============ TYPE ============ */
+  h1, h2, h3, h4, .display { font-family: 'Euclid Flex', system-ui, sans-serif; font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; }
+  h1 { font-size: clamp(56px, 11vw, 168px); font-weight: 700; letter-spacing: -0.04em; }
+  h2 { font-size: clamp(40px, 6vw, 72px); margin-bottom: 12px; letter-spacing: -0.03em; }
+  h3 { font-size: clamp(22px, 2.4vw, 32px); margin-bottom: 8px; }
+  h4 { font-size: 18px; font-weight: 600; margin-bottom: 8px; letter-spacing: 0; font-family: 'Euclid Flex'; }
+  p  { font-family: 'Gotham'; font-size: 16px; line-height: 1.7; }
+  .lead { font-family: 'Euclid Flex'; font-weight: 300; font-size: clamp(20px, 2vw, 26px); line-height: 1.4; color: rgba(19,17,32,0.7); }
+  .eyebrow { font-family: 'Gotham'; font-weight: 500; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--magenta); margin-bottom: 18px; }
+  .num { font-family: 'Euclid Flex'; font-weight: 300; font-size: 14px; color: rgba(0,0,0,0.4); letter-spacing: 0.1em; }
+  code, .mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 13px; background: rgba(100,95,170,0.08); padding: 2px 8px; border-radius: 4px; color: var(--purple); }
+  .script { font-family: 'Lonally Qoma', 'Water Brush', cursive; font-weight: 400; }
+
+  /* ============ LAYOUT ============ */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  section { padding: var(--section-py) 0; position: relative; }
+  /* Subtle alternating background — even sections get a light brand-purple wash */
+  section:nth-of-type(even) { background: rgba(100, 95, 170, 0.04); }
+  section + section { border-top: 1px solid rgba(19,17,32,0.04); }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--grid-gap); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--grid-gap); }
+  @media (max-width: 800px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    section { padding: 80px 0; }
+  }
+
+  /* ============ NAV (sticky on scroll) ============ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    background: rgba(19,17,32,0.6);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 16px 0;
+    transition: background 0.2s, padding 0.2s;
+  }
+  .nav .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .nav-logo { display: flex; align-items: center; gap: 12px; color: var(--white); }
+  .nav-logo img { height: 28px; }
+  .nav-links { display: flex; gap: 4px; align-items: center; }
+  .nav-links a {
+    position: relative;
+    font-family: 'Gotham'; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    padding: 8px 14px;
+    border-radius: 999px;
+    transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    overflow: hidden;
+    --hover-color: var(--magenta);
+  }
+  .nav-links a::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--hover-color);
+    border-radius: 999px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: -1;
+  }
+  .nav-links a:hover { color: var(--white); transform: translateY(-1px); }
+  .nav-links a:hover::before { opacity: 1; transform: scale(1); }
+  .nav-links a span { position: relative; z-index: 1; }
+  /* Per-link brand colors on hover */
+  .nav-links a[href="#story"]        { --hover-color: var(--purple); }
+  .nav-links a[href="#logo"]         { --hover-color: var(--magenta); }
+  .nav-links a[href="#color"]        { --hover-color: var(--red); }
+  .nav-links a[href="#type"]         { --hover-color: var(--coral); }
+  .nav-links a[href="#voice"]        { --hover-color: var(--pink); }
+  .nav-links a[href="#imagery"]      { --hover-color: var(--lightblue); }
+  .nav-links a[href="#applications"] { --hover-color: var(--purple2); }
+  .nav-links a[href*="social"]       { --hover-color: var(--magenta2); background: linear-gradient(135deg, rgba(201,72,149,0.18), rgba(134,45,145,0.12)); border: 1px solid rgba(201,72,149,0.25); }
+  .nav-links a[href*="social"]:hover { border-color: transparent; }
+  @media (max-width: 800px) { .nav-links { display: none; } }
+
+  /* ============ HERO (ClickUp inspired) ============ */
+  .hero {
+    background: var(--dark);
+    color: var(--white);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 160px 0 80px;
+  }
+  /* Mesh gradient overlay */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 30%, rgba(100,95,170,0.45) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 70%, rgba(134,45,145,0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 60% 20%, rgba(214,65,58,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 30% 80%, rgba(107,163,215,0.2) 0%, transparent 60%);
+    filter: blur(40px);
+    z-index: 0;
+    animation: mesh-drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes mesh-drift {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-3%, 2%) scale(1.05); }
+  }
+  /* Subtle grain texture */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+    background-size: 24px 24px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero .container { position: relative; z-index: 2; width: 100%; }
+  .hero-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 64px; }
+  .hero-meta span { font-family: 'Gotham'; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.55; }
+  .hero-eyebrow { font-family: 'Gotham'; font-size: 12px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 28px; display: inline-flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--magenta); }
+  .hero-title {
+    background: var(--gradient-wordmark);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 0;
+    line-height: 0.92;
+  }
+  .hero-logo {
+    display: block;
+    width: clamp(360px, 70vw, 880px);
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 4px;
+    filter: drop-shadow(0 8px 40px rgba(134,45,145,0.35));
+  }
+  .hero-script {
+    font-family: 'Lonally Qoma', 'Water Brush', cursive;
+    font-size: clamp(56px, 8vw, 120px);
+    color: var(--white);
+    line-height: 0.9;
+    margin: -4px 0 28px;
+    transform: rotate(-2deg);
+    display: inline-block;
+    text-shadow: 0 2px 30px rgba(134,45,145,0.4);
+  }
+  .hero-lead { color: rgba(255,255,255,0.75); max-width: 680px; margin-top: 28px; }
+  .hero-bottom { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 24px; margin-top: 64px; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .scroll-hint { font-family: 'Gotham'; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.5; display: flex; align-items: center; gap: 10px; }
+  .scroll-hint::after { content: ''; width: 1px; height: 36px; background: linear-gradient(to bottom, var(--magenta), transparent); animation: scroll-pulse 2s ease-in-out infinite; }
+  @keyframes scroll-pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+  /* ============ BUTTONS / CTAs ============ */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 24px;
+    font-family: 'Gotham';
+    font-weight: 500; font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    border: 0; cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn svg { width: 14px; height: 14px; }
+  .btn small { opacity: 0.7; font-weight: 400; letter-spacing: 0.04em; text-transform: none; font-size: 11px; }
+  .btn-primary { background: var(--magenta); color: var(--white); }
+  .btn-primary:hover { background: var(--purple); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+  .btn-gradient { background: var(--gradient-hero); color: var(--white); }
+  .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -12px rgba(134,45,145,0.4); }
+  .btn-ghost { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.25); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: var(--white); }
+  .btn-dark { background: var(--dark); color: var(--white); }
+  .btn-dark:hover { background: var(--magenta); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+  .btn-light { background: var(--white); color: var(--dark); border: 1.5px solid rgba(19,17,32,0.1); }
+  .btn-light:hover { border-color: var(--magenta); color: var(--magenta); }
+  .btn-lg { padding: 18px 36px; font-size: 14px; }
+  .btn-block { width: 100%; }
+
+  .dl-row { margin-top: 14px; display: flex; justify-content: center; }
+  .dl-center { display: flex; justify-content: center; margin-top: 56px; padding-top: 48px; border-top: 1px solid rgba(19,17,32,0.08); }
+  .dl-hint { text-align: center; font-size: 12px; color: rgba(0,0,0,0.5); margin-top: 14px; }
+
+  /* ============ SECTION HEAD ============ */
+  .sec-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 56px; flex-wrap: wrap; }
+  .sec-num { font-family: 'Euclid Flex'; font-weight: 300; font-size: 14px; letter-spacing: 0.2em; color: rgba(0,0,0,0.35); }
+  .sec-num strong { color: var(--magenta); margin-right: 8px; }
+
+  /* ============ STATS (Numere) — animated counter ============ */
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 64px; }
+  @media (max-width: 800px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat {
+    background: var(--dark); color: var(--white);
+    padding: 40px 28px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .stat:nth-child(1) { background: linear-gradient(150deg, var(--dark), #1a1730); }
+  .stat:nth-child(2) { background: linear-gradient(150deg, var(--purple), var(--purple2)); }
+  .stat:nth-child(3) { background: linear-gradient(150deg, var(--magenta), #6c2477); }
+  .stat:nth-child(4) { background: linear-gradient(150deg, #1a1730, var(--lightblue)); }
+  .stat:hover { transform: translateY(-4px); }
+  .stat .icon { width: 36px; height: 36px; opacity: 0.85; margin-bottom: 24px; stroke: currentColor; }
+  .stat .num-big { font-family: 'Euclid Flex'; font-weight: 700; font-size: clamp(48px, 6vw, 80px); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 8px; }
+  .stat .num-suffix { font-family: 'Euclid Flex'; font-weight: 400; font-size: 0.5em; vertical-align: top; opacity: 0.85; margin-left: 4px; }
+  .stat .label { font-family: 'Gotham'; font-size: 13px; line-height: 1.4; opacity: 0.85; max-width: 180px; }
+
+  /* ============ VALUE CARDS ============ */
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); margin-top: 32px; }
+  @media (max-width: 800px) { .values-grid { grid-template-columns: 1fr; } }
+  .value-card {
+    background: var(--white);
+    border: 1px solid rgba(19,17,32,0.08);
+    border-radius: 12px;
+    padding: 36px 32px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .value-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--gradient-hero);
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); border-color: rgba(134,45,145,0.2); }
+  .value-card:hover::before { opacity: 1; }
+  .value-card .v-icon { width: 56px; height: 56px; padding: 12px; background: rgba(134,45,145,0.08); border-radius: 12px; color: var(--magenta); margin-bottom: 24px; }
+  .value-card .v-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .value-card h3 { font-family: 'Euclid Flex'; font-weight: 600; font-size: 22px; margin-bottom: 12px; color: var(--dark); }
+
+  /* ============ LOGO STAGE + DOWNLOAD ============ */
+  .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); margin-top: 32px; }
+  @media (max-width: 800px) { .logo-grid { grid-template-columns: 1fr; } }
+  .logo-card { display: flex; flex-direction: column; gap: 16px; }
+  .logo-stage {
+    background: var(--white);
+    border: 1px solid rgba(19,17,32,0.08);
+    border-radius: 8px;
+    padding: 56px 32px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 240px;
+  }
+  .logo-stage.dark { background: var(--dark); border-color: var(--dark); }
+  .logo-stage.gradient { background: var(--gradient-hero); border: 0; }
+  .logo-stage img { max-width: 280px; max-height: 100%; }
+  .logo-card .caption { font-family: 'Gotham'; font-weight: 500; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.55); text-align: center; }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); margin-top: 32px; }
+  @media (max-width: 800px) { .icon-grid { grid-template-columns: 1fr; } }
+  .icon-stage { min-height: 200px; padding: 40px; }
+  .icon-stage img { max-width: 110px; max-height: 110px; }
+
+  /* ============ DO/DONT ============ */
+  .do-dont-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+  @media (max-width: 800px) { .do-dont-grid { grid-template-columns: repeat(2, 1fr); } }
+  .dd-card { border-radius: 8px; overflow: hidden; }
+  .dd-card .preview { aspect-ratio: 1; background: var(--dark); display: flex; align-items: center; justify-content: center; padding: 24px; position: relative; }
+  .dd-card.do .preview { border: 2px solid var(--purple); }
+  .dd-card.dont .preview { border: 2px solid var(--red); }
+  .dd-card.dont .preview::after { content: "✕"; position: absolute; top: 8px; right: 12px; color: var(--red); font-size: 24px; font-weight: 700; }
+  .dd-card.do .preview::after { content: "✓"; position: absolute; top: 8px; right: 12px; color: var(--purple); font-size: 24px; font-weight: 700; }
+  .dd-card .preview img { max-width: 70%; max-height: 100%; }
+  .dd-card .label { font-family: 'Gotham'; font-size: 13px; padding: 12px 4px 0; line-height: 1.4; }
+
+  /* ============ COLOR SWATCHES (primary/secondary) ============ */
+  .swatch { border-radius: 12px; padding: 28px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; color: var(--white); position: relative; overflow: hidden; transition: transform 0.2s; }
+  .swatch:hover { transform: translateY(-4px); }
+  .swatch.light { color: var(--dark); border: 1px solid rgba(19,17,32,0.1); }
+  .swatch .role { font-family: 'Gotham'; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.7; margin-bottom: 8px; }
+  .swatch .name { font-family: 'Euclid Flex'; font-weight: 600; font-size: 32px; margin-bottom: 24px; letter-spacing: -0.02em; }
+  .swatch .codes { font-family: ui-monospace, monospace; font-size: 12px; line-height: 1.7; opacity: 0.85; }
+  .swatch .codes div { display: flex; justify-content: space-between; }
+
+  /* Color USE-CARDS (cards with hue applied) */
+  .use-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--grid-gap); margin-top: 32px; }
+  @media (max-width: 800px) { .use-cards { grid-template-columns: 1fr; } }
+  .use-card {
+    border-radius: 12px;
+    border: 1px solid rgba(19,17,32,0.08);
+    overflow: hidden;
+    background: var(--white);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .use-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); }
+  .use-card .tab {
+    padding: 18px 28px;
+    color: var(--white);
+    font-family: 'Euclid Flex'; font-weight: 600; font-size: 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    letter-spacing: -0.01em;
+  }
+  .use-card .tab .swatch-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.6); }
+  .use-card.purple .tab { background: var(--purple); }
+  .use-card.magenta .tab { background: var(--magenta); }
+  .use-card.dark .tab { background: var(--dark); }
+  .use-card.white .tab { background: var(--white); color: var(--dark); border-bottom: 1px solid rgba(19,17,32,0.1); }
+  .use-card.white .tab .swatch-dot { background: var(--white); border-color: rgba(19,17,32,0.2); }
+  .use-card .body { padding: 24px 28px; }
+  .use-card .body p { font-size: 15px; line-height: 1.65; }
+  .use-card .body .role-tag { font-family: 'Gotham'; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--magenta); margin-bottom: 8px; }
+
+  /* ============ DO/DONT COLOR (with mini visual examples) ============ */
+  .ddc-row {
+    display: grid; grid-template-columns: 200px 1fr 1fr; gap: 16px;
+    align-items: stretch;
+    border-bottom: 1px solid rgba(19,17,32,0.08);
+    padding: 24px 0;
+  }
+  @media (max-width: 800px) { .ddc-row { grid-template-columns: 1fr; } }
+  .ddc-row .situation { font-family: 'Euclid Flex'; font-weight: 600; font-size: 16px; align-self: center; }
+  .ddc-row .ddc-cell { padding: 16px; border-radius: 8px; display: flex; flex-direction: column; gap: 12px; }
+  .ddc-row .ddc-cell.do { background: rgba(100,95,170,0.05); border: 1px solid rgba(100,95,170,0.15); }
+  .ddc-row .ddc-cell.dont { background: rgba(214,65,58,0.04); border: 1px solid rgba(214,65,58,0.15); }
+  .ddc-row .label { font-family: 'Gotham'; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; }
+  .ddc-row .ddc-cell.do .label { color: var(--purple); }
+  .ddc-row .ddc-cell.dont .label { color: var(--red); }
+  .ddc-row .demo { padding: 16px; border-radius: 6px; min-height: 56px; font-family: 'Euclid Flex'; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+  .ddc-row .ddc-text { font-size: 13px; line-height: 1.5; }
+
+  /* ============ TYPE SPECIMEN ============ */
+  .type-specimen { background: rgba(100,95,170,0.04); border-radius: 12px; padding: 48px; }
+  .type-specimen + .type-specimen { margin-top: 24px; }
+  .type-specimen.script { background: linear-gradient(135deg, rgba(100,95,170,0.08) 0%, rgba(134,45,145,0.05) 100%); }
+  .type-name { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(19,17,32,0.1); flex-wrap: wrap; gap: 16px; }
+  .type-name h3 { margin: 0; }
+  .type-name .meta-tag { font-family: 'Gotham'; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.5); }
+  .type-glyph { font-family: 'Euclid Flex'; font-weight: 700; font-size: 96px; letter-spacing: -0.04em; line-height: 1; margin: 24px 0; color: var(--dark); }
+  .type-glyph.gotham { font-family: 'Gotham'; font-weight: 700; }
+  .type-glyph.script { font-family: 'Lonally Qoma', 'Water Brush', cursive; font-size: 120px; line-height: 0.95; color: var(--magenta); font-weight: 400; letter-spacing: 0; }
+  .type-scale { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; }
+  .type-scale .row { display: flex; align-items: baseline; gap: 16px; padding: 8px 0; border-bottom: 1px dashed rgba(19,17,32,0.08); }
+  .type-scale .row:last-child { border-bottom: 0; }
+  .type-scale .meta { font-family: ui-monospace, monospace; font-size: 11px; color: rgba(0,0,0,0.4); width: 140px; flex-shrink: 0; }
+  .type-weights { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 24px; font-size: 22px; }
+  .type-weights span { font-family: 'Euclid Flex'; }
+  .type-weights.gotham span { font-family: 'Gotham'; }
+
+  /* ============ VOICE TABLE ============ */
+  .voice-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+  .voice-table th, .voice-table td { padding: 16px; text-align: left; border-bottom: 1px solid rgba(19,17,32,0.08); vertical-align: top; }
+  .voice-table th { font-family: 'Gotham'; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(0,0,0,0.5); font-weight: 500; }
+  .voice-table td.do { color: var(--dark); }
+  .voice-table td.dont { color: rgba(214,65,58,0.85); text-decoration: line-through; text-decoration-color: rgba(214,65,58,0.4); }
+  .voice-attr { font-family: 'Euclid Flex'; font-weight: 600; font-size: 16px; }
+
+  /* ============ APPLICATIONS ============ */
+  .app-card { border-radius: 12px; overflow: hidden; border: 1px solid rgba(19,17,32,0.08); transition: transform 0.2s, box-shadow 0.2s; }
+  .app-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); }
+  .app-card .visual { aspect-ratio: 16/10; padding: 32px; display: flex; align-items: center; justify-content: center; }
+  .app-card .visual.dark { background: var(--dark); color: var(--white); }
+  .app-card .visual.color { background: var(--gradient-hero); color: var(--white); }
+  .app-card .visual.light { background: var(--white); color: var(--dark); border-bottom: 1px solid rgba(19,17,32,0.05); }
+  .app-card .meta { padding: 16px 20px; font-size: 13px; color: rgba(0,0,0,0.6); border-top: 1px solid rgba(19,17,32,0.06); font-family: 'Gotham'; }
+  .mock-hero { font-family: 'Euclid Flex'; font-weight: 700; font-size: 36px; line-height: 1; letter-spacing: -0.02em; }
+  .mock-sub { font-family: 'Gotham'; font-weight: 500; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin-bottom: 12px; }
+  .mock-cta { display: inline-block; margin-top: 20px; padding: 10px 22px; background: var(--magenta); color: var(--white); font-family: 'Gotham'; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 999px; }
+
+  /* ============ VEHICLE / PRINT MOCKUPS ============ */
+  .vehicle-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--grid-gap); margin-top: 32px; }
+  @media (max-width: 800px) { .vehicle-grid { grid-template-columns: 1fr; } }
+  .van-mock {
+    aspect-ratio: 16/9;
+    background: linear-gradient(180deg, #1c1a2c 0%, var(--dark) 100%);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .van-mock::before {
+    content: '';
+    position: absolute; bottom: 0; left: 5%; right: 5%; height: 40%;
+    background: var(--dark);
+    border-radius: 60% 60% 0 0 / 100% 100% 0 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  .van-mock .van-body {
+    position: relative; z-index: 2;
+    width: 80%; aspect-ratio: 5/2.2;
+    background: linear-gradient(180deg, #2a2440 0%, #1f1c30 100%);
+    border-radius: 12px 12px 8px 8px;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .van-mock .van-body::before, .van-mock .van-body::after {
+    content: ''; position: absolute; bottom: -16px; width: 36px; height: 36px;
+    background: #0a0814; border-radius: 50%;
+    border: 4px solid #1f1c30;
+  }
+  .van-mock .van-body::before { left: 14%; }
+  .van-mock .van-body::after { right: 14%; }
+  .van-mock img { max-width: 60%; max-height: 60%; filter: drop-shadow(0 4px 12px rgba(134,45,145,0.4)); }
+
+  .tshirt-mock {
+    aspect-ratio: 1;
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid rgba(19,17,32,0.08);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tshirt-mock .shirt {
+    width: 70%; aspect-ratio: 1;
+    background: var(--dark);
+    clip-path: polygon(15% 12%, 30% 0%, 70% 0%, 85% 12%, 100% 22%, 92% 35%, 80% 28%, 80% 100%, 20% 100%, 20% 28%, 8% 35%, 0% 22%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .tshirt-mock .shirt img { max-width: 30%; margin-top: -20%; opacity: 0.95; }
+
+  /* ============ IMAGERY PRINCIPLES ============ */
+  .principle-card {
+    padding: 32px;
+    border-radius: 12px;
+    background: var(--white);
+    border: 1px solid rgba(19,17,32,0.08);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .principle-card:hover { transform: translateY(-3px); border-color: rgba(100,95,170,0.3); box-shadow: var(--shadow-card); }
+  .principle-card .p-icon { width: 48px; height: 48px; padding: 10px; background: rgba(100,95,170,0.08); border-radius: 10px; color: var(--purple); margin-bottom: 20px; }
+  .principle-card .p-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .principle-card h4 { color: var(--dark); margin-bottom: 12px; }
+  .principle-card p { font-size: 14px; line-height: 1.6; color: rgba(19,17,32,0.7); }
+
+  /* ============ ICONOGRAPHY GALLERY ============ */
+  .icon-gallery {
+    display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; margin-top: 32px;
+  }
+  @media (max-width: 800px) { .icon-gallery { grid-template-columns: repeat(4, 1fr); } }
+  .icon-tile {
+    aspect-ratio: 1;
+    background: var(--white);
+    border: 1px solid rgba(19,17,32,0.08);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--purple);
+    transition: transform 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .icon-tile:hover { transform: translateY(-2px); color: var(--magenta); border-color: var(--magenta); }
+  .icon-tile svg { width: 50%; height: 50%; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ============ CALLOUT ============ */
+  .callout { background: rgba(100,95,170,0.06); border-left: 3px solid var(--purple); padding: 24px 28px; border-radius: 0 8px 8px 0; margin: 32px 0; }
+  .callout strong { color: var(--magenta); }
+  .callout.warn { background: rgba(214,65,58,0.04); border-color: var(--red); }
+  .callout.warn strong { color: var(--red); }
+
+  /* ============ SOCIAL CARDS (2-cleaner layout) ============ */
+  .social-rules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--grid-gap); margin-top: 24px; }
+  @media (max-width: 800px) { .social-rules-grid { grid-template-columns: 1fr; } }
+  .social-rule {
+    padding: 28px 32px;
+    border-radius: 12px;
+    border: 1px solid rgba(19,17,32,0.08);
+    background: var(--white);
+    display: flex; gap: 20px; align-items: start;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .social-rule:hover { transform: translateY(-3px); border-color: var(--magenta); }
+  .social-rule .sr-icon { flex-shrink: 0; width: 44px; height: 44px; padding: 10px; background: rgba(134,45,145,0.08); border-radius: 10px; color: var(--magenta); }
+  .social-rule .sr-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .social-rule h4 { margin-bottom: 8px; font-size: 17px; }
+  .social-rule p { font-size: 14px; line-height: 1.55; color: rgba(19,17,32,0.7); }
+  .social-rule p strong { color: var(--magenta); }
+
+  /* ============ FOOTER ============ */
+  footer { background: var(--dark); color: var(--white); padding: 80px 0 40px; }
+  footer p { color: rgba(255,255,255,0.6); }
+  footer .grid-2 { align-items: end; gap: 48px; }
+  footer .meta-row { font-family: 'Gotham'; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 14px; }
+  footer .footer-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 16px; }
+  footer .footer-meta span { font-family: 'Gotham'; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+  /* ============ TOC LIST ============ */
+  .toc-list { list-style: none; margin: 0 -16px; }
+  .toc-list li {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 18px 16px;
+    border-radius: 4px;
+    border-bottom: 1px solid rgba(19,17,32,0.06);
+    font-family: 'Euclid Flex'; font-weight: 400; font-size: 22px;
+    transition: color 0.15s, background 0.15s;
+  }
+  /* Zebra stripe — odd rows get subtle purple tint */
+  .toc-list li:nth-child(odd) { background: rgba(100, 95, 170, 0.05); }
+  .toc-list li:hover { color: var(--magenta); background: rgba(134, 45, 145, 0.07); }
+  .toc-list a { display: flex; justify-content: space-between; width: 100%; align-items: baseline; }
+  .toc-list .num { font-size: 14px; }
+
+  /* ============ ANIMATIONS ============ */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ============ PRINT ============ */
+  @media print {
+    .nav, .scroll-hint, .btn { display: none !important; }
+    body { font-size: 11pt; }
+    section { page-break-before: always; padding: 32px 0; }
+    section:first-of-type { page-break-before: auto; }
+    .hero { min-height: auto; padding: 32px 0; }
+    .hero::before, .hero::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="container">
+    <a href="#top" class="nav-logo">
+      <img src="assets/logos/wordmark/white/wordmark-320.png" alt="Elevarts" />
+    </a>
+    <div class="nav-links">
+      <a href="#story"><span>Story</span></a>
+      <a href="#logo"><span>Logo</span></a>
+      <a href="#color"><span>Culori</span></a>
+      <a href="#type"><span>Tipografie</span></a>
+      <a href="#voice"><span>Voce</span></a>
+      <a href="#imagery"><span>Imagery</span></a>
+      <a href="#applications"><span>Aplicații</span></a>
+      <a href="social/"><span>Social ↗</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="top" class="hero">
+  <div class="container">
+    <div class="hero-meta">
+      <span>Brand Book · 2026</span>
+      <span>Internal Reference</span>
+    </div>
+    <div>
+      <div class="hero-eyebrow">Identitate de marcă</div>
+      <img class="hero-logo" src="assets/logos/wordmark/color/wordmark-1024.png" alt="ELEVARTS" />
+      <div class="hero-script">together we elevate</div>
+      <p class="lead hero-lead">Sursa de adevăr pentru identitatea ELEVARTS. Cum arătăm, cum vorbim, cum livrăm experiența de marcă — de la wordmark la voce, de la culori la materiale fizice.</p>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-cta">
+        <a class="btn btn-gradient" href="#story">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          Începe tour
+        </a>
+        <a class="btn btn-ghost" href="downloads/logos-all.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+          Logos complete <small>3.1 MB</small>
+        </a>
+      </div>
+      <div class="scroll-hint">Scroll pentru detalii</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TOC ============ -->
+<section id="toc">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Cuprins</div>
+        <h2>În acest document</h2>
+      </div>
+      <div class="sec-num"><strong>00</strong>Index</div>
+    </div>
+    <ul class="toc-list">
+      <li><a href="#story"><span>Story &amp; mission</span><span class="num">01</span></a></li>
+      <li><a href="#logo"><span>Logo system</span><span class="num">02</span></a></li>
+      <li><a href="#color"><span>Color system</span><span class="num">03</span></a></li>
+      <li><a href="#type"><span>Typography</span><span class="num">04</span></a></li>
+      <li><a href="#voice"><span>Tone of voice</span><span class="num">05</span></a></li>
+      <li><a href="#imagery"><span>Imagery direction</span><span class="num">06</span></a></li>
+      <li><a href="#applications"><span>Applications</span><span class="num">07</span></a></li>
+      <li><a href="#donts"><span>Don'ts wall</span><span class="num">08</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 01 STORY ============ -->
+<section id="story">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">01 — Story</div>
+        <h2>De la King Clown la <span class="script" style="font-size: 1.1em; color: var(--magenta);">ElevARTS</span></h2>
+      </div>
+      <div class="sec-num"><strong>01</strong>Story</div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <p class="lead" style="margin-bottom: 24px;">Companie de entertainment fondată în 2008. Trei rebranduri (King Clown 2011 → Royal Entertainment 2017 → ElevARTS 2023) marchează un drum clar: de la petreceri pentru copii la entertainment premium pentru evenimente top, internațional.</p>
+        <p>Numele <strong>ElevARTS</strong> combină <em>elevate</em> și <em>arts</em>. În interiorul cuvântului trăiesc două puzzle-uri subtile, niciodată exhibate ca statement vizual:</p>
+        <p style="margin-top: 16px;">— <strong>eleVArts</strong>: V și A, două forțe opuse — sus și jos, lumină și umbră — și echilibrul dintre ele.<br>— <strong>ARTS → ARIS</strong>: schimbând T cu I apare numele fiului fondatorului. Brandul a crescut alături de el.</p>
+      </div>
+      <div>
+        <h4>Ce ne face diferiți</h4>
+        <p style="margin-bottom: 20px;"><strong>NU suntem agenție.</strong> Suntem furnizori direcți: propriul atelier, propria echipă, propria comunitate. Construim ce performăm.</p>
+        <div class="callout" style="margin-top: 24px;">
+          <p><strong>Misiunea</strong> — Elevăm spiritul oamenilor — al echipei, al clienților, al spectatorilor — prin arte multidisciplinare. <em class="script" style="font-size: 1.4em; color: var(--magenta);">Don't chase. Attract.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Numere — Animated counters -->
+    <h3 style="margin-top: 80px;">Numerele noastre</h3>
+    <div class="stats-grid">
+      <div class="stat">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="num-big" data-counter="18"><span>0</span><span class="num-suffix">+</span></div>
+        <div class="label">ani de experiență neîntreruptă</div>
+      </div>
+      <div class="stat">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+        <div class="num-big" data-counter="800"><span>0</span><span class="num-suffix">+</span></div>
+        <div class="label">costume în garderobă</div>
+      </div>
+      <div class="stat">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2"/><path d="M12 8v3"/><path d="M9 14l3-3 3 3"/><path d="M9 22l3-8 3 8"/></svg>
+        <div class="num-big" data-counter="30"><span>0</span><span class="num-suffix">+</span></div>
+        <div class="label">artiști pe picioroange — cea mai mare trupă din RO</div>
+      </div>
+      <div class="stat">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="num-big" data-counter="3" data-suffix="">EU<span class="num-suffix">·</span>UAE<span class="num-suffix">·</span>QR</div>
+        <div class="label">evenimente internaționale: Europa, Emirate, Qatar</div>
+      </div>
+    </div>
+
+    <!-- Valori cards -->
+    <h3 style="margin-top: 80px;">Valori</h3>
+    <p class="lead" style="max-width: 700px; margin-top: 8px;">Pe ce ne ținem cuvântul. Trei lucruri pe care le verifici prin orice contact cu noi.</p>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="v-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/><circle cx="12" cy="12" r="11" stroke-dasharray="2 4"/></svg></div>
+        <h3>Premium peste tot</h3>
+        <p>Atenție la detalii. Sub-promise, over-deliver. Tăcuți despre ce și cum facem, vorbim prin rezultate și emoțiile de la eveniment.</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <h3>Jucăuși dar profi</h3>
+        <p>Energie tinerească și veselie reală, dar punctualitate și seriozitate la fiecare aspect operațional.</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v2a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3v3a1 1 0 0 0 2 0v-3a3 3 0 0 0 0-6V7a3 3 0 0 0 0-2 3 3 0 0 0-1 0z" stroke-linejoin="round"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Body · Mind · Spirit</h3>
+        <p>Comunitate, apartenență, dezvoltare personală. Wow effect pentru spectator, sens și coeziune pentru echipă.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 LOGO ============ -->
+<section id="logo">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">02 — Logo system</div>
+        <h2>Logo</h2>
+      </div>
+      <div class="sec-num"><strong>02</strong>Logo</div>
+    </div>
+    <p class="lead" style="max-width: 800px;">Wordmark-ul ELEVARTS este principalul punct de contact vizual. Două lockup-uri (wordmark + icon), trei variații cromatice (color, white, black). Fiecare cu butonul ei de download.</p>
+
+    <h3 style="margin-top: 64px;">Wordmark</h3>
+    <p>Folosește varianta <em>color</em> pe alb sau imagini cu spațiu negativ generos. Pentru fundaluri închise sau colorate intens, alege <em>white</em>. Pentru print mono, alege <em>black</em>.</p>
+
+    <div class="logo-grid">
+      <div class="logo-card">
+        <div class="logo-stage"><img src="assets/logos/wordmark/color/wordmark-480.png" alt="Wordmark color" /></div>
+        <div class="caption">Color · pe alb</div>
+        <a class="btn btn-dark btn-block" href="downloads/logo-color.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+          Download Color <small>1.1 MB</small>
+        </a>
+      </div>
+      <div class="logo-card">
+        <div class="logo-stage dark"><img src="assets/logos/wordmark/white/wordmark-480.png" alt="Wordmark white" /></div>
+        <div class="caption">White · pe dark</div>
+        <a class="btn btn-dark btn-block" href="downloads/logo-white.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+          Download White <small>872 KB</small>
+        </a>
+      </div>
+      <div class="logo-card">
+        <div class="logo-stage"><img src="assets/logos/wordmark/black/wordmark-480.png" alt="Wordmark black" /></div>
+        <div class="caption">Black · mono / print</div>
+        <a class="btn btn-dark btn-block" href="downloads/logo-black.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+          Download Black <small>852 KB</small>
+        </a>
+      </div>
+    </div>
+
+    <div class="dl-center">
+      <a class="btn btn-gradient btn-lg" href="downloads/logos-all.zip" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+        Download all logos <small>3.1 MB</small>
+      </a>
+    </div>
+    <p class="dl-hint">Toate variantele × toate formatele (.ai, .eps, .png, .jpg, .psd) + web-ready PNG/WebP 80–1024px.</p>
+
+    <h3 style="margin-top: 96px;">Icon</h3>
+    <p>Folosește icon-ul când spațiul nu permite wordmark-ul lizibil (sub 80px lățime), pentru favicon, app icons, social profile pictures, sidebar nav.</p>
+    <div class="icon-grid">
+      <div class="logo-card">
+        <div class="logo-stage icon-stage"><img src="assets/logos/icon/color/icon-256.png" alt="Icon color" /></div>
+        <div class="caption">Color · gradient brand</div>
+        <a class="btn btn-dark btn-block" href="downloads/icon-color.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+          Download Color <small>84 KB</small>
+        </a>
+      </div>
+      <div class="logo-card">
+        <div class="logo-stage icon-stage dark"><img src="assets/logos/icon/white/icon-256.png" alt="Icon white" /></div>
+        <div class="caption">White · pe dark</div>
+        <a class="btn btn-dark btn-block" href="downloads/icon-white.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+          Download White <small>52 KB</small>
+        </a>
+      </div>
+      <div class="logo-card">
+        <div class="logo-stage icon-stage"><img src="assets/logos/icon/black/icon-256.png" alt="Icon black" /></div>
+        <div class="caption">Black · mono</div>
+        <a class="btn btn-dark btn-block" href="downloads/icon-black.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+          Download Black <small>68 KB</small>
+        </a>
+      </div>
+    </div>
+
+    <div class="dl-center">
+      <a class="btn btn-gradient btn-lg" href="downloads/icons-all.zip" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+        Download all icons <small>200 KB</small>
+      </a>
+    </div>
+    <p class="dl-hint">SVG masters + PNG/WebP 16–512px pe toate 3 variantele + favicon.ico + apple-touch-icon.</p>
+
+    <h3 style="margin-top: 96px;">Cum îl folosim — reguli de bază</h3>
+    <div class="grid-2" style="margin-top: 24px;">
+      <div>
+        <h4>Clear space</h4>
+        <p>Păstrează minimum <code>16px</code> spațiu liber în jurul logo-ului în orice direcție. Pe print, calculează clear space-ul ca <em>înălțimea literei "E" din wordmark</em>.</p>
+        <h4 style="margin-top: 24px;">Mărimi minime</h4>
+        <p>Wordmark: minimum <code>80px</code> lățime (web). Icon: minimum <code>16px</code>. Sub aceste mărimi, alege icon dacă ai sub 80px.</p>
+      </div>
+      <div>
+        <h4>Background safe zones</h4>
+        <p><strong>Color logo:</strong> doar pe alb, gri foarte deschis, sau dark uniform. Niciodată pe imagini cu compoziție colorată.</p>
+        <p style="margin-top: 12px;"><strong>White logo:</strong> orice fundal închis (#131120 sau gradient brand) sau imagine cu zonă închisă suficientă.</p>
+        <p style="margin-top: 12px;"><strong>Black logo:</strong> rezervat pentru print mono, fax, ștampile, situații constrânse.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 64px;">Do's &amp; Don'ts</h3>
+    <div class="do-dont-grid">
+      <div class="dd-card do">
+        <div class="preview"><img src="assets/logos/wordmark/white/wordmark-320.png" /></div>
+        <div class="label"><strong>DO</strong> — păstrează proporțiile originale 4:1</div>
+      </div>
+      <div class="dd-card dont">
+        <div class="preview"><img src="assets/logos/wordmark/white/wordmark-320.png" style="transform: scaleX(1.5);" /></div>
+        <div class="label"><strong>DON'T</strong> — nu întinde wordmark-ul</div>
+      </div>
+      <div class="dd-card dont">
+        <div class="preview"><img src="assets/logos/wordmark/white/wordmark-320.png" style="transform: rotate(-12deg);" /></div>
+        <div class="label"><strong>DON'T</strong> — nu rota logo-ul</div>
+      </div>
+      <div class="dd-card dont">
+        <div class="preview" style="background: #1aaa3c;"><img src="assets/logos/wordmark/white/wordmark-320.png" /></div>
+        <div class="label"><strong>DON'T</strong> — nu pune pe culori în afara paletei brand</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 COLOR ============ -->
+<section id="color">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">03 — Color system</div>
+        <h2>Culori</h2>
+      </div>
+      <div class="sec-num"><strong>03</strong>Color</div>
+    </div>
+    <p class="lead" style="max-width: 800px;">Paleta brand are două straturi: <strong>primary</strong> (4 culori, prezente pe orice material) și <strong>secondary</strong> (8 culori, folosite punctual pe tematici și catalog).</p>
+
+    <h3 style="margin-top: 64px;">Primary palette</h3>
+    <p>Aceste 4 culori definesc identitatea ELEVARTS la prima vedere. Orice material trebuie să folosească măcar una din ele.</p>
+    <div class="grid-4" style="margin-top: 32px;">
+      <div class="swatch" style="background: var(--purple);">
+        <div><div class="role">Primary</div><div class="name">Purple</div></div>
+        <div class="codes">
+          <div><span>HEX</span><span>#645faa</span></div>
+          <div><span>RGB</span><span>100·95·170</span></div>
+          <div><span>CMYK</span><span>70·70·0·0</span></div>
+          <div><span>Pantone</span><span>P 96-8 C</span></div>
+        </div>
+      </div>
+      <div class="swatch" style="background: var(--magenta);">
+        <div><div class="role">Accent</div><div class="name">Magenta</div></div>
+        <div class="codes">
+          <div><span>HEX</span><span>#862d91</span></div>
+          <div><span>RGB</span><span>139·45·145</span></div>
+          <div><span>CMYK</span><span>54·98·0·0</span></div>
+          <div><span>Pantone</span><span>4287 C</span></div>
+        </div>
+      </div>
+      <div class="swatch" style="background: var(--dark);">
+        <div><div class="role">Background</div><div class="name">Dark</div></div>
+        <div class="codes">
+          <div><span>HEX</span><span>#131120</span></div>
+          <div><span>RGB</span><span>19·17·32</span></div>
+          <div><span>CMYK</span><span>82·78·56·75</span></div>
+          <div><span>Pantone</span><span>Black 6 C</span></div>
+        </div>
+      </div>
+      <div class="swatch light" style="background: var(--white);">
+        <div><div class="role">Surface</div><div class="name">White</div></div>
+        <div class="codes">
+          <div><span>HEX</span><span>#FFFFFF</span></div>
+          <div><span>RGB</span><span>255·255·255</span></div>
+          <div><span>CMYK</span><span>0·0·0·0</span></div>
+          <div><span>Pantone</span><span>—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 80px;">Cum le folosim</h3>
+    <div class="use-cards">
+      <div class="use-card purple">
+        <div class="tab"><span>Purple — primary</span><span class="swatch-dot" style="background: var(--purple);"></span></div>
+        <div class="body">
+          <div class="role-tag">Background · UI accent</div>
+          <p>Backgrounds principale, surface dominant, logo primary. Folosește purple pentru "ELEVARTS este aici". Pe web: butoane secundare, link-uri, accente UI.</p>
+        </div>
+      </div>
+      <div class="use-card magenta">
+        <div class="tab"><span>Magenta — accent</span><span class="swatch-dot" style="background: var(--magenta);"></span></div>
+        <div class="body">
+          <div class="role-tag">CTA · Emphasis</div>
+          <p>CTAs (Rezervă, Cere ofertă), hover states, headlines de impact, emphasis în text. Magenta este "uite, fă asta acum" — să rămână rar pentru putere.</p>
+        </div>
+      </div>
+      <div class="use-card dark">
+        <div class="tab"><span>Dark — background</span><span class="swatch-dot" style="background: var(--dark); border-color: rgba(255,255,255,0.4);"></span></div>
+        <div class="body">
+          <div class="role-tag">Premium dark mode</div>
+          <p>Mod principal pentru materiale premium și fotografie cinematic. Site-ul în dark mode, prezentări de investiții, materiale corporate. Dark este "ELEVARTS este premium".</p>
+        </div>
+      </div>
+      <div class="use-card white">
+        <div class="tab"><span>White — surface</span><span class="swatch-dot"></span></div>
+        <div class="body">
+          <div class="role-tag">Light · Editorial</div>
+          <p>Light mode, blog, secțiuni informaționale lungi, materiale de print cu mult text. White este "ELEVARTS este transparent și clar".</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 80px;">Gradient hero</h3>
+    <p>Singurul gradient acceptat pentru fundaluri brand. Folosește-l pe hero-uri mari, secțiuni de tranziție, banner-uri sociale, activări video.</p>
+    <div style="background: var(--gradient-hero); border-radius: 12px; height: 220px; margin-top: 24px; display: flex; align-items: center; justify-content: space-between; padding: 0 36px; color: var(--white);">
+      <div>
+        <div style="font-family: 'Gotham'; font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.8;">Gradient hero</div>
+        <div style="font-family: 'Euclid Flex'; font-weight: 700; font-size: 36px; margin-top: 8px; letter-spacing: -0.02em;">Purple → Magenta</div>
+      </div>
+      <code style="background: rgba(255,255,255,0.15); color: var(--white);">linear-gradient(135deg, #645faa 0%, #862d91 100%)</code>
+    </div>
+
+    <h3 style="margin-top: 80px;">Secondary palette</h3>
+    <p>Folosită punctual pe tematici (Easter pe pink/coral, Crăciun pe red, Future-LED pe lightblue, etc.) și pentru codificarea catalogului. Nu apare pe materiale corporate.</p>
+    <div class="grid-4" style="margin-top: 32px;">
+      <div class="swatch" style="background: var(--red); min-height: 130px;"><div><div class="role">Tematici</div><div class="name" style="font-size: 18px;">Red</div></div><div class="codes"><div><span>HEX</span><span>#D6413A</span></div></div></div>
+      <div class="swatch" style="background: var(--pink); min-height: 130px;"><div><div class="role">Easter / Spring</div><div class="name" style="font-size: 18px;">Pink</div></div><div class="codes"><div><span>HEX</span><span>#DE607D</span></div></div></div>
+      <div class="swatch" style="background: var(--magenta2); min-height: 130px;"><div><div class="role">Disco / Glam</div><div class="name" style="font-size: 18px;">Magenta 2</div></div><div class="codes"><div><span>HEX</span><span>#C94895</span></div></div></div>
+      <div class="swatch" style="background: var(--purple2); min-height: 130px;"><div><div class="role">Mystic / Royal</div><div class="name" style="font-size: 18px;">Purple 2</div></div><div class="codes"><div><span>HEX</span><span>#7A4294</span></div></div></div>
+      <div class="swatch" style="background: var(--periwinkle); min-height: 130px;"><div><div class="role">Cool / Calm</div><div class="name" style="font-size: 18px;">Periwinkle</div></div><div class="codes"><div><span>HEX</span><span>#626AB1</span></div></div></div>
+      <div class="swatch" style="background: var(--lightblue); min-height: 130px;"><div><div class="role">Future / LED</div><div class="name" style="font-size: 18px;">Light Blue</div></div><div class="codes"><div><span>HEX</span><span>#6BA3D7</span></div></div></div>
+      <div class="swatch" style="background: var(--coral); min-height: 130px;"><div><div class="role">Warm / Sunset</div><div class="name" style="font-size: 18px;">Coral</div></div><div class="codes"><div><span>HEX</span><span>#E17B62</span></div></div></div>
+      <div class="swatch" style="background: var(--peach); min-height: 130px;"><div><div class="role">Soft / Boho</div><div class="name" style="font-size: 18px;">Peach</div></div><div class="codes"><div><span>HEX</span><span>#EEA172</span></div></div></div>
+    </div>
+
+    <div class="callout" style="margin-top: 64px;">
+      <p><strong>Regula de aur:</strong> niciodată mai mult de <strong>3 culori brand simultan</strong> într-o compoziție. O primary dominantă + max 2 accent. Mai multe = haos vizual.</p>
+    </div>
+
+    <h3 style="margin-top: 80px;">Do's &amp; Don'ts color (cu exemple)</h3>
+    <div style="margin-top: 32px; border-top: 1px solid rgba(19,17,32,0.08);">
+      <div class="ddc-row">
+        <div class="situation">Web hero corporate</div>
+        <div class="ddc-cell do">
+          <span class="label">DO</span>
+          <div class="demo" style="background: var(--dark); color: var(--white);">Hero <span style="color: var(--magenta); margin-left: 8px;">→ CTA</span></div>
+          <div class="ddc-text">Dark background + white text + magenta CTA</div>
+        </div>
+        <div class="ddc-cell dont">
+          <span class="label">DON'T</span>
+          <div class="demo" style="background: var(--gradient-hero); color: var(--dark);">Body alb · text negru</div>
+          <div class="ddc-text">Hero pe gradient + body alb cu text negru — conflict</div>
+        </div>
+      </div>
+
+      <div class="ddc-row">
+        <div class="situation">Material Christmas / Easter</div>
+        <div class="ddc-cell do">
+          <span class="label">DO</span>
+          <div class="demo" style="background: var(--white); color: var(--dark); border: 1px solid rgba(0,0,0,0.08);"><span style="color: var(--red);">●</span><span style="color: var(--coral); margin-left: 6px;">●</span> + brand</div>
+          <div class="ddc-text">1 primary (white sau dark) + 1–2 secondary tematice</div>
+        </div>
+        <div class="ddc-cell dont">
+          <span class="label">DON'T</span>
+          <div class="demo" style="background: linear-gradient(90deg, var(--red), var(--pink), var(--coral), var(--peach), var(--lightblue), var(--purple2)); color: white;">Toate la grămadă</div>
+          <div class="ddc-text">Toate cele 8 secondary aruncate în același design</div>
+        </div>
+      </div>
+
+      <div class="ddc-row">
+        <div class="situation">Logo pe imagine</div>
+        <div class="ddc-cell do">
+          <span class="label">DO</span>
+          <div class="demo" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), linear-gradient(135deg, #4a3260, #2a1f3a);"><img src="assets/logos/wordmark/white/wordmark-160.png" style="height: 24px;" alt="" /></div>
+          <div class="ddc-text">White logo pe zonă închisă + overlay dark</div>
+        </div>
+        <div class="ddc-cell dont">
+          <span class="label">DON'T</span>
+          <div class="demo" style="background: linear-gradient(45deg, var(--coral), var(--lightblue), var(--peach));"><img src="assets/logos/wordmark/color/wordmark-160.png" style="height: 24px;" alt="" /></div>
+          <div class="ddc-text">Color logo pe imagine cu compoziție colorată</div>
+        </div>
+      </div>
+
+      <div class="ddc-row">
+        <div class="situation">Buton CTA</div>
+        <div class="ddc-cell do">
+          <span class="label">DO</span>
+          <div class="demo" style="background: var(--white);"><span style="background: var(--magenta); color: var(--white); padding: 8px 18px; border-radius: 999px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;">CERE OFERTĂ</span></div>
+          <div class="ddc-text">Magenta solid + white text</div>
+        </div>
+        <div class="ddc-cell dont">
+          <span class="label">DON'T</span>
+          <div class="demo" style="background: var(--purple);"><span style="background: var(--magenta); color: var(--white); padding: 8px 18px; border-radius: 999px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;">CERE OFERTĂ</span></div>
+          <div class="ddc-text">Purple background + magenta CTA — slab contrast</div>
+        </div>
+      </div>
+
+      <div class="ddc-row">
+        <div class="situation">Culori "aproximative"</div>
+        <div class="ddc-cell do">
+          <span class="label">DO</span>
+          <div class="demo" style="background: var(--purple); color: var(--white);"><code style="background: rgba(255,255,255,0.15); color: var(--white);">#645faa</code></div>
+          <div class="ddc-text">Folosește exact <code>#645faa</code> pentru purple primary</div>
+        </div>
+        <div class="ddc-cell dont">
+          <span class="label">DON'T</span>
+          <div class="demo" style="background: #6C63FF; color: var(--white);"><code style="background: rgba(255,255,255,0.15); color: var(--white);">#6C63FF</code></div>
+          <div class="ddc-text">Tonuri "aproximativ purple" — strică recognoscibilitate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 TYPE ============ -->
+<section id="type">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">04 — Typography</div>
+        <h2>Tipografie</h2>
+      </div>
+      <div class="sec-num"><strong>04</strong>Type</div>
+    </div>
+    <p class="lead" style="max-width: 800px;">Trei fonturi se completează: <strong>Gotham</strong> primary pentru body și UI, <strong>Euclid Flex</strong> secondary pentru display și headlines, și <strong>Lonally Qoma</strong> pentru cuvinte cheie evidențiate emoțional. Niciodată system fonts (Inter, SF Pro) pe materiale ELEVARTS.</p>
+
+    <!-- Euclid Flex -->
+    <div class="type-specimen" style="margin-top: 48px;">
+      <div class="type-name">
+        <div>
+          <h3>Euclid Flex</h3>
+          <span class="meta-tag">Display · Headlines</span>
+        </div>
+        <a class="btn btn-dark" href="downloads/font-euclid.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+          Download Euclid <small>2.1 MB</small>
+        </a>
+      </div>
+      <p>Geometric sans grotesque cu personalitate. Folosește-l pentru hero, headlines mari, navigation principal, brand statements. La mărimi mari (40px+) reduce letter-spacing la <code>-0.02em</code> pentru densitate.</p>
+      <div class="type-glyph">Aa Bb Cc 123</div>
+      <div class="type-weights">
+        <span style="font-weight: 100;">Thin 100</span>
+        <span style="font-weight: 300;">Light 300</span>
+        <span style="font-weight: 400;">Regular 400</span>
+        <span style="font-weight: 500;">Medium 500</span>
+        <span style="font-weight: 600;">Semibold 600</span>
+        <span style="font-weight: 700;">Bold 700</span>
+      </div>
+      <h4 style="margin-top: 32px;">Scale</h4>
+      <div class="type-scale">
+        <div class="row"><span class="meta">H1 · 80px / 700</span><span style="font-family: 'Euclid Flex'; font-weight: 700; font-size: 80px; letter-spacing: -0.02em; line-height: 1;">Elevăm spiritul</span></div>
+        <div class="row"><span class="meta">H2 · 48px / 600</span><span style="font-family: 'Euclid Flex'; font-weight: 600; font-size: 48px; letter-spacing: -0.02em; line-height: 1.05;">Furnizori direcți</span></div>
+        <div class="row"><span class="meta">H3 · 28px / 600</span><span style="font-family: 'Euclid Flex'; font-weight: 600; font-size: 28px; letter-spacing: -0.01em;">Catalog tematic</span></div>
+        <div class="row"><span class="meta">Lead · 22px / 300</span><span style="font-family: 'Euclid Flex'; font-weight: 300; font-size: 22px;">Premium entertainment cu echipă proprie.</span></div>
+      </div>
+    </div>
+
+    <!-- Gotham -->
+    <div class="type-specimen">
+      <div class="type-name">
+        <div>
+          <h3>Gotham</h3>
+          <span class="meta-tag">Body · UI · Primary</span>
+        </div>
+        <a class="btn btn-dark" href="downloads/font-gotham.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+          Download Gotham <small>356 KB</small>
+        </a>
+      </div>
+      <p>Workhorse-ul nostru. Lizibil la orice mărime, neutru fără să fie steril. Folosește pentru paragraf, navigation secundar, etichete, butoane, formulare, e-mail, captions.</p>
+      <div class="type-glyph gotham">Aa Bb Cc 123</div>
+      <div class="type-weights gotham">
+        <span style="font-weight: 300;">Light 300</span>
+        <span style="font-weight: 400;">Book 400</span>
+        <span style="font-weight: 500;">Medium 500</span>
+        <span style="font-weight: 700;">Bold 700</span>
+      </div>
+      <h4 style="margin-top: 32px;">Scale</h4>
+      <div class="type-scale">
+        <div class="row"><span class="meta">Body · 16px / 400</span><span style="font-family: 'Gotham'; font-weight: 400; font-size: 16px;">Construim ce performăm. Avem propriul atelier și echipă proprie.</span></div>
+        <div class="row"><span class="meta">Small · 14px / 400</span><span style="font-family: 'Gotham'; font-weight: 400; font-size: 14px;">Captions, metadata, helper text — întotdeauna 14px+.</span></div>
+        <div class="row"><span class="meta">CTA · 13px / 500</span><span style="font-family: 'Gotham'; font-weight: 500; font-size: 13px; letter-spacing: 0.05em;">CERE OFERTĂ</span></div>
+        <div class="row"><span class="meta">Eyebrow · 12px / 500</span><span style="font-family: 'Gotham'; font-weight: 500; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--magenta);">Servicii premium</span></div>
+      </div>
+    </div>
+
+    <!-- Lonally Qoma -->
+    <div class="type-specimen script">
+      <div class="type-name">
+        <div>
+          <h3>Lonally Qoma</h3>
+          <span class="meta-tag">Keywords · Highlight Accent</span>
+        </div>
+        <a class="btn btn-dark" href="downloads/font-lonally.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+          Download Lonally <small>130 KB</small>
+        </a>
+      </div>
+      <p>Script font cu tușe expresive. <strong>NU</strong> e font de body sau headline general — folosește-l <em>punctual</em> pentru un singur cuvânt cheie evidențiat emoțional într-un paragraf, semnături manuscrise pe materiale speciale, titluri de evenimente cu rezonanță umană (nuntă, gală, comunitate). Pentru web extern unde nu poate fi încărcat fontul, fallback la <strong>Water Brush</strong> (Google Fonts).</p>
+      <div class="type-glyph script">elevăm spiritul</div>
+      <h4 style="margin-top: 24px;">Cum o folosim</h4>
+      <div class="type-scale">
+        <div class="row"><span class="meta">Hero accent</span><span style="font-family: 'Euclid Flex'; font-weight: 700; font-size: 40px; letter-spacing: -0.02em; line-height: 1.1;">Cea mai mare <span class="script" style="font-size: 64px; color: var(--magenta);">trupă</span> de picioroange</span></div>
+        <div class="row"><span class="meta">Editorial pull-quote</span><span class="script" style="font-size: 56px; color: var(--purple); line-height: 1;">don't chase. attract.</span></div>
+        <div class="row"><span class="meta">Wedding / event special</span><span class="script" style="font-size: 44px; line-height: 1.1;">Ana &amp; Mihai · forever</span></div>
+      </div>
+      <div class="callout warn" style="margin-top: 24px;">
+        <p><strong>Reguli stricte:</strong> max 1 cuvânt Lonally într-o compoziție. Mărime min 32px (sub 32px devine ilizibil). Doar pe primary purple/magenta sau dark — niciodată pe secondary colors. NU pe paragraf, NU pe button, NU pe meniu.</p>
+      </div>
+    </div>
+
+    <div class="dl-center">
+      <a class="btn btn-gradient btn-lg" href="downloads/fonts-all.zip" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M6 12l6 6 6-6"/><path d="M5 21h14"/></svg>
+        Download all fonts <small>2.7 MB</small>
+      </a>
+    </div>
+    <p class="dl-hint">Include Euclid Flex (14 weights), Gotham (17 variante), Lonally Qoma (Regular).</p>
+
+    <h3 style="margin-top: 96px;">Pairing — exemplu real (toate 3 fonturile)</h3>
+    <div style="background: var(--dark); color: var(--white); padding: 64px 48px; border-radius: 12px; margin-top: 24px;">
+      <div style="font-family: 'Gotham'; font-weight: 500; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 24px;">FESTIVALURI · CORPORATE · PRIVATE</div>
+      <div style="font-family: 'Euclid Flex'; font-weight: 700; font-size: 64px; line-height: 1; letter-spacing: -0.02em; margin-bottom: 8px;">Cea mai mare trupă de</div>
+      <div class="script" style="font-size: 96px; line-height: 1; color: var(--magenta); margin-bottom: 8px;">picioroange</div>
+      <div style="font-family: 'Euclid Flex'; font-weight: 700; font-size: 64px; line-height: 1; letter-spacing: -0.02em; margin-bottom: 24px;">din România.</div>
+      <div style="font-family: 'Euclid Flex'; font-weight: 300; font-size: 22px; line-height: 1.4; opacity: 0.7; max-width: 600px; margin-bottom: 32px;">30+ artiști. 100+ costume. 3 înălțimi (90/125/160 cm). Producție nouă în fiecare lună.</div>
+      <div style="font-family: 'Gotham'; font-weight: 400; font-size: 16px; line-height: 1.7; opacity: 0.85; max-width: 600px;">Construim costumele în atelierul propriu. Antrenăm echipa în ritm săptămânal. Nu suntem agenție — suntem furnizorul direct, cei care fac toată munca de la concept la implementare.</div>
+      <div style="margin-top: 32px;"><span style="display: inline-block; padding: 12px 24px; background: var(--magenta); color: var(--white); font-family: 'Gotham'; font-weight: 500; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 999px;">CERE OFERTĂ</span></div>
+    </div>
+
+    <div class="callout" style="margin-top: 48px;">
+      <p><strong>Reguli rapide:</strong> eyebrow = Gotham 500 uppercase 0.22em · headline = Euclid Flex 600/700 · accent emoțional (1 cuvânt) = Lonally Qoma · body = Gotham 400 · CTA = Gotham 500 uppercase 0.08em. Nu mixa în alte combinații.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 VOICE ============ -->
+<section id="voice">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">05 — Tone of voice</div>
+        <h2>Cum vorbim</h2>
+      </div>
+      <div class="sec-num"><strong>05</strong>Voice</div>
+    </div>
+    <p class="lead" style="max-width: 800px;">Direct, încrezător, cool fără să fie obraznic. Profesionalism evident, dar fără jargon corporate. Pe RO neformal, pe EN sofisticat. Emoji doar la cerere expresă.</p>
+
+    <table class="voice-table">
+      <thead>
+        <tr><th>Atribut</th><th>DO</th><th>DON'T</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="voice-attr">Profesionalism</td><td class="do">Direct, fără jargon, încrezător</td><td class="dont">Stimate client, vă rugăm să luați în considerare</td></tr>
+        <tr><td class="voice-attr">Energie</td><td class="do">Cool, friendly, ușor wild/funny</td><td class="dont">Clovnesc, infantil, "haha lol"</td></tr>
+        <tr><td class="voice-attr">RO</td><td class="do">Neformal, prietenos, te tutuim</td><td class="dont">Dumneavoastră, vă mulțumim anticipat</td></tr>
+        <tr><td class="voice-attr">EN</td><td class="do">Premium, sophisticated, internațional</td><td class="dont">Over-formal britanic, "We are pleased to..."</td></tr>
+        <tr><td class="voice-attr">Emoji</td><td class="do">Doar la cerere explicită</td><td class="dont">🎉🔥✨ în fiecare paragraf</td></tr>
+        <tr><td class="voice-attr">Lungime</td><td class="do">Scurt, dens, concret. Numere și verbe.</td><td class="dont">Paragrafe-poem fără punct concret</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 80px;">Formule cheie</h3>
+    <div class="grid-2" style="margin-top: 24px;">
+      <div class="callout"><p><strong>"We elevate everyone's spirit and state of mind."</strong><br><span style="font-size: 13px; color: rgba(0,0,0,0.6);">— manifest internațional, hero EN</span></p></div>
+      <div class="callout"><p><strong>"NU suntem agenție. Suntem furnizori direcți."</strong><br><span style="font-size: 13px; color: rgba(0,0,0,0.6);">— pozționare prim contact, RO</span></p></div>
+      <div class="callout"><p><strong>"We IMAGINE → We CREATE → We IMPLEMENT."</strong><br><span style="font-size: 13px; color: rgba(0,0,0,0.6);">— procesul nostru, 3 piloni</span></p></div>
+      <div class="callout"><p><strong>"Don't chase. Attract."</strong><br><span style="font-size: 13px; color: rgba(0,0,0,0.6);">— filosofia internă, manifest extins</span></p></div>
+      <div class="callout"><p><strong>"...and more to come. Let's get connected!"</strong><br><span style="font-size: 13px; color: rgba(0,0,0,0.6);">— închidere catalog / pitch</span></p></div>
+      <div class="callout"><p><strong>"We are the GUY WHO KNOWS A GUY."</strong><br><span style="font-size: 13px; color: rgba(0,0,0,0.6);">— rețeaua de încredere, partener</span></p></div>
+    </div>
+
+    <h3 style="margin-top: 80px;">Exemple — același mesaj, 3 audiențe</h3>
+    <div class="grid-3" style="margin-top: 24px;">
+      <div style="border: 1px solid rgba(19,17,32,0.1); border-radius: 12px; padding: 28px;">
+        <div class="eyebrow" style="color: var(--purple);">Corporate</div>
+        <h4>Subiect email pitch</h4>
+        <p style="font-style: italic; margin-top: 12px;">"Concept original pentru lansarea X — 6 personaje, 30 min, scalabil pe 3 orașe."</p>
+      </div>
+      <div style="border: 1px solid rgba(19,17,32,0.1); border-radius: 12px; padding: 28px;">
+        <div class="eyebrow" style="color: var(--magenta);">Festival</div>
+        <h4>Caption Instagram</h4>
+        <p style="font-style: italic; margin-top: 12px;">"30 picioroangiști. 10 capete LED. Un singur set. Untold 2026 — get ready."</p>
+      </div>
+      <div style="border: 1px solid rgba(19,17,32,0.1); border-radius: 12px; padding: 28px;">
+        <div class="eyebrow" style="color: var(--coral);">Comunitate</div>
+        <h4>Postare Tribe</h4>
+        <p style="font-style: italic; margin-top: 12px;">"Repetiție de joi. Noul show LED Drummers — vino să-l vezi din culise. Free pentru comunitate."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 IMAGERY ============ -->
+<section id="imagery">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">06 — Imagery direction</div>
+        <h2>Imagery</h2>
+      </div>
+      <div class="sec-num"><strong>06</strong>Imagery</div>
+    </div>
+    <p class="lead" style="max-width: 800px;">Fotografia ELEVARTS oscilează între două registre: <strong>cinematic premium</strong> (low-key, contrast înalt, single subject, fundal dark) și <strong>color-rich documentary</strong> (live event, energie, mulțime, lumină naturală sau LED).</p>
+
+    <h3 style="margin-top: 64px;">Principii vizuale</h3>
+    <div class="grid-3" style="margin-top: 24px;">
+      <div class="principle-card">
+        <div class="p-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg></div>
+        <h4>Subject hero</h4>
+        <p>Costumul / artistul în centru. Niciodată grup de costume amestecat care diluează identitatea fiecăruia.</p>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12a9 9 0 0 1 18 0"/><path d="M3 12h9" stroke-width="2.5"/></svg></div>
+        <h4>Contrast înalt</h4>
+        <p>Lumina noastră e dramatică. Shadows adânci, highlights pe LED-uri, paiete, materiale reflectorizante.</p>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon"><svg viewBox="0 0 24 24"><path d="M3 12h12"/><polyline points="13 6 19 12 13 18"/><circle cx="6" cy="12" r="2" fill="currentColor" stroke="none"/></svg></div>
+        <h4>Mișcare</h4>
+        <p>Capturăm momentul. Picioroange în mers, costume în vânt, gesturi expresive — niciodată poze static-aliniate.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 80px;">Tipuri de poze pe care le folosim</h3>
+    <div class="grid-2" style="margin-top: 24px;">
+      <div class="principle-card">
+        <div class="p-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <h4>Studio shots — pentru catalog</h4>
+        <p>Fundal alb sau dark uniform. Fiecare costum izolat, lumină fără umbre dure. Folosim pentru catalog, ofertă, pagini servicii. <em>Aspect ratio: 4:5 (portrait) sau 1:1.</em></p>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c2.5 3 4 7 4 10s-1.5 7-4 10c-2.5-3-4-7-4-10s1.5-7 4-10z"/></svg></div>
+        <h4>Live event shots — pentru hero / social</h4>
+        <p>Capturate la festivaluri / evenimente reale. Includ public, scenă, atmosferă. Folosim pentru hero-uri, Instagram, video reels. <em>Aspect ratio: 16:9 (web), 9:16 (reels), 4:5 (IG).</em></p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 80px;">Iconografie</h3>
+    <p>Stil consistent: <strong>linie subțire, 1.5px stroke, rounded caps, fără fill</strong>. Pentru stări (success/error/info) folosim culorile primary, niciodată verde/roșu standard.</p>
+    <div class="icon-gallery">
+      <div class="icon-tile" title="Calendar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="icon-tile" title="Mic"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+      <div class="icon-tile" title="Music"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+      <div class="icon-tile" title="Star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+      <div class="icon-tile" title="Users"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="icon-tile" title="Send"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+      <div class="icon-tile" title="Map"><svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
+      <div class="icon-tile" title="Award"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+      <div class="icon-tile" title="Camera"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+      <div class="icon-tile" title="Mail"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div class="icon-tile" title="Heart"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <div class="icon-tile" title="Sparkles"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 5.4L20 11l-5.6 2.6L12 19l-2.4-5.4L4 11l5.6-2.6z"/><path d="M19 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/></svg></div>
+      <div class="icon-tile" title="Briefcase"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <div class="icon-tile" title="Zap"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <div class="icon-tile" title="Flame"><svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
+      <div class="icon-tile" title="Trophy"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
+    </div>
+    <p class="dl-hint" style="margin-top: 16px; text-align: left;">Setul nostru folosește icoane în stilul Lucide / Feather. Pentru noi proiecte, alege din <code>lucide-icons</code> sau <code>feather-icons</code>.</p>
+  </div>
+</section>
+
+<!-- ============ 07 APPLICATIONS ============ -->
+<section id="applications">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">07 — Applications</div>
+        <h2>Aplicații</h2>
+      </div>
+      <div class="sec-num"><strong>07</strong>Apply</div>
+    </div>
+    <p class="lead" style="max-width: 800px;">Cum se manifestă brand-ul în diferite contexte — web, social, vehicule, tricouri, semnături e-mail. Toate respectă regulile din capitolele anterioare.</p>
+
+    <div class="grid-3" style="margin-top: 48px;">
+      <div class="app-card">
+        <div class="visual dark">
+          <div style="width: 100%;">
+            <div class="mock-sub">Web · Hero</div>
+            <div class="mock-hero">Elevăm <span class="script" style="font-size: 1.4em; color: var(--magenta);">spiritul</span>.</div>
+            <div style="font-family: 'Euclid Flex'; font-weight: 300; font-size: 14px; opacity: 0.6; margin-top: 8px;">Furnizori direcți de entertainment premium.</div>
+            <span class="mock-cta">CERE OFERTĂ</span>
+          </div>
+        </div>
+        <div class="meta">Web — landing dark, magenta CTA, ratio 16:10</div>
+      </div>
+
+      <div class="app-card">
+        <div class="visual color">
+          <div style="text-align: center; width: 100%;">
+            <img src="assets/logos/icon/white/icon-128.png" style="height: 64px; margin: 0 auto 16px;" alt="" />
+            <div style="font-family: 'Euclid Flex'; font-weight: 700; font-size: 28px; line-height: 1; letter-spacing: -0.02em;">Save the<br><span class="script" style="font-size: 1.5em; font-weight: 400;">date.</span></div>
+          </div>
+        </div>
+        <div class="meta">Social IG — gradient brand, icon + headline, 1:1</div>
+      </div>
+
+      <div class="app-card">
+        <div class="visual light">
+          <div>
+            <img src="assets/logos/wordmark/color/wordmark-320.png" style="width: 200px; margin-bottom: 16px;" alt="" />
+            <div style="font-family: 'Gotham'; font-weight: 400; font-size: 13px; line-height: 1.6; color: rgba(19,17,32,0.7);"><strong style="font-weight: 700; color: var(--dark);">George Gache</strong> · Founder<br>+40 729 386 269<br>ask@elevarts.com<br>elevarts.com</div>
+          </div>
+        </div>
+        <div class="meta">Email signature — wordmark color + Gotham contact</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 96px;">Vehicule &amp; Print</h3>
+    <p>Pentru van/cars folosim <strong>wordmark white</strong> pe vopsea dark (#131120) sau pe gradient brand wrap. Pentru tricouri echipă: icon brodat pe stânga piept (color sau white pe black), wordmark mare pe spate. Print invitații / programe: hero gradient + Euclid Flex 600 + Gotham 400.</p>
+    <div class="vehicle-grid">
+      <div class="van-mock">
+        <div class="van-body">
+          <img src="assets/logos/wordmark/white/wordmark-640.png" alt="" />
+        </div>
+      </div>
+      <div class="tshirt-mock">
+        <div class="shirt">
+          <img src="assets/logos/icon/color/icon-512.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <p class="dl-hint" style="margin-top: 12px;">Mockup wireframe. Pentru livrabile reale folosește template-uri Adobe Illustrator dedicate per furnizor (van wrap, t-shirt printer).</p>
+
+    <h3 style="margin-top: 96px;">Social media — Instagram (cont principal: <code>@elevarts</code>)</h3>
+    <p>Contul vechi <code>@royalentertainmentromania</code> rămâne arhivă SEO cu un singur post pinnat care redirecționează către <code>@elevarts</code>. Activitatea principală se mută complet pe contul nou.</p>
+
+    <h4 style="margin-top: 32px;">Profile picture</h4>
+    <p>Folosim icon-ul brand <strong>color pe fundal dark</strong> (<code>#131120</code>) — cel mai bun contrast pentru profil rotund. Niciodată wordmark-ul tăiat în cerc.</p>
+
+    <div class="grid-3" style="margin-top: 32px;">
+      <div class="app-card">
+        <div class="visual dark">
+          <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--dark); border: 2px solid var(--magenta); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img src="assets/logos/icon/color/icon-128.png" style="width: 70%; height: 70%; object-fit: contain;" alt="" />
+              </div>
+              <div>
+                <div style="font-family: 'Gotham'; font-weight: 700; font-size: 14px;">elevarts</div>
+                <div style="font-family: 'Gotham'; font-size: 11px; opacity: 0.6;">Premium Entertainment</div>
+              </div>
+            </div>
+            <div style="font-family: 'Gotham'; font-weight: 400; font-size: 11px; line-height: 1.6; opacity: 0.85;">
+              <strong style="font-weight: 700;">We elevate spirit &amp; state of mind.</strong><br>
+              15+ artiști · 800+ costume · cea mai mare trupă picioroange din RO<br>
+              Festivaluri · Corporate · Brand Activations<br>
+              📍 București · DM pentru ofertă ↓
+            </div>
+            <div style="font-family: 'Gotham'; font-weight: 500; font-size: 10px; padding: 6px 10px; background: var(--magenta); color: var(--white); border-radius: 999px; letter-spacing: 0.05em;">elevarts.com/book</div>
+          </div>
+        </div>
+        <div class="meta">Profil IG — bio template oficial</div>
+      </div>
+
+      <div class="app-card">
+        <div class="visual" style="background: var(--white); padding: 16px;">
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%;">
+            <div style="aspect-ratio: 1; background: var(--gradient-hero); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Euclid Flex'; font-size: 11px; font-weight: 600; text-align: center; padding: 4px;">FESTIVAL</div>
+            <div style="aspect-ratio: 1; background: var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Euclid Flex'; font-size: 11px; font-weight: 600; text-align: center; padding: 4px;">CORPORATE</div>
+            <div style="aspect-ratio: 1; background: var(--magenta); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Euclid Flex'; font-size: 11px; font-weight: 600; text-align: center; padding: 4px;">PICIOROANGE</div>
+            <div style="aspect-ratio: 1; background: var(--lightblue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Euclid Flex'; font-size: 11px; font-weight: 600; text-align: center; padding: 4px;">LED &amp; NIGHT</div>
+            <div style="aspect-ratio: 1; background: var(--coral); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Euclid Flex'; font-size: 11px; font-weight: 600; text-align: center; padding: 4px;">PRIVATE</div>
+            <div style="aspect-ratio: 1; background: var(--purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Euclid Flex'; font-size: 11px; font-weight: 600; text-align: center; padding: 4px;">BTS</div>
+          </div>
+        </div>
+        <div class="meta">Highlights — 6 covere brand-aligned</div>
+      </div>
+
+      <div class="app-card">
+        <div class="visual light" style="text-align: left; align-items: flex-start;">
+          <div>
+            <div style="font-family: 'Gotham'; font-weight: 500; font-size: 11px; color: rgba(0,0,0,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">Reel caption template</div>
+            <div style="font-family: 'Gotham'; font-weight: 400; font-size: 13px; line-height: 1.6;">
+              <strong style="font-weight: 700;">Hook (1 line):</strong><br>
+              <em>"30 picioroangiști. 1 set. 0 limite."</em><br><br>
+              <strong style="font-weight: 700;">Context:</strong><br>
+              Untold 2025 · Main Stage opening<br><br>
+              <strong style="font-weight: 700;">Proof:</strong><br>
+              3h show non-stop · 12 personaje<br><br>
+              <strong style="font-weight: 700;">CTA:</strong><br>
+              DM pentru festivalul tău →<br><br>
+              <strong style="font-weight: 700;">Hashtags (5–8):</strong><br>
+              <span style="color: var(--magenta);">#elevarts #picioroange #romaniantalent #festivalproduction #stiltwalkers #eventprofs #bucurestievents</span>
+            </div>
+          </div>
+        </div>
+        <div class="meta">Caption template — hook→proof→CTA</div>
+      </div>
+    </div>
+
+    <h4 style="margin-top: 64px;">Reguli rapide social</h4>
+    <div class="social-rules-grid">
+      <div class="social-rule">
+        <div class="sr-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+        <div>
+          <h4>Reels &gt; Static</h4>
+          <p>Minim <strong>60% video</strong> în feed. Picioroange și costume LED sunt produsul — static nu vinde.</p>
+        </div>
+      </div>
+      <div class="social-rule">
+        <div class="sr-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div>
+          <h4>Cover-uri uniforme reels</h4>
+          <p>Același template (Euclid Flex 700 + magenta accent) pe primele 3 sec — feed-ul devine <strong>instant recognoscibil</strong>.</p>
+        </div>
+      </div>
+      <div class="social-rule">
+        <div class="sr-icon"><svg viewBox="0 0 24 24"><path d="M9.5 5h5l1.5 5-4 5-4-5z" stroke-linejoin="round"/><circle cx="12" cy="14" r="6"/></svg></div>
+        <div>
+          <h4>Hashtag mix</h4>
+          <p><strong>2 brand</strong> (#elevarts) + <strong>3 nișă</strong> (#stiltwalkers, #eventproduction, #ledperformance) + <strong>2–3 locale</strong> (#bucurestievents, #festivalromania).</p>
+        </div>
+      </div>
+      <div class="social-rule">
+        <div class="sr-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <div>
+          <h4>CTA explicit</h4>
+          <p>La fiecare 3 postări: "<strong>DM pentru ofertă</strong>", "Link in bio pentru rezervare", "Numărul în bio".</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, rgba(134,45,145,0.06), rgba(201,72,149,0.04)); border: 1px solid rgba(134,45,145,0.18); border-radius: 16px; padding: 36px 40px; margin-top: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 280px;">
+        <div class="eyebrow" style="color: var(--magenta2);">Social Media Playbook</div>
+        <h3 style="margin: 4px 0 8px;">Strategia completă într-o pagină dedicată</h3>
+        <p style="font-size: 14px; color: rgba(19,17,32,0.7); line-height: 1.6;">Diagnostic actual · Decizia consolidare conturi · Bio template · 6 highlights · 4 content pillars · Reels cookbook (8 idei) · Calendar lunar · Hashtag bank · Target metrici T+30/60/90.</p>
+      </div>
+      <a class="btn btn-gradient btn-lg" href="social/" style="flex-shrink: 0;">
+        Deschide playbook
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 DON'TS WALL ============ -->
+<section id="donts">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">08 — Don'ts wall</div>
+        <h2>Cele mai comune greșeli</h2>
+      </div>
+      <div class="sec-num"><strong>08</strong>Don't</div>
+    </div>
+    <p class="lead" style="max-width: 800px;">Lista scurtă de lucruri care strică imediat brand-ul, în orice context. Citește înainte de orice export, orice publicare, orice client.</p>
+
+    <div class="grid-2" style="margin-top: 48px;">
+      <div class="principle-card" style="border-left: 4px solid var(--red);">
+        <h4 style="color: var(--red);">Logo</h4>
+        <p style="margin-bottom: 12px;">— Nu rota, înclina, distorsiona</p>
+        <p style="margin-bottom: 12px;">— Nu adăuga drop-shadow, outline, glow</p>
+        <p style="margin-bottom: 12px;">— Nu folosi sub min 80px lățime (wordmark) / 16px (icon)</p>
+        <p>— Nu pune color logo pe imagine cu compoziție colorată</p>
+      </div>
+      <div class="principle-card" style="border-left: 4px solid var(--red);">
+        <h4 style="color: var(--red);">Culori</h4>
+        <p style="margin-bottom: 12px;">— Nu folosi <code>#6C63FF</code> sau alte purple "aproximative"</p>
+        <p style="margin-bottom: 12px;">— Nu folosi mai mult de 3 culori brand simultan</p>
+        <p style="margin-bottom: 12px;">— Nu inventa gradient-uri noi (singurul oficial: 135deg purple→magenta)</p>
+        <p>— Nu folosi verde/portocaliu în afara contextului ElevARTS Tribe</p>
+      </div>
+      <div class="principle-card" style="border-left: 4px solid var(--red);">
+        <h4 style="color: var(--red);">Tipografie</h4>
+        <p style="margin-bottom: 12px;">— Nu folosi Inter, SF Pro, Helvetica, system fonts</p>
+        <p style="margin-bottom: 12px;">— Nu folosi Montserrat (excepție: video Remotion existent)</p>
+        <p style="margin-bottom: 12px;">— Nu mixa Gotham pe headlines mari (e font de body)</p>
+        <p>— Nu folosi Euclid pe paragrafe lungi (e font de display)</p>
+      </div>
+      <div class="principle-card" style="border-left: 4px solid var(--red);">
+        <h4 style="color: var(--red);">Voice</h4>
+        <p style="margin-bottom: 12px;">— Nu folosi "stimate client" sau corporate Romanian</p>
+        <p style="margin-bottom: 12px;">— Nu spune "agenție" — niciodată</p>
+        <p style="margin-bottom: 12px;">— Nu emoji-spam fără cerere expresă</p>
+        <p>— Nu paragrafe-poem fără punct concret și CTA</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 64px; background: var(--dark); color: var(--white); border-color: var(--magenta);">
+      <p>Când ai dubiu, deschide acest brand book și verifică. Dacă tot nu e clar, întreabă George direct înainte să publici.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <img src="assets/logos/wordmark/white/wordmark-480.png" style="width: 240px; margin-bottom: 24px;" alt="Elevarts" />
+        <p style="max-width: 400px;">We elevate everyone's spirit and state of mind.</p>
+        <div class="script" style="font-size: 56px; color: var(--magenta); margin-top: 24px; line-height: 1;">don't chase. attract.</div>
+      </div>
+      <div style="text-align: right;">
+        <div class="meta-row">Brand Book · 2026</div>
+        <div style="font-family: 'Gotham'; font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.7);">
+          ask@elevarts.com<br>
+          +40 729 386 269<br>
+          elevarts.com · elevarts.ro
+        </div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 ELEVARTS. Internal · Confidential.</span>
+      <span>brand.elevarts.ro</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ============ COUNTER ANIMATION ============
+  const counters = document.querySelectorAll('.num-big[data-counter]');
+  const formatNumber = (n) => {
+    if (n >= 1000) return (Math.round(n) / 1).toLocaleString('ro-RO');
+    return Math.round(n).toString();
+  };
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.counter, 10);
+    if (isNaN(target)) return; // skip non-numeric (e.g. "EU·UAE·QR")
+    const span = el.querySelector('span:not(.num-suffix)');
+    if (!span) return;
+    const duration = 1600;
+    const start = performance.now();
+    const startVal = 0;
+    const tick = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutCubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = startVal + (target - startVal) * eased;
+      span.textContent = formatNumber(current);
+      if (progress < 1) requestAnimationFrame(tick);
+      else span.textContent = formatNumber(target);
+    };
+    requestAnimationFrame(tick);
+  };
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  counters.forEach((el) => counterObserver.observe(el));
+
+  // ============ NAV BG SOLIDIFY ON SCROLL ============
+  const nav = document.querySelector('.nav');
+  const onScroll = () => {
+    if (window.scrollY > 80) {
+      nav.style.background = 'rgba(19,17,32,0.9)';
+      nav.style.padding = '12px 0';
+    } else {
+      nav.style.background = 'rgba(19,17,32,0.6)';
+      nav.style.padding = '16px 0';
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+
+</body>
+</html>

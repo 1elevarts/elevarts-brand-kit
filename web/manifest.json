@@ -1,0 +1,81 @@
+{
+  "brand": "Elevarts",
+  "version": "1.0.0",
+  "generated": "2026-05-07",
+  "source": "originals/logos/Png/Logo ELEVARTS *.png (10565x10565)",
+  "colors": {
+    "primary": {
+      "purple": "#645faa",
+      "magenta": "#862d91",
+      "dark": "#131120",
+      "white": "#FFFFFF"
+    },
+    "secondary": {
+      "red": "#D6413A",
+      "pink": "#DE607D",
+      "magenta2": "#C94895",
+      "purple2": "#7A4294",
+      "periwinkle": "#626AB1",
+      "lightBlue": "#6BA3D7",
+      "coral": "#E17B62",
+      "peach": "#EEA172"
+    },
+    "logoGradient": {
+      "from": "#D6413A",
+      "via": ["#862d91", "#7A4294"],
+      "to": "#6BA3D7",
+      "description": "Red → Magenta → Purple → Blue (hot to cold left-to-right)"
+    }
+  },
+  "fonts": {
+    "primary": {
+      "name": "Euclid Flex",
+      "fallback": "Inter, system-ui, sans-serif",
+      "files": "originals/Fonts/Euclid Family/EuclidFlex-*.otf",
+      "weights": {
+        "thin": 100,
+        "ultralight": 200,
+        "light": 300,
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      }
+    },
+    "display": {
+      "name": "Gotham",
+      "fallback": "Montserrat, sans-serif",
+      "files": "originals/Fonts/Gotham Family/Gotham-*.otf",
+      "weights": ["Thin", "Light", "Book", "Medium", "Bold", "Black"]
+    }
+  },
+  "assets": {
+    "wordmark": {
+      "description": "Full ELEVARTS logo (horizontal, ~4:1 aspect)",
+      "variants": ["color", "black", "white"],
+      "sizes_px": [80, 160, 320, 480, 640, 960, 1024],
+      "formats": ["png", "webp"],
+      "path_template": "web/wordmark/{variant}/wordmark-{size}.{format}",
+      "use_for": ["login hero", "header", "marketing pages"]
+    },
+    "icon": {
+      "description": "V-mark only (square, padded, transparent)",
+      "variants": ["color", "black", "white"],
+      "sizes_px": [16, 32, 64, 128, 192, 256, 512],
+      "formats": ["png", "webp"],
+      "path_template": "web/icon/{variant}/icon-{size}.{format}",
+      "use_for": ["sidebar logo", "loading spinner", "PWA icon"]
+    },
+    "favicon": {
+      "ico": "web/favicon/favicon.ico (16/32/48 multi)",
+      "apple_touch": "web/favicon/apple-touch-icon.png (180x180)",
+      "use_for": ["browser tab", "iOS home screen"]
+    }
+  },
+  "guidelines": {
+    "min_wordmark_width_px": 80,
+    "min_icon_size_px": 16,
+    "preferred_background": "#131120 (dark) or #FFFFFF (light)",
+    "do_not": ["distort aspect", "recolor outside palette", "add drop shadows"]
+  }
+}

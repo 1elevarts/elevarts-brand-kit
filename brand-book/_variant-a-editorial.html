@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="variant" content="A-editorial-premium">
+<title>Variant A — Editorial Premium · ELEVARTS Brand Book</title>
+<style>
+@font-face {
+  font-family: 'EuclidFlex';
+  src: url('../assets/fonts/euclid/EuclidFlex-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'EuclidFlex';
+  src: url('../assets/fonts/euclid/EuclidFlex-Light.otf') format('opentype');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'EuclidFlex';
+  src: url('../assets/fonts/euclid/EuclidFlex-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../assets/fonts/gotham/GothamBook.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../assets/fonts/gotham/GothamMedium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'LonallyQoma';
+  src: url('../assets/fonts/lonally/LonallyQoma-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --purple: #645faa;
+  --magenta: #862d91;
+  --dark: #131120;
+  --red: #D6413A;
+  --pink: #DE607D;
+  --lightblue: #6BA3D7;
+  --coral: #E17B62;
+  --white: #ffffff;
+  --off-white: #fafafa;
+  --border: rgba(19,17,32,0.08);
+  --text-muted: rgba(19,17,32,0.45);
+  --section-py: 160px;
+  --font-display: 'EuclidFlex', system-ui, sans-serif;
+  --font-body: 'Gotham', system-ui, sans-serif;
+  --font-script: 'LonallyQoma', serif;
+  --max-w: 1200px;
+  --gutter: 40px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--white);
+  color: var(--dark);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+button:focus-visible,
+label:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+}
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+/* NAV */
+#menu-toggle {
+  display: none;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.96);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.nav-wordmark img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dark);
+  opacity: 0.65;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.nav-links .nav-cta {
+  opacity: 1;
+  color: var(--magenta);
+  font-weight: 500;
+}
+
+.hamburger-label {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.hamburger-label:hover {
+  background: rgba(0,0,0,0.04);
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 22px;
+}
+
+.hamburger-icon span {
+  display: block;
+  height: 1.5px;
+  background: var(--dark);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s;
+}
+
+.mobile-menu {
+  display: none;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 24px var(--gutter) 32px;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-menu a {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--dark);
+  opacity: 0.7;
+}
+
+/* BACK LINK */
+.back-bar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(100,95,170,0.06);
+  border-bottom: 1px solid rgba(100,95,170,0.12);
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gutter);
+  max-width: 100%;
+}
+
+.back-link {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+.back-link svg {
+  flex-shrink: 0;
+}
+
+/* HERO */
+.hero {
+  padding-top: calc(64px + 36px + 112px);
+  padding-bottom: 120px;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(ellipse at center, rgba(100,95,170,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 60px;
+  align-items: center;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dark);
+  opacity: 0.4;
+}
+
+.eyebrow-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--purple), var(--magenta));
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 3px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+.hero-wordmark {
+  display: block;
+}
+
+.hero-wordmark img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+}
+
+.hero-tagline {
+  font-family: var(--font-script);
+  font-size: clamp(28px, 3.5vw, 44px);
+  color: var(--dark);
+  opacity: 0.7;
+  letter-spacing: 0.01em;
+  margin-top: -8px;
+}
+
+.hero-lead {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--dark);
+  opacity: 0.65;
+  max-width: 440px;
+}
+
+.hero-visual {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.hero-photo-placeholder {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1 / 2;
+  border-radius: 4px;
+  background: linear-gradient(
+    170deg,
+    rgba(100,95,170,0.12) 0%,
+    rgba(134,45,145,0.18) 40%,
+    rgba(214,65,58,0.10) 70%,
+    rgba(107,163,215,0.14) 100%
+  );
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.04),
+    0 60px 80px -40px rgba(100,95,170,0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-photo-placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 60%, rgba(222,96,125,0.15) 0%, transparent 60%);
+}
+
+/* SECTION COMMON */
+section {
+  padding: var(--section-py) 0;
+}
+
+.section-divider {
+  width: 80px;
+  height: 1px;
+  background: var(--magenta);
+  margin-bottom: 40px;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(72px, 11vw, 144px);
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+  color: var(--dark);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(40px, 5.5vw, 72px);
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--dark);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(24px, 3vw, 36px);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--dark);
+}
+
+.lead {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1.45;
+  color: var(--dark);
+  opacity: 0.65;
+}
+
+/* STORY SECTION */
+.story {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+}
+
+.story-inner {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 80px;
+  align-items: start;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.story-left {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.story-body {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--dark);
+  opacity: 0.72;
+  max-width: 520px;
+}
+
+.story-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px 32px;
+  padding-top: 16px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(48px, 5vw, 64px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--dark);
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dark);
+  opacity: 0.4;
+}
+
+.pull-quote {
+  font-family: var(--font-script);
+  font-size: clamp(36px, 4.5vw, 56px);
+  color: var(--magenta);
+  transform: rotate(-1deg);
+  display: inline-block;
+  margin-top: 40px;
+  line-height: 1.2;
+}
+
+/* COLORS SECTION */
+.colors {
+  background: var(--off-white);
+  border-top: 1px solid var(--border);
+}
+
+.colors-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.colors-header {
+  margin-bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px 40px;
+  align-items: flex-start;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.swatch-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 20px 32px -12px rgba(0,0,0,0.10);
+  flex-shrink: 0;
+}
+
+.swatch-info {
+  text-align: center;
+}
+
+.swatch-name {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dark);
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.swatch-hex {
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+  font-size: 12px;
+  color: var(--dark);
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+}
+
+.gradient-bar {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gradient-strip {
+  height: 12px;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--red) 0%, var(--magenta) 35%, #7A4294 65%, var(--lightblue) 100%);
+}
+
+.gradient-label {
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+  font-size: 11px;
+  color: var(--dark);
+  opacity: 0.45;
+  letter-spacing: 0.04em;
+}
+
+/* TYPOGRAPHY SECTION */
+.typography {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+}
+
+.typography-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.type-header {
+  margin-bottom: 80px;
+}
+
+.type-samples {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.type-sample {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  gap: 40px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.type-sample:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.type-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 8px;
+}
+
+.type-font-name {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--magenta);
+}
+
+.type-spec {
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+  font-size: 11px;
+  color: var(--dark);
+  opacity: 0.4;
+  line-height: 1.7;
+}
+
+.type-display-sample {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(56px, 8vw, 100px);
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: var(--dark);
+}
+
+.type-lead-sample {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 1.45;
+  color: var(--dark);
+  opacity: 0.65;
+}
+
+.type-body-sample {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--dark);
+  opacity: 0.72;
+}
+
+.type-script-sample {
+  font-family: var(--font-script);
+  font-size: clamp(40px, 5vw, 56px);
+  color: var(--magenta);
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+
+/* FOOTER */
+footer {
+  background: var(--dark);
+  padding: 80px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.footer-wordmark img {
+  height: 24px;
+  width: auto;
+  display: block;
+  opacity: 0.9;
+}
+
+.footer-copy {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.7;
+  margin-top: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-links a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: rgba(255,255,255,0.9);
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-contact-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: 4px;
+}
+
+.footer-contact a {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.2s;
+}
+
+.footer-contact a:hover {
+  color: var(--white);
+}
+
+.footer-bottom {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 40px var(--gutter) 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-legal {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.04em;
+}
+
+.footer-variant-tag {
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+  font-size: 11px;
+  color: rgba(100,95,170,0.6);
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border: 1px solid rgba(100,95,170,0.2);
+  border-radius: 100px;
+}
+
+/* REVEAL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  :root {
+    --section-py: 96px;
+    --gutter: 24px;
+  }
+
+  .hamburger-label {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  #menu-toggle:checked ~ .mobile-menu {
+    display: block;
+  }
+
+  #menu-toggle:checked ~ .nav-inner .hamburger-icon span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+
+  #menu-toggle:checked ~ .nav-inner .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #menu-toggle:checked ~ .nav-inner .hamburger-icon span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .hero-visual {
+    order: -1;
+    justify-content: center;
+  }
+
+  .hero-photo-placeholder {
+    max-width: 260px;
+  }
+
+  .story-inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .story-right {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 24px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .type-sample {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .swatches {
+    gap: 36px 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding-top: calc(64px + 36px + 72px);
+    padding-bottom: 80px;
+  }
+
+  .story-right {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 20px;
+  }
+
+  .swatch-circle {
+    width: 64px;
+    height: 64px;
+  }
+
+  .pull-quote {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+}
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="menu-toggle" style="display:none;">
+<nav>
+  <div class="nav-inner">
+    <a class="nav-wordmark" href="#" aria-label="Elevarts">
+      <img src="../assets/logos/wordmark/color/wordmark-960.png" alt="ELEVARTS">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#colors">Culori</a></li>
+      <li><a href="#typography">Tipografie</a></li>
+      <li><a href="elevarts-brand-book.html" class="nav-cta">Brand Book complet</a></li>
+    </ul>
+    <label class="hamburger-label" for="menu-toggle" aria-label="Meniu">
+      <span class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </label>
+  </div>
+  <div class="mobile-menu">
+    <ul>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#colors">Culori</a></li>
+      <li><a href="#typography">Tipografie</a></li>
+      <li><a href="elevarts-brand-book.html">Brand Book complet</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="back-bar">
+  <a class="back-link" href="_variant-comparison.html">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 10L4 6L8 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Inapoi la comparatie A/B/C
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-badge">Brand Book 2026</span>
+        Direcție vizuală A &mdash; Editorial Premium
+      </div>
+      <a class="hero-wordmark" href="#" aria-label="Elevarts">
+        <img src="../assets/logos/wordmark/color/wordmark-960.png" alt="ELEVARTS">
+      </a>
+      <div class="hero-tagline">Don't chase, attract</div>
+      <p class="hero-lead">Entertainmentul premium din inima Bucureștiului &mdash; performeri, costume, experiențe care rămân.</p>
+    </div>
+    <div class="hero-visual reveal" style="transition-delay: 0.12s;">
+      <div class="hero-photo-placeholder" aria-label="Visual placeholder"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="story-inner">
+    <div class="story-left reveal">
+      <div class="section-label">Cine suntem</div>
+      <div class="section-divider"></div>
+      <h2>Imaginăm.<br>Creăm.<br>Implementăm.</h2>
+      <p class="story-body">18 ani de entertainmet premium. Suntem agenția din spatele celor mai spectaculoase evenimente din România și din Golful Persic &mdash; de la picioroange la mascote custom, de la costume haute-couture la butaforii de scenă. Nu facem spectacol. Suntem spectacolul.</p>
+      <span class="pull-quote">We make moments.</span>
+    </div>
+    <div class="story-right reveal" style="transition-delay: 0.1s;">
+      <div class="stat-item">
+        <span class="stat-number">18+</span>
+        <span class="stat-label">Ani experiență</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">800+</span>
+        <span class="stat-label">Costume unice</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">30+</span>
+        <span class="stat-label">Artiști picioroange</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Continente active</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLORS -->
+<section class="colors" id="colors">
+  <div class="colors-inner">
+    <div class="colors-header reveal">
+      <div class="section-label">Paleta de culori</div>
+      <div class="section-divider"></div>
+      <h2>Culorile<br>identității</h2>
+    </div>
+    <div class="swatches reveal" style="transition-delay: 0.08s;">
+      <div class="swatch">
+        <div class="swatch-circle" style="background: #645faa;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Purple</span>
+          <span class="swatch-hex">#645FAA</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background: #862d91;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Magenta</span>
+          <span class="swatch-hex">#862D91</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background: #131120;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Dark</span>
+          <span class="swatch-hex">#131120</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background: #D6413A;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Red</span>
+          <span class="swatch-hex">#D6413A</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background: #DE607D;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Pink</span>
+          <span class="swatch-hex">#DE607D</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background: #6BA3D7;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Light Blue</span>
+          <span class="swatch-hex">#6BA3D7</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background: #E17B62;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Coral</span>
+          <span class="swatch-hex">#E17B62</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background: #ffffff; border: 1px solid rgba(0,0,0,0.08);"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">White</span>
+          <span class="swatch-hex">#FFFFFF</span>
+        </div>
+      </div>
+    </div>
+    <div class="gradient-bar reveal" style="transition-delay: 0.16s;">
+      <div class="gradient-strip"></div>
+      <span class="gradient-label">Wordmark gradient &rarr; linear-gradient(90deg, #D6413A 0%, #862d91 35%, #7A4294 65%, #6BA3D7 100%)</span>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="typography" id="typography">
+  <div class="typography-inner">
+    <div class="type-header reveal">
+      <div class="section-label">Sistemul tipografic</div>
+      <div class="section-divider"></div>
+      <h2>Trei<br>caractere.</h2>
+    </div>
+    <div class="type-samples">
+      <div class="type-sample reveal">
+        <div class="type-meta">
+          <span class="type-font-name">Euclid Flex</span>
+          <span class="type-spec">700<br>clamp(72, 11vw, 144px)<br>tracking -0.05em<br>Display / H1</span>
+        </div>
+        <div>
+          <div class="type-display-sample">Enter&shy;tain&shy;ment<br>Premium.</div>
+        </div>
+      </div>
+      <div class="type-sample reveal">
+        <div class="type-meta">
+          <span class="type-font-name">Euclid Flex Light</span>
+          <span class="type-spec">300<br>24px<br>line-height 1.45<br>Lead / Subheading</span>
+        </div>
+        <div>
+          <p class="type-lead-sample">Experiențe construite cu atenție milimetrică la detaliu. Fiecare eveniment, o lume aparte. Suntem arhitecții momentelor care contează.</p>
+        </div>
+      </div>
+      <div class="type-sample reveal">
+        <div class="type-meta">
+          <span class="type-font-name">Gotham</span>
+          <span class="type-spec">400<br>17px<br>line-height 1.8<br>Body text</span>
+        </div>
+        <div>
+          <p class="type-body-sample">De la picioroange la mascote custom, de la costume de scenă la butaforii spectaculoase &mdash; livrăm tot ce înseamnă entertainment premium. Echipa Elevarts operează în România, EU, UAE și Qatar, cu un portofoliu de peste 800 de costume și 30+ artiști activi.</p>
+        </div>
+      </div>
+      <div class="type-sample reveal">
+        <div class="type-meta">
+          <span class="type-font-name">Lonally Qoma</span>
+          <span class="type-spec">400<br>max 56px<br>rotate -1deg<br>Pull-quote / Accent</span>
+        </div>
+        <div>
+          <span class="type-script-sample">Don't chase, attract.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="footer-wordmark" href="elevarts-brand-book.html" aria-label="Elevarts">
+        <img src="../assets/logos/wordmark/white/wordmark-320.png" alt="ELEVARTS">
+      </a>
+      <p class="footer-copy">Entertainment premium din București.<br>EU &middot; UAE &middot; Qatar</p>
+    </div>
+    <div>
+      <ul class="footer-links">
+        <li><a href="elevarts-brand-book.html">Brand Book complet</a></li>
+        <li><a href="_variant-comparison.html">Comparatie A / B / C</a></li>
+        <li><a href="#hero">Inapoi sus</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <span class="footer-contact-label">Contact</span>
+      <a href="mailto:office@elevarts.ro">office@elevarts.ro</a>
+      <a href="https://elevarts.ro" target="_blank" rel="noopener">elevarts.ro</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-legal">&copy; 2026 Elevarts. Brand identity confidential.</span>
+    <span class="footer-variant-tag">variant-a-editorial-premium</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    observer.observe(el);
+  });
+
+  var heroReveals = document.querySelectorAll('.hero .reveal');
+  setTimeout(function () {
+    heroReveals.forEach(function (el) {
+      el.classList.add('visible');
+    });
+  }, 80);
+})();
+</script>
+</body>
+</html>

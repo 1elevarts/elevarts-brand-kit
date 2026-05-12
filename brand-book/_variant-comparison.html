@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Redesign — 3 direcții · ELEVARTS Brand Book</title>
+<meta name="theme-color" content="#131120" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png" />
+
+<style>
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Light.otf')    format('opentype'); font-weight: 300; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Regular.otf')  format('opentype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Medium.otf')   format('opentype'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Semibold.otf') format('opentype'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('assets/fonts/euclid/EuclidFlex-Bold.otf')     format('opentype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Gotham'; src: url('assets/fonts/gotham/GothamBook.ttf')   format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Gotham'; src: url('assets/fonts/gotham/GothamMedium.ttf') format('truetype'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Gotham'; src: url('assets/fonts/gotham/GothamBold.ttf')   format('truetype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Lonally Qoma'; src: url('assets/fonts/lonally/LonallyQoma-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+
+  :root {
+    --purple: #645faa; --magenta: #862d91; --dark: #131120;
+    --red: #D6413A; --pink: #DE607D; --magenta2: #C94895;
+    --lightblue: #6BA3D7; --coral: #E17B62;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Gotham', system-ui, sans-serif;
+    background: #f8f7fc;
+    color: var(--dark);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: 'Euclid Flex'; letter-spacing: -0.02em; line-height: 1.05; }
+  .script { font-family: 'Lonally Qoma', cursive; }
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    background: var(--dark); color: white; padding: 16px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .topbar a { opacity: 0.7; transition: opacity 0.15s; }
+  .topbar a:hover { opacity: 1; }
+
+  header.intro {
+    padding: 80px 32px 48px;
+    max-width: 1400px; margin: 0 auto;
+  }
+  header.intro .eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--magenta); margin-bottom: 18px; display: inline-flex; gap: 12px; align-items: center;
+  }
+  header.intro .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--magenta); }
+  header.intro h1 {
+    font-size: clamp(48px, 7vw, 84px); font-weight: 700; letter-spacing: -0.04em;
+    margin-bottom: 16px;
+  }
+  header.intro h1 .script {
+    color: var(--magenta);
+    display: inline-block; transform: rotate(-2deg);
+    font-size: 0.85em;
+  }
+  header.intro p.lead {
+    font-family: 'Euclid Flex'; font-weight: 300;
+    font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5;
+    color: rgba(19,17,32,0.7); max-width: 720px;
+  }
+
+  .grid {
+    max-width: 1400px; margin: 0 auto;
+    padding: 32px 32px 96px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: white;
+    border: 1px solid rgba(19,17,32,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 56px -16px rgba(19,17,32,0.18);
+    border-color: rgba(134,45,145,0.2);
+  }
+
+  .preview-wrap {
+    aspect-ratio: 16/10;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .preview-wrap iframe {
+    position: absolute; inset: 0;
+    width: 200%; height: 200%;
+    border: 0;
+    transform: scale(0.5); transform-origin: top left;
+    pointer-events: none;
+  }
+  .preview-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(19,17,32,0.65) 100%);
+    pointer-events: none;
+  }
+  .preview-tag {
+    position: absolute; top: 16px; left: 16px;
+    background: rgba(255,255,255,0.94); backdrop-filter: blur(8px);
+    padding: 6px 12px; border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
+    color: var(--dark);
+  }
+  .preview-letter {
+    position: absolute; bottom: 16px; right: 20px;
+    font-family: 'Euclid Flex'; font-weight: 700; font-size: 96px;
+    color: white; line-height: 0.85; letter-spacing: -0.06em;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.4);
+  }
+
+  .card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+  .card-body h2 {
+    font-size: 28px; font-weight: 700; margin-bottom: 8px;
+  }
+  .card-body .vibe {
+    font-family: 'Lonally Qoma', cursive; font-size: 24px; color: var(--magenta);
+    transform: rotate(-1deg); display: inline-block;
+    margin-bottom: 20px;
+  }
+  .card-body p { font-size: 14px; line-height: 1.65; color: rgba(19,17,32,0.78); margin-bottom: 16px; }
+
+  .traits {
+    list-style: none; padding: 0;
+    margin: 12px 0 24px;
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .traits li {
+    font-size: 11px; letter-spacing: 0.08em; padding: 5px 10px;
+    border: 1px solid rgba(19,17,32,0.12); border-radius: 999px;
+    color: rgba(19,17,32,0.7);
+  }
+
+  .pros-cons {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin: 8px 0 24px;
+    font-size: 12px; line-height: 1.5;
+  }
+  .pros, .cons { padding: 14px; border-radius: 8px; }
+  .pros { background: rgba(34,139,69,0.06); border-left: 3px solid #228b45; }
+  .cons { background: rgba(214,65,58,0.06); border-left: 3px solid var(--red); }
+  .pros strong, .cons strong { display: block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; font-family: 'Gotham'; font-weight: 600; }
+  .pros strong { color: #228b45; }
+  .cons strong { color: var(--red); }
+
+  .actions { margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px; font-family: 'Gotham'; font-weight: 500;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 999px; border: 0; cursor: pointer;
+    transition: transform 0.15s, background 0.15s, color 0.15s;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--magenta); color: white; }
+  .btn-primary:hover { background: var(--purple); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--dark); border: 1.5px solid rgba(19,17,32,0.15); }
+  .btn-ghost:hover { border-color: var(--magenta); color: var(--magenta); }
+
+  .vote-row {
+    max-width: 1400px; margin: 0 auto 80px; padding: 0 32px;
+    text-align: center;
+  }
+  .vote-row .label {
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(19,17,32,0.5); margin-bottom: 16px;
+  }
+  .vote-buttons { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .vote-btn {
+    background: white; border: 1.5px solid rgba(19,17,32,0.1);
+    padding: 14px 24px; border-radius: 999px;
+    font-family: 'Gotham'; font-weight: 500; font-size: 13px;
+    cursor: pointer; transition: all 0.18s;
+  }
+  .vote-btn:hover { border-color: var(--magenta); color: var(--magenta); transform: translateY(-2px); }
+  .vote-btn.voted { background: var(--magenta); color: white; border-color: var(--magenta); }
+  .vote-msg { margin-top: 16px; font-size: 14px; color: var(--magenta); min-height: 22px; }
+
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--magenta); outline-offset: 3px; border-radius: 999px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>Brand Book · Comparison</span>
+  <a href="elevarts-brand-book.html">← Înapoi la Brand Book curent</a>
+</div>
+
+<header class="intro">
+  <div class="eyebrow">Redesign · 3 direcții</div>
+  <h1>Alege <span class="script">vibe-ul</span></h1>
+  <p class="lead">3 direcții complete pentru noul brand book. Fiecare aplică aceleași token-uri brand (purple, magenta, Euclid, Gotham) dar cu o atitudine vizuală distinctă. Click pe oricare ca să-l deschizi full-screen.</p>
+</header>
+
+<main class="grid">
+
+  <!-- VARIANT A -->
+  <article class="card">
+    <a href="_variant-a-editorial.html" class="preview-wrap" target="_blank" aria-label="Deschide Variant A">
+      <iframe src="_variant-a-editorial.html" loading="lazy" title="Variant A preview"></iframe>
+      <div class="preview-overlay"></div>
+      <span class="preview-tag">Variant A</span>
+      <span class="preview-letter">A</span>
+    </a>
+    <div class="card-body">
+      <h2>Editorial Premium</h2>
+      <span class="vibe">linear / stripe vibe</span>
+      <p>Alb dominant, premium minimalist, calm și încredere. Wordmark mare gradient pe fundal alb, foto editorial portrait, zero animație pe hero. Whitespace generos. Inspiră siguranță — brand book ca document de referință.</p>
+      <ul class="traits">
+        <li>Alb 90%</li><li>Static</li><li>Asimetric 7/5</li><li>Serif accent</li><li>Confidence</li>
+      </ul>
+      <div class="pros-cons">
+        <div class="pros"><strong>Pros</strong>Imediat recognoscibil ca premium. Foto-uri performeri se evidențiază. Cel mai timeless.</div>
+        <div class="cons"><strong>Contra</strong>Risc "prea corporate". Aseptic dacă fotografiile nu sunt OK.</div>
+      </div>
+      <div class="actions">
+        <a href="_variant-a-editorial.html" target="_blank" class="btn btn-primary">Deschide ↗</a>
+        <button class="vote-btn-mini btn btn-ghost" data-variant="A">Aleg A</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- VARIANT B -->
+  <article class="card">
+    <a href="_variant-b-stage.html" class="preview-wrap" target="_blank" aria-label="Deschide Variant B">
+      <iframe src="_variant-b-stage.html" loading="lazy" title="Variant B preview"></iframe>
+      <div class="preview-overlay"></div>
+      <span class="preview-tag">Variant B</span>
+      <span class="preview-letter">B</span>
+    </a>
+    <div class="card-body">
+      <h2>Stage / Performance</h2>
+      <span class="vibe">festival main stage</span>
+      <p>Dark dominant, cinematic, spotlight pe wordmark. Fotografie de scene cu overlay, parallax subtil. Costumele LED arată fenomenal pe dark. "Don't chase, attract." asumat vizual. Energie de show, nu de spec doc.</p>
+      <ul class="traits">
+        <li>Dark 60%</li><li>Spotlight</li><li>Parallax</li><li>Densitate mare</li><li>Cinematic</li>
+      </ul>
+      <div class="pros-cons">
+        <div class="pros"><strong>Pros</strong>Perfect pt landing public. LED costume punch. Festival/event audience.</div>
+        <div class="cons"><strong>Contra</strong>Brand book pe dark e greu de citit termen lung pentru spec.</div>
+      </div>
+      <div class="actions">
+        <a href="_variant-b-stage.html" target="_blank" class="btn btn-primary">Deschide ↗</a>
+        <button class="vote-btn-mini btn btn-ghost" data-variant="B">Aleg B</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- VARIANT C -->
+  <article class="card">
+    <a href="_variant-c-editorial.html" class="preview-wrap" target="_blank" aria-label="Deschide Variant C">
+      <iframe src="_variant-c-editorial.html" loading="lazy" title="Variant C preview"></iframe>
+      <div class="preview-overlay"></div>
+      <span class="preview-tag">Variant C</span>
+      <span class="preview-letter">C</span>
+    </a>
+    <div class="card-body">
+      <h2>Editorial 90s</h2>
+      <span class="vibe">zine × street art</span>
+      <p>Off-white #F5F0FF, asimetric deliberat, cropped wordmark, color-blocks, sticker stamps. "IMAGINE. CREATE. ELEVATE." pe 3 culori. Memorie vizuală instantă. Custom cursor, card flip, deliberate imperfection.</p>
+      <ul class="traits">
+        <li>Off-white</li><li>Asimetric</li><li>Stickers</li><li>Risograph</li><li>Memorabil</li>
+      </ul>
+      <div class="pros-cons">
+        <div class="pros"><strong>Pros</strong>Diferențiator puternic față de orice competitor RO. "Jucăuși dar profi" se simte.</div>
+        <div class="cons"><strong>Contra</strong>Risc niche/indie. Greu de aplicat la oferte corporate / email signature.</div>
+      </div>
+      <div class="actions">
+        <a href="_variant-c-editorial.html" target="_blank" class="btn btn-primary">Deschide ↗</a>
+        <button class="vote-btn-mini btn btn-ghost" data-variant="C">Aleg C</button>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<section class="vote-row">
+  <div class="label">— Care direcție te reprezintă —</div>
+  <div class="vote-buttons">
+    <button class="vote-btn" data-variant="A">A · Editorial Premium</button>
+    <button class="vote-btn" data-variant="B">B · Stage / Performance</button>
+    <button class="vote-btn" data-variant="C">C · Editorial 90s</button>
+  </div>
+  <div class="vote-msg" id="voteMsg"></div>
+</section>
+
+<script>
+(function () {
+  const STORAGE = 'elevarts-redesign-vote-v1';
+  let current = null;
+  try { current = localStorage.getItem(STORAGE); } catch (e) {}
+
+  const buttons = document.querySelectorAll('.vote-btn, .vote-btn-mini');
+  const msg = document.getElementById('voteMsg');
+
+  function paint() {
+    buttons.forEach(b => b.classList.toggle('voted', b.dataset.variant === current));
+    if (current) msg.textContent = 'Alegerea curentă: Variant ' + current + '. (Salvată local — schimbi oricând.)';
+  }
+
+  buttons.forEach(b => {
+    b.addEventListener('click', () => {
+      current = b.dataset.variant;
+      try { localStorage.setItem(STORAGE, current); } catch (e) {}
+      paint();
+    });
+  });
+  paint();
+})();
+</script>
+
+</body>
+</html>

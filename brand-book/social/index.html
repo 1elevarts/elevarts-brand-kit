@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ELEVARTS — Social Media Playbook</title>
+<meta name="description" content="Strategia operațională Instagram pentru Elevarts: consolidare conturi, content pillars, reels cookbook, calendar lunar, target metrici." />
+<meta name="theme-color" content="#131120" />
+
+<link rel="icon" type="image/png" sizes="32x32"   href="../assets/favicon/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png" />
+<link rel="shortcut icon" href="../assets/favicon/favicon.ico" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Water+Brush&display=swap" rel="stylesheet" />
+
+<style>
+  /* Fonts (sourced from parent /assets/) */
+  @font-face { font-family: 'Euclid Flex'; src: url('../assets/fonts/euclid/EuclidFlex-Light.otf')    format('opentype'); font-weight: 300; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('../assets/fonts/euclid/EuclidFlex-Regular.otf')  format('opentype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('../assets/fonts/euclid/EuclidFlex-Medium.otf')   format('opentype'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('../assets/fonts/euclid/EuclidFlex-Semibold.otf') format('opentype'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'Euclid Flex'; src: url('../assets/fonts/euclid/EuclidFlex-Bold.otf')     format('opentype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Gotham'; src: url('../assets/fonts/gotham/GothamBook.ttf')   format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Gotham'; src: url('../assets/fonts/gotham/GothamMedium.ttf') format('truetype'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Gotham'; src: url('../assets/fonts/gotham/GothamBold.ttf')   format('truetype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Lonally Qoma'; src: url('../assets/fonts/lonally/LonallyQoma-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+
+  :root {
+    --purple: #645faa; --magenta: #862d91; --dark: #131120; --white: #ffffff;
+    --red: #D6413A; --pink: #DE607D; --magenta2: #C94895; --purple2: #7A4294;
+    --periwinkle: #626AB1; --lightblue: #6BA3D7; --coral: #E17B62; --peach: #EEA172;
+    --gradient-hero: linear-gradient(135deg, #645faa 0%, #862d91 100%);
+    --gradient-wordmark: linear-gradient(90deg, #D6413A 0%, #862d91 35%, #7A4294 65%, #6BA3D7 100%);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Gotham', system-ui, sans-serif; color: var(--dark); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: var(--magenta); text-decoration: none; }
+  a:hover { color: var(--purple); }
+
+  h1, h2, h3, h4 { font-family: 'Euclid Flex', system-ui, sans-serif; font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; }
+  h1 { font-size: clamp(48px, 8vw, 96px); font-weight: 700; letter-spacing: -0.04em; }
+  h2 { font-size: clamp(32px, 5vw, 56px); margin: 56px 0 16px; letter-spacing: -0.03em; }
+  h3 { font-size: clamp(20px, 2.4vw, 28px); margin: 36px 0 12px; }
+  h4 { font-size: 18px; font-weight: 600; margin: 24px 0 8px; }
+  p, li { font-family: 'Gotham'; font-size: 16px; line-height: 1.7; margin-bottom: 12px; }
+  .lead { font-family: 'Euclid Flex'; font-weight: 300; font-size: clamp(20px, 2vw, 24px); line-height: 1.45; color: rgba(19,17,32,0.72); }
+  .eyebrow { font-family: 'Gotham'; font-weight: 500; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--magenta); margin-bottom: 16px; }
+  code { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 13px; background: rgba(100,95,170,0.08); padding: 2px 8px; border-radius: 4px; color: var(--purple); }
+  strong { font-weight: 700; }
+  em { font-style: italic; color: rgba(19,17,32,0.85); }
+  .script { font-family: 'Lonally Qoma', 'Water Brush', cursive; font-weight: 400; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(19,17,32,0.85); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 14px 0; }
+  .nav .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1200px; }
+  .nav-logo { display: flex; align-items: center; gap: 12px; color: var(--white); }
+  .nav-logo img { height: 28px; }
+  .nav-back { font-family: 'Gotham'; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; transition: background 0.2s, color 0.2s; }
+  .nav-back:hover { background: var(--magenta); color: var(--white); }
+
+  /* HERO */
+  .hero {
+    background: var(--dark); color: var(--white);
+    padding: 160px 0 100px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 40% at 25% 30%, rgba(201,72,149,0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 35% at 75% 70%, rgba(134,45,145,0.45) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 70% 25%, rgba(107,163,215,0.18) 0%, transparent 60%);
+    filter: blur(40px); animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-2%, 2%) scale(1.04); } }
+  .hero .container { position: relative; z-index: 2; }
+  .hero h1 {
+    background: linear-gradient(135deg, #DE607D, #C94895, #862d91, #6BA3D7);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    line-height: 1.15;
+    padding-bottom: 0.15em;
+  }
+  .hero h1 .script { line-height: 1.05; padding-bottom: 0.18em; display: inline-block; }
+  .hero .lead { color: rgba(255,255,255,0.78); max-width: 720px; margin-top: 24px; }
+  .hero-meta { font-family: 'Gotham'; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 24px; display: inline-flex; gap: 12px; align-items: center; }
+  .hero-meta::before { content: ''; width: 32px; height: 1px; background: var(--magenta2); }
+
+  /* TOC */
+  .toc {
+    background: rgba(100,95,170,0.04);
+    border-top: 1px solid rgba(19,17,32,0.06);
+    border-bottom: 1px solid rgba(19,17,32,0.06);
+    padding: 48px 0;
+  }
+  .toc-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; list-style: none; }
+  @media (max-width: 800px) { .toc-list { grid-template-columns: 1fr; } }
+  .toc-list a { display: flex; gap: 12px; padding: 10px 14px; border-radius: 6px; color: var(--dark); font-family: 'Euclid Flex'; font-weight: 500; font-size: 15px; transition: background 0.15s, color 0.15s; }
+  .toc-list a:hover { background: rgba(134,45,145,0.08); color: var(--magenta); }
+  .toc-list .num { color: var(--magenta); font-family: ui-monospace, monospace; font-weight: 400; flex-shrink: 0; min-width: 24px; }
+
+  /* CONTENT */
+  .content { padding: 80px 0; }
+  .content section { padding: 56px 0; border-top: 1px solid rgba(19,17,32,0.06); }
+  .content section:first-child { border-top: 0; padding-top: 0; }
+  /* Full-bleed even sections — proper viewport-width, no magic numbers */
+  .content section:nth-of-type(even) {
+    background: rgba(100,95,170,0.04);
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding-left: max(32px, calc(50vw - 534px));
+    padding-right: max(32px, calc(50vw - 534px));
+  }
+  .sec-num { display: inline-block; font-family: 'Euclid Flex'; font-weight: 300; font-size: 13px; letter-spacing: 0.2em; color: rgba(0,0,0,0.4); margin-bottom: 16px; }
+  .sec-num strong { color: var(--magenta); }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+  th, td { padding: 14px 12px; text-align: left; border-bottom: 1px solid rgba(19,17,32,0.08); vertical-align: top; }
+  th { font-family: 'Gotham'; font-weight: 500; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(0,0,0,0.5); }
+  tr:nth-child(even) td { background: rgba(100,95,170,0.025); }
+  td.do { color: var(--dark); }
+  td.dont { color: rgba(214,65,58,0.85); }
+
+  /* CALLOUT */
+  .callout { background: rgba(100,95,170,0.06); border-left: 3px solid var(--purple); padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 24px 0; }
+  .callout strong { color: var(--magenta); }
+  .callout.warn { background: rgba(214,65,58,0.05); border-color: var(--red); }
+  .callout.warn strong { color: var(--red); }
+
+  /* CARDS for highlights / pillars / reels / quick wins */
+  .grid { display: grid; gap: 16px; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 800px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+
+  .card { background: var(--white); border: 1px solid rgba(19,17,32,0.08); border-radius: 12px; padding: 24px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { transform: translateY(-3px); border-color: rgba(134,45,145,0.25); box-shadow: 0 12px 32px -10px rgba(19,17,32,0.08); }
+  .card .tag { display: inline-block; font-family: 'Gotham'; font-weight: 500; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--magenta); margin-bottom: 10px; }
+  .card h4 { margin: 0 0 8px; font-size: 17px; }
+  .card p { font-size: 14px; line-height: 1.55; color: rgba(19,17,32,0.72); margin: 0; }
+
+  /* HIGHLIGHTS */
+  .highlights { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 24px; }
+  @media (max-width: 800px) { .highlights { grid-template-columns: repeat(3, 1fr); } }
+  .highlight-pill {
+    aspect-ratio: 1; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-family: 'Euclid Flex'; font-weight: 600; font-size: 12px;
+    text-align: center; padding: 4px;
+    transition: transform 0.15s;
+  }
+  .highlight-pill:hover { transform: scale(1.05); }
+
+  /* CODE BLOCK */
+  pre { background: var(--dark); color: rgba(255,255,255,0.9); padding: 20px 24px; border-radius: 8px; font-family: ui-monospace, monospace; font-size: 13px; line-height: 1.6; overflow-x: auto; margin: 16px 0; }
+  pre code { background: transparent; color: inherit; padding: 0; }
+
+  /* PILLAR CARDS */
+  .pillar { padding: 28px; border-radius: 14px; background: var(--white); border: 1px solid rgba(19,17,32,0.08); position: relative; }
+  .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+  .pillar.p1::before { background: var(--magenta); }
+  .pillar.p2::before { background: var(--purple); }
+  .pillar.p3::before { background: var(--coral); }
+  .pillar.p4::before { background: var(--lightblue); }
+  .pillar .pct { font-family: 'Euclid Flex'; font-weight: 700; font-size: 32px; color: var(--magenta); display: block; line-height: 1; margin-bottom: 4px; }
+  .pillar h4 { margin: 0 0 12px; }
+  .pillar ul { padding-left: 16px; font-size: 13px; color: rgba(19,17,32,0.72); }
+  .pillar li { font-size: 13px; line-height: 1.5; margin-bottom: 4px; }
+
+  /* CTA back to top / brand book */
+  .cta-back { display: flex; justify-content: center; padding: 80px 0 40px; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; font-family: 'Gotham'; font-weight: 500; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 999px; text-decoration: none; transition: transform 0.15s, background 0.15s; }
+  .btn-primary { background: var(--magenta); color: var(--white); }
+  .btn-primary:hover { background: var(--purple); transform: translateY(-2px); color: var(--white); }
+  .btn-ghost { background: transparent; color: var(--dark); border: 1.5px solid rgba(19,17,32,0.15); }
+  .btn-ghost:hover { border-color: var(--magenta); color: var(--magenta); }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 60px 0 32px; }
+  footer p { color: rgba(255,255,255,0.7); margin: 0; }
+  footer .meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-family: 'Gotham'; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+  ul.no-bullets { list-style: none; padding: 0; }
+  ul.no-bullets li { padding: 8px 0; border-bottom: 1px dashed rgba(19,17,32,0.08); font-size: 14px; }
+  ul.no-bullets li.dont-item { padding-left: 28px; position: relative; color: rgba(19,17,32,0.85); }
+  ul.no-bullets li.dont-item::before {
+    content: ''; position: absolute; left: 0; top: 16px;
+    width: 16px; height: 2px; background: var(--red); border-radius: 2px;
+  }
+
+  /* A11y — keyboard focus indicator */
+  a:focus-visible, .btn:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--magenta);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* ============ PILLAR CHECKLIST (operational) ============ */
+  .pillar ul { padding-left: 0; list-style: none; }
+  .pillar ul li { position: relative; padding: 4px 0 4px 24px; font-size: 13px; line-height: 1.5; cursor: pointer; user-select: none; transition: opacity 0.15s; }
+  .pillar ul li::before {
+    content: ''; position: absolute; left: 0; top: 8px;
+    width: 14px; height: 14px;
+    border: 1.5px solid rgba(19,17,32,0.25);
+    border-radius: 3px; background: white;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .pillar.p1 ul li.checked::before { background: var(--magenta); border-color: var(--magenta); }
+  .pillar.p2 ul li.checked::before { background: var(--purple); border-color: var(--purple); }
+  .pillar.p3 ul li.checked::before { background: var(--coral); border-color: var(--coral); }
+  .pillar.p4 ul li.checked::before { background: var(--lightblue); border-color: var(--lightblue); }
+  .pillar ul li.checked::after {
+    content: ''; position: absolute; left: 4px; top: 11px;
+    width: 6px; height: 3px; border-left: 2px solid white; border-bottom: 2px solid white;
+    transform: rotate(-45deg);
+  }
+  .pillar ul li.checked { opacity: 0.55; text-decoration: line-through; text-decoration-color: rgba(0,0,0,0.3); }
+  .pillar ul li:hover::before { border-color: var(--magenta); }
+
+  /* ============ COPY-ABLE PILLS (hashtags) ============ */
+  #hashtags code {
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, transform 0.1s;
+    display: inline-block;
+    margin: 2px 4px 2px 0;
+    user-select: none;
+  }
+  #hashtags code:hover { background: var(--magenta); color: white; transform: translateY(-1px); }
+  #hashtags code.copied { background: #1f9e57 !important; color: white !important; }
+  .copy-tier-btn {
+    margin-left: 8px; padding: 4px 10px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    background: transparent; color: var(--magenta); border: 1px solid var(--magenta);
+    border-radius: 999px; cursor: pointer; font-family: 'Gotham'; font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+  }
+  .copy-tier-btn:hover { background: var(--magenta); color: white; }
+  .copy-tier-btn.copied { background: #1f9e57; border-color: #1f9e57; color: white; }
+
+  /* ============ CALENDAR — click to copy template ============ */
+  #calendar table td:not(:first-child) { transition: background 0.15s, color 0.15s; }
+  #calendar table td.clickable { cursor: pointer; }
+  #calendar table td.clickable:hover { background: rgba(134,45,145,0.10); color: var(--magenta); }
+  #calendar table td.copied { background: #1f9e57 !important; color: white !important; }
+
+  /* ============ STICKY MINI-TOC (desktop only) ============ */
+  .mini-toc {
+    display: none;
+    position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+    border: 1px solid rgba(19,17,32,0.08); border-radius: 12px;
+    padding: 16px 14px; z-index: 50;
+    max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 8px 32px -12px rgba(19,17,32,0.12);
+    font-family: 'Gotham';
+  }
+  .mini-toc-title { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.45); margin-bottom: 10px; padding: 0 8px; }
+  .mini-toc a {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px; font-size: 12px; color: rgba(19,17,32,0.65);
+    border-radius: 6px; transition: background 0.15s, color 0.15s;
+  }
+  .mini-toc a:hover { background: rgba(134,45,145,0.06); color: var(--magenta); }
+  .mini-toc a.active { background: rgba(134,45,145,0.12); color: var(--magenta); font-weight: 500; }
+  .mini-toc a .num { color: rgba(0,0,0,0.35); font-family: ui-monospace, monospace; font-size: 10px; min-width: 18px; }
+  @media (min-width: 1280px) { .mini-toc { display: block; } }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px);
+    background: var(--dark); color: white; padding: 14px 24px; border-radius: 999px;
+    font-family: 'Gotham'; font-size: 13px; font-weight: 500;
+    box-shadow: 0 10px 32px -8px rgba(19,17,32,0.4);
+    z-index: 200; opacity: 0; transition: transform 0.3s, opacity 0.3s;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast .check { color: #5dd39e; margin-right: 8px; font-weight: 700; }
+
+  hr { border: 0; border-top: 1px solid rgba(19,17,32,0.08); margin: 32px 0; }
+
+  /* INSTAGRAM PROFILE MOCKUP */
+  .ig-mock {
+    max-width: 580px; margin: 24px auto;
+    background: var(--white);
+    border: 1px solid rgba(19,17,32,0.1);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 1px 3px rgba(19,17,32,0.04), 0 16px 40px -16px rgba(19,17,32,0.1);
+  }
+  .ig-mock-header { display: flex; gap: 24px; align-items: flex-start; }
+  .ig-pfp {
+    width: 88px; height: 88px; flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--dark);
+    padding: 4px;
+    display: flex; align-items: center; justify-content: center;
+    border: 3px solid transparent;
+    background-image: linear-gradient(var(--dark), var(--dark)),
+                      linear-gradient(135deg, #DE607D, #C94895, #862d91, #6BA3D7);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+  .ig-pfp img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+  .ig-meta { flex: 1; min-width: 0; }
+  .ig-handle { font-family: 'Gotham'; font-weight: 500; font-size: 18px; color: var(--dark); margin-bottom: 12px; }
+  .ig-stats { display: flex; gap: 20px; font-size: 13px; color: rgba(19,17,32,0.7); margin-bottom: 16px; }
+  .ig-stats strong { color: var(--dark); font-weight: 700; }
+  .ig-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .ig-btn { font-family: 'Gotham'; font-weight: 500; font-size: 12px; padding: 6px 14px; background: rgba(19,17,32,0.05); border-radius: 8px; color: var(--dark); }
+  .ig-btn-primary { background: var(--magenta); color: var(--white); }
+  .ig-bio { margin-top: 18px; }
+  .ig-name { font-family: 'Gotham'; font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .ig-cat { font-weight: 400; color: rgba(19,17,32,0.55); }
+  .ig-bio-line { font-family: 'Gotham'; font-size: 13.5px; line-height: 1.6; color: var(--dark); }
+  .ig-bio-line strong { font-weight: 700; }
+  .ig-bio-line em { font-family: 'Lonally Qoma', 'Water Brush', cursive; font-style: normal; font-size: 18px; color: var(--magenta); padding: 0 2px; }
+  .ig-link { color: var(--purple); }
+  .ig-cta-bar { display: flex; gap: 6px; margin-top: 16px; }
+  .ig-cta { flex: 1; text-align: center; padding: 8px 12px; background: rgba(19,17,32,0.05); border-radius: 8px; font-family: 'Gotham'; font-weight: 500; font-size: 12px; color: var(--dark); }
+  @media (max-width: 600px) {
+    .ig-mock-header { flex-direction: column; align-items: center; text-align: center; }
+    .ig-stats { justify-content: center; }
+    .ig-actions { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <a href="../" class="nav-logo">
+      <img src="../assets/logos/wordmark/white/wordmark-320.png" alt="Elevarts" />
+    </a>
+    <a href="../" class="nav-back">← Înapoi la Brand Book</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-meta">Document operațional · v1.0</div>
+    <div class="eyebrow" style="color: var(--magenta2);">Social Media Playbook</div>
+    <h1>Strategia <span class="script" style="font-size: 1.05em;">Instagram</span></h1>
+    <p class="lead">Cum transformăm conturile sociale într-un canal comercial pro. Diagnostic, decizia consolidare, content pillars, calendar lunar, target metrici — tot ce e nevoie pentru execuție.</p>
+  </div>
+</header>
+
+<section class="toc">
+  <div class="container">
+    <ol class="toc-list">
+      <li><a href="#diagnostic"><span class="num">01</span>Diagnostic actual</a></li>
+      <li><a href="#consolidare"><span class="num">02</span>Consolidare conturi</a></li>
+      <li><a href="#bio"><span class="num">03</span>Bio template</a></li>
+      <li><a href="#linkbio"><span class="num">04</span>Link in bio</a></li>
+      <li><a href="#highlights"><span class="num">05</span>Architectura highlights</a></li>
+      <li><a href="#pillars"><span class="num">06</span>Content pillars</a></li>
+      <li><a href="#reels"><span class="num">07</span>Reels cookbook (8 idei)</a></li>
+      <li><a href="#caption"><span class="num">08</span>Caption template</a></li>
+      <li><a href="#hashtags"><span class="num">09</span>Hashtag bank</a></li>
+      <li><a href="#dm"><span class="num">10</span>DM / inbound flow</a></li>
+      <li><a href="#calendar"><span class="num">11</span>Calendar lunar</a></li>
+      <li><a href="#wins"><span class="num">12</span>Quick wins (2 săpt)</a></li>
+      <li><a href="#metrics"><span class="num">13</span>Metrici target T+90</a></li>
+      <li><a href="#tools"><span class="num">14</span>Tools &amp; process</a></li>
+      <li><a href="#donts"><span class="num">15</span>Don'ts social</a></li>
+    </ol>
+  </div>
+</section>
+
+<main class="content">
+  <div class="container">
+
+    <section id="diagnostic">
+      <span class="sec-num"><strong>01</strong> · Diagnostic</span>
+      <h2>Diagnostic actual</h2>
+      <p><strong>Cont principal:</strong> <a href="https://www.instagram.com/elevarts/" target="_blank">@elevarts</a> — rebrand din 2023, încă subutilizat<br>
+      <strong>Cont vechi:</strong> <a href="https://www.instagram.com/royalentertainmentromania/" target="_blank">@royalentertainmentromania</a> — ~975 followers, ~196 posts (snippet Google), istoric SEO valoros<br>
+      <strong>Site:</strong> elevarts.ro / elevarts.com — momentan redirectează la un PDF Google Drive (nu există landing propriu)</p>
+
+      <h3>Probleme identificate</h3>
+      <table>
+        <thead><tr><th>#</th><th>Problemă</th><th>Severitate</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Identitate fragmentată</strong> — 3 nume vizibile (Elevarts, Royal Entertainment, picioroange.ro). Confuzie la decision-makerul corporate.</td><td style="color: var(--red);">Critică</td></tr>
+          <tr><td>2</td><td><strong>Link în bio = PDF Google Drive</strong> — fără landing page propriu, traficul IG se pierde.</td><td style="color: var(--red);">Critică</td></tr>
+          <tr><td>3</td><td><strong>Bio slab</strong> — fără USP, proof, CTA. Nu vinde poziția premium.</td><td style="color: var(--coral);">Mare</td></tr>
+          <tr><td>4</td><td><strong>Lipsă highlights structurate</strong> — 196 posts pe contul vechi, fără arhitectură vizibilă pe categorii.</td><td style="color: var(--coral);">Mare</td></tr>
+          <tr><td>5</td><td><strong>Static dominant peste reels</strong> — picioroange și LED costume sunt produsul în mișcare. Static = pierdere algoritmică.</td><td style="color: var(--coral);">Mare</td></tr>
+          <tr><td>6</td><td><strong>Lipsă CTA în captions</strong> — conturile sunt galerie pasivă, nu canal comercial.</td><td>Medie</td></tr>
+          <tr><td>7</td><td><strong>Lipsă hashtag strategy</strong> — discovery zero pentru cont sub 1k followers.</td><td>Medie</td></tr>
+          <tr><td>8</td><td><strong>Tipografie + cover reels</strong> — niciun template recurent → feed haotic, nu pro.</td><td>Medie</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="consolidare">
+      <span class="sec-num"><strong>02</strong> · Strategie</span>
+      <h2>Decizia strategică — consolidare conturi</h2>
+      <p><strong>Cont principal de azi încolo:</strong> <code>@elevarts</code><br>
+      <strong>Cont vechi:</strong> <code>@royalentertainmentromania</code> → trece în mod "redirect soft"</p>
+
+      <h3>Acțiuni</h3>
+      <ol>
+        <li><strong>Pe contul vechi</strong> publică <strong>un singur post pinnat</strong> (carousel 3 slide-uri): <em>"Ne-am mutat la @elevarts"</em> → <em>"Aceeași echipă. Aceleași servicii. Brand nou, premium."</em> → <em>"Urmărește-ne pe @elevarts pentru ce facem acum."</em></li>
+        <li><strong>Bio actualizat</strong> cu link spre <code>@elevarts</code> și o singură linie: <em>"Activitate continuă pe @elevarts ↗"</em></li>
+        <li><strong>Stop posting</strong> pe contul vechi (păstrăm doar pentru SEO equity)</li>
+        <li><strong>DM-uri pe contul vechi</strong> — răspuns automat (Quick Reply): <em>"Ne-am mutat pe @elevarts — scrie-ne acolo, te rog"</em></li>
+      </ol>
+      <div class="callout"><p>Nu ștergem contul vechi. Are istoric, hashtag-uri tag-uite, mențiuni de la clienți. Ștergerea = pierdere de proof social.</p></div>
+    </section>
+
+    <section id="bio">
+      <span class="sec-num"><strong>03</strong> · Bio</span>
+      <h2>Bio template <code>@elevarts</code></h2>
+      <p>Mockup vizual al profilului așa cum arată pe Instagram, cu textul oficial al bio-ului. Folosește exact acest text + acest profile pic.</p>
+
+      <div class="ig-mock">
+        <div class="ig-mock-inner">
+          <div class="ig-mock-header">
+            <div class="ig-pfp">
+              <img src="../assets/logos/icon/color/icon-512.png" alt="Elevarts profile picture" />
+            </div>
+            <div class="ig-meta">
+              <div class="ig-handle">elevarts</div>
+              <div class="ig-stats"><span><strong>—</strong> posts</span><span><strong>—</strong> followers</span><span><strong>—</strong> following</span></div>
+              <div class="ig-actions">
+                <span class="ig-btn ig-btn-primary">Follow</span>
+                <span class="ig-btn">Message</span>
+                <span class="ig-btn">Email</span>
+              </div>
+            </div>
+          </div>
+          <div class="ig-bio">
+            <div class="ig-name">Elevarts <span class="ig-cat">· Entertainment Company</span></div>
+            <div class="ig-bio-line"><strong>Premium entertainment</strong> | Imagine. Create. <em>Elevate</em>.</div>
+            <div class="ig-bio-line">🎭 150+ artiști</div>
+            <div class="ig-bio-line">🌍 București is our home, the world is our playground · DM pentru ofertă</div>
+            <div class="ig-bio-line ig-link">🔗 elevarts.com/book</div>
+          </div>
+          <div class="ig-cta-bar">
+            <span class="ig-cta">Book Now</span>
+            <span class="ig-cta">Email</span>
+            <span class="ig-cta">Directions</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 40px;">Text bio (copy direct)</h3>
+      <pre><code>Premium entertainment | Imagine. Create. Elevate.
+🎭 150+ artiști
+🌍 București is our home, the world is our playground · DM pentru ofertă
+🔗 elevarts.com/book</code></pre>
+
+      <h3>Sub bio</h3>
+      <ul>
+        <li><strong>Profile pic:</strong> icon brand color pe background dark (<code>#131120</code>) — folosește <code>web/icon/color/icon-512.png</code>. NICIODATĂ wordmark tăiat în cerc.</li>
+        <li><strong>Categorie business:</strong> Entertainment Company</li>
+        <li><strong>Buton acțiune:</strong> "Book Now" cu link spre formular brief</li>
+        <li><strong>Email contact:</strong> <code>ask@elevarts.com</code></li>
+      </ul>
+    </section>
+
+    <section id="linkbio">
+      <span class="sec-num"><strong>04</strong> · Link in bio</span>
+      <h2>Link in bio — landing dedicat</h2>
+      <p><strong>Recomandare:</strong> construim noi <code>elevarts.com/book</code> (parte din site-ul nou) — nu folosim Linktree extern.</p>
+      <p>Pagina conține: hero "Cere ofertă pentru evenimentul tău" · 3 carduri scurte (Festivaluri / Corporate / Private) cu CTA "Book" · showreel embed (60 sec) · formular brief (5 câmpuri: tip eveniment, dată, locație, buget tier, mesaj) · contact direct WhatsApp + email · recent work (6 carduri cu poze și client logo).</p>
+      <div class="callout"><p><strong>Până când e gata:</strong> folosim Linktree minimal cu 4 link-uri (showreel YouTube, catalog PDF, WhatsApp, email).</p></div>
+    </section>
+
+    <section id="highlights">
+      <span class="sec-num"><strong>05</strong> · Highlights</span>
+      <h2>Architectura highlights — 6 categorii</h2>
+      <div class="highlights">
+        <div class="highlight-pill" style="background: linear-gradient(135deg, #645faa, #862d91);">FESTIVAL</div>
+        <div class="highlight-pill" style="background: var(--dark);">CORPORATE</div>
+        <div class="highlight-pill" style="background: var(--magenta);">PICIOROANGE</div>
+        <div class="highlight-pill" style="background: var(--lightblue);">LED &amp; NIGHT</div>
+        <div class="highlight-pill" style="background: var(--coral);">PRIVATE</div>
+        <div class="highlight-pill" style="background: var(--purple);">BTS</div>
+      </div>
+      <table style="margin-top: 24px;">
+        <thead><tr><th>#</th><th>Highlight</th><th>Cover</th><th>Conținut</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>FESTIVALURI</strong></td><td>Gradient brand 135°</td><td>Untold, Neversea, Electric Castle, Beach Please, Saga</td></tr>
+          <tr><td>2</td><td><strong>CORPORATE</strong></td><td>Dark <code>#131120</code></td><td>Lansări produs, gala awards, conferințe, brand events</td></tr>
+          <tr><td>3</td><td><strong>PICIOROANGE</strong></td><td>Magenta <code>#862d91</code></td><td>Show case picioroange — toate temele, toate înălțimile</td></tr>
+          <tr><td>4</td><td><strong>LED &amp; NIGHT</strong></td><td>Light Blue <code>#6BA3D7</code></td><td>Drummers, Mirror Men, LED costumes, night activations</td></tr>
+          <tr><td>5</td><td><strong>PRIVATE</strong></td><td>Coral <code>#E17B62</code></td><td>Nunți, botezuri, petreceri private, evenimente speciale</td></tr>
+          <tr><td>6</td><td><strong>BTS</strong></td><td>Purple <code>#645faa</code></td><td>Atelier, repetiții, echipă, build process, comunitate</td></tr>
+        </tbody>
+      </table>
+      <h3>Reguli cover</h3>
+      <ul>
+        <li>Format <strong>1:1</strong> (1080×1080)</li>
+        <li>Euclid Flex 700, ALL CAPS, white text pe culoarea highlight-ului</li>
+        <li>Nume highlight max 12 caractere</li>
+        <li>Same font, same size, same position pe toate 6 → arată ca un set</li>
+      </ul>
+    </section>
+
+    <section id="pillars">
+      <span class="sec-num"><strong>06</strong> · Pillars</span>
+      <h2>Content pillars — 4 piloni</h2>
+      <p>Distribuție lunar: ~12 reels + ~4 carouseluri + ~4 stories streaks.</p>
+      <div class="grid grid-2" style="margin-top: 24px;">
+        <div class="pillar p1">
+          <span class="pct">40%</span>
+          <h4>PERFORMANCE</h4>
+          <p style="font-size: 13px; margin-bottom: 8px;">Reels live event, transformări costum, energy reveals.</p>
+          <ul><li>Picioroange intrând în public</li><li>Drummers LED în beat drop</li><li>Mirror men reflectând crowd</li></ul>
+        </div>
+        <div class="pillar p2">
+          <span class="pct">20%</span>
+          <h4>PROOF SOCIAL</h4>
+          <p style="font-size: 13px; margin-bottom: 8px;">Testimonials clienți, logo wall, before/after, recap evenimente.</p>
+          <ul><li>Carousel "5 momente de la Untold 2025"</li><li>Quote video client corporate</li></ul>
+        </div>
+        <div class="pillar p3">
+          <span class="pct">25%</span>
+          <h4>BTS &amp; TEAM</h4>
+          <p style="font-size: 13px; margin-bottom: 8px;">Atelier, echipă, repetiții, comunitate Tribe.</p>
+          <ul><li>Time-lapse construcție mascota</li><li>"1 minut cu echipa de picioroange"</li><li>Coaching session</li></ul>
+        </div>
+        <div class="pillar p4">
+          <span class="pct">15%</span>
+          <h4>EDUCAȚIONAL</h4>
+          <p style="font-size: 13px; margin-bottom: 8px;">Cum alegi entertainment, ce să eviți, mit-vs-realitate.</p>
+          <ul><li>"5 greșeli când angajezi animatori pentru lansare"</li><li>"Diferența între agenție și furnizor direct"</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="reels">
+      <span class="sec-num"><strong>07</strong> · Reels</span>
+      <h2>Reels cookbook — 8 idei concrete</h2>
+      <table>
+        <thead><tr><th>#</th><th>Concept</th><th>Durată</th><th>Hook</th><th>Producție</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Costume reveal</strong> — artist intră normal, trecere la costum complet în 3 cuts</td><td>7s</td><td><em>"Acum 60 sec arăta normal."</em></td><td>Low (telefon + tranziție basic)</td></tr>
+          <tr><td>2</td><td><strong>Ascensiune picioroange</strong> — secvență pas-cu-pas urcat + final shot la 160cm</td><td>12s</td><td><em>"Ce vezi la festivaluri când te uiți în sus."</em></td><td>Low</td></tr>
+          <tr><td>3</td><td><strong>Atelier time-lapse</strong> — construire costum 8h în 15s</td><td>15s</td><td><em>"8 ore de muncă. 1 personaj. 1000 de zâmbete."</em></td><td>Medium (camera fixă)</td></tr>
+          <tr><td>4</td><td><strong>Mirror Family beat drop</strong> — sincronizate pe sound trending</td><td>10s</td><td><em>"Când DJ-ul dă drumul la beat..."</em></td><td>Medium (lighting)</td></tr>
+          <tr><td>5</td><td><strong>LED Drummers crescendo</strong> — show 30s comprimat în 12s</td><td>12s</td><td><em>"Sound on. Crește treptat."</em></td><td>High (multi-cam)</td></tr>
+          <tr><td>6</td><td><strong>Day vs Night same costume</strong> — split screen day/night + LED</td><td>8s</td><td><em>"Unul e ziua. Celălalt e noaptea. Same costume."</em></td><td>Medium</td></tr>
+          <tr><td>7</td><td><strong>Client testimonial</strong> — POV de la client corporate / festival manager</td><td>15s</td><td><em>"Așa zice [Client X] după 3 ani de lucru."</em></td><td>Low (VO + B-roll)</td></tr>
+          <tr><td>8</td><td><strong>The choice</strong> — explică tematicile cu reveal scurt pe fiecare</td><td>30s</td><td><em>"Spune-ne tema. Avem deja set-up-ul."</em></td><td>Medium</td></tr>
+        </tbody>
+      </table>
+      <h3>Reguli production reels</h3>
+      <ul>
+        <li><strong>Cover frame</strong> uniform: Euclid Flex 700, magenta accent, max 4 cuvinte</li>
+        <li><strong>Sub 15s pentru max algorithm</strong> (excepție: episodic content sau show recap)</li>
+        <li><strong>Subtitle vizibile</strong> (85% IG users watch fără sound) — Gotham 500, white pe black bar</li>
+        <li><strong>CTA în prim ultim 1s</strong>: "DM pentru evenimentul tău" sau "Link in bio"</li>
+        <li>No emoji-spam în text overlay; max 1 emoji per clip</li>
+      </ul>
+    </section>
+
+    <section id="caption">
+      <span class="sec-num"><strong>08</strong> · Caption</span>
+      <h2>Caption template</h2>
+      <pre><code>[HOOK 1 LINIE — întrebare, statement bold sau cifră]
+
+[CONTEXT 2-3 linii — ce vezi, unde, când, cu cine]
+
+[PROOF 1-2 linii — cifră, durată, scală, recunoaștere]
+
+[CTA 1 linie — DM, link in bio, comment, share]
+
+—
+[5–8 hashtags pe ultimul rând]</code></pre>
+
+      <h3>Exemplu real</h3>
+      <pre><code>30 picioroangiști. 1 stage. 12 minute.
+
+Untold 2025 · Main Stage opening · Show construit special pentru deschidere.
+Costume noi din atelierul nostru — toate produse în 6 săptămâni.
+
+3h show non-stop · 12 personaje unice · 0 repetări vizuale.
+
+DM pentru festivalul tău →
+
+—
+#elevarts #picioroange #romaniantalent #festivalproduction
+#stiltwalkers #eventprofs #bucurestievents #untold2025</code></pre>
+    </section>
+
+    <section id="hashtags">
+      <span class="sec-num"><strong>09</strong> · Hashtags</span>
+      <h2>Hashtag bank</h2>
+      <p>Folosește <strong>5–8 per post</strong> (max 10 — peste arată spam). Mix:</p>
+
+      <h3>Tier 1 — Brand <span style="font-weight: 400; color: rgba(0,0,0,0.5); font-size: 14px;">(folosește la TOATE)</span></h3>
+      <p><code>#elevarts</code> <code>#elevartsromania</code></p>
+
+      <h3>Tier 2 — Nișa <span style="font-weight: 400; color: rgba(0,0,0,0.5); font-size: 14px;">(alege 2–3 după conținut)</span></h3>
+      <p><code>#stiltwalkers</code> <code>#picioroange</code> <code>#leddrummers</code> <code>#mirrormen</code> <code>#discoheads</code> <code>#ledperformance</code> <code>#flowarts</code> <code>#eventproduction</code> <code>#liveentertainment</code></p>
+
+      <h3>Tier 3 — Audiență <span style="font-weight: 400; color: rgba(0,0,0,0.5); font-size: 14px;">(alege 1–2)</span></h3>
+      <p><code>#eventprofs</code> <code>#corporateevents</code> <code>#festivalproduction</code> <code>#brandactivation</code> <code>#weddingentertainment</code> <code>#corporateentertainment</code> <code>#productlaunch</code></p>
+
+      <h3>Tier 4 — Geo <span style="font-weight: 400; color: rgba(0,0,0,0.5); font-size: 14px;">(alege 1–2)</span></h3>
+      <p><code>#bucurestievents</code> <code>#romanianevents</code> <code>#festivalromania</code> <code>#evenimentebucuresti</code> <code>#europeanentertainment</code> <code>#balkanevents</code></p>
+
+      <h3>Tier 5 — Tematic <span style="font-weight: 400; color: rgba(0,0,0,0.5); font-size: 14px;">(după caz)</span></h3>
+      <p><code>#christmasentertainment</code> <code>#easterevents</code> <code>#discoparty</code> <code>#carnival</code> <code>#halloween</code></p>
+    </section>
+
+    <section id="dm">
+      <span class="sec-num"><strong>10</strong> · DM Flow</span>
+      <h2>DM / inbound flow</h2>
+      <p><strong>Quick Replies salvate</strong> (Saved Replies în Instagram Business):</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <span class="tag">/welcome</span>
+          <h4>Primul mesaj la inbound</h4>
+          <p><em>"Salut! Mulțumim că ne-ai scris ✋ Spune-ne în 2 linii: tip eveniment, dată, locație. Te sunăm înapoi în 4h cu 2-3 propuneri."</em></p>
+        </div>
+        <div class="card">
+          <span class="tag">/catalog</span>
+          <h4>La cerere catalog</h4>
+          <p><em>"Trimitem catalog complet pe email — care e adresa? (sau scrie-ne direct la ask@elevarts.com)"</em></p>
+        </div>
+        <div class="card">
+          <span class="tag">/move-from-old</span>
+          <h4>DM pe contul vechi</h4>
+          <p><em>"Ne-am mutat la @elevarts — te rog scrie-ne acolo, sau direct ask@elevarts.com / +40 729 386 269. Aceeași echipă, brand nou."</em></p>
+        </div>
+        <div class="card">
+          <span class="tag">/festival</span>
+          <h4>Cerere festival</h4>
+          <p><em>"Festivalul X — super! Cea mai rapidă cale: completează briefingul în 3 min la elevarts.com/book sau spune-ne aici tematică, durată show și buget tier (sub 5k / 5-15k / 15k+ EUR). Revenim în 4h cu propunere."</em></p>
+        </div>
+      </div>
+
+      <h3>SLA target</h3>
+      <ul>
+        <li><strong>Răspuns DM:</strong> sub 4h în orele de lucru, sub 12h weekend</li>
+        <li><strong>Răspuns email:</strong> sub 24h</li>
+        <li><strong>Brief detaliat:</strong> sub 48h cu propunere scrisă</li>
+      </ul>
+    </section>
+
+    <section id="calendar">
+      <span class="sec-num"><strong>11</strong> · Calendar</span>
+      <h2>Calendar lunar (template)</h2>
+      <table>
+        <thead><tr><th>Săpt</th><th>Lun</th><th>Mar</th><th>Mie</th><th>Joi</th><th>Vin</th><th>Sâm</th><th>Dum</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td>Reel performance</td><td>Story BTS</td><td>Carousel proof</td><td>—</td><td>Reel costume</td><td>Story event live</td><td>—</td></tr>
+          <tr><td><strong>2</strong></td><td>Reel educațional</td><td>Story BTS</td><td>—</td><td>Reel performance</td><td>Carousel testimonial</td><td>Story event live</td><td>—</td></tr>
+          <tr><td><strong>3</strong></td><td>Reel transformare</td><td>Story BTS</td><td>Carousel BTS</td><td>—</td><td>Reel night/LED</td><td>Story event live</td><td>—</td></tr>
+          <tr><td><strong>4</strong></td><td>Reel team intro</td><td>—</td><td>Carousel "best of luna"</td><td>Reel educațional</td><td>—</td><td>Story event live</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Total/lună:</strong> ~12 reels + 4 carouseluri + ~12 story streaks. ~3-4 piese de conținut/săptămână.</p>
+
+      <h3>Producție în pachete</h3>
+      <ul>
+        <li><strong>Sesiune lunară de filming</strong> (1 zi) — capturi pentru 8-12 reels</li>
+        <li><strong>Editing batch</strong> (2 zile/săptămână) — montaj + cover + caption + scheduling</li>
+        <li><strong>Tool recomandat scheduling:</strong> Meta Business Suite (gratis) sau Later/Buffer pentru cross-platform</li>
+      </ul>
+    </section>
+
+    <section id="wins">
+      <span class="sec-num"><strong>12</strong> · Quick Wins</span>
+      <h2>Quick wins (primele 2 săptămâni)</h2>
+      <table>
+        <thead><tr><th>#</th><th>Acțiune</th><th>Owner</th><th>Effort</th><th>Impact</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Update bio + profile pic + buton "Book Now" pe <code>@elevarts</code></td><td>George</td><td>30 min</td><td style="color: var(--magenta);">Mare</td></tr>
+          <tr><td>2</td><td>Pin post de redirect pe <code>@royalentertainmentromania</code></td><td>George</td><td>1h</td><td style="color: var(--magenta);">Mare</td></tr>
+          <tr><td>3</td><td>Linktree provizoriu cu 4 link-uri (showreel + catalog + WhatsApp + email)</td><td>George</td><td>1h</td><td style="color: var(--magenta);">Mare</td></tr>
+          <tr><td>4</td><td>Creează 6 highlight covers brand (1080×1080 PNG) + arhivează posts existente</td><td>Designer/George</td><td>4h</td><td style="color: var(--magenta);">Mare</td></tr>
+          <tr><td>5</td><td>Salvează 4 Quick Replies în IG Business</td><td>George</td><td>30 min</td><td>Mediu</td></tr>
+          <tr><td>6</td><td>Filmare batch 1 — 8 reels concept din cookbook</td><td>Echipă + filmer</td><td>1 zi</td><td style="color: var(--red);">Foarte mare</td></tr>
+          <tr><td>7</td><td>Editare batch 1 + scheduling 4 săptămâni</td><td>Editor</td><td>2 zile</td><td style="color: var(--red);">Foarte mare</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><p><strong>Target la sfârșit săpt 2:</strong> 6 highlights live, bio update, primul reel publicat din noua strategie.</p></div>
+    </section>
+
+    <section id="metrics">
+      <span class="sec-num"><strong>13</strong> · Metrici</span>
+      <h2>Metrici target (orizont 90 zile)</h2>
+      <table>
+        <thead><tr><th>Metric</th><th>Baseline</th><th>T+30</th><th>T+60</th><th>T+90</th></tr></thead>
+        <tbody>
+          <tr><td>Followers <code>@elevarts</code></td><td>? (sub 1k probabil)</td><td>+200</td><td>+500</td><td><strong>+1000</strong></td></tr>
+          <tr><td>Reach mediu/post</td><td>—</td><td>1500</td><td>4000</td><td><strong>8000</strong></td></tr>
+          <tr><td>Reels published</td><td>~0/lună</td><td>12/lună</td><td>14/lună</td><td><strong>16/lună</strong></td></tr>
+          <tr><td>Profile visits/săpt</td><td>—</td><td>200</td><td>500</td><td><strong>1000</strong></td></tr>
+          <tr><td>DM-uri inbound calificate/săpt</td><td>&lt;1</td><td>3</td><td>7</td><td><strong>15</strong></td></tr>
+          <tr><td>Conversie DM → brief trimis</td><td>—</td><td>30%</td><td>40%</td><td><strong>50%</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="callout warn"><p>Dacă la T+30 nu atingem +200 followers, problema e cel mai probabil pe <strong>bio + first impression</strong>, nu pe content. Audit imediat la asta.</p></div>
+    </section>
+
+    <section id="tools">
+      <span class="sec-num"><strong>14</strong> · Tools</span>
+      <h2>Tools &amp; process</h2>
+      <h3>Tools necesare</h3>
+      <ul>
+        <li><strong>Meta Business Suite</strong> (gratis) — scheduling + insights</li>
+        <li><strong>CapCut</strong> sau <strong>Premiere Rush</strong> — editing reels</li>
+        <li><strong>Canva Pro</strong> — covere highlights, carouseluri</li>
+        <li><strong>Notion</strong> sau <strong>Trello</strong> — content calendar shared cu echipa</li>
+        <li><em>(opțional)</em> <strong>Iconosquare</strong> sau <strong>Later</strong> — analytics avansat</li>
+      </ul>
+      <h3>Workflow săptămânal</h3>
+      <ul>
+        <li><strong>Luni:</strong> review insights → ajustare calendar dacă e cazul</li>
+        <li><strong>Marți:</strong> filmare/sourcing conținut (sau preluare din event recent)</li>
+        <li><strong>Miercuri:</strong> editing batch</li>
+        <li><strong>Joi:</strong> scheduling pentru săptămâna următoare + caption polish</li>
+        <li><strong>Vineri:</strong> review final + planning săpt următoare</li>
+      </ul>
+    </section>
+
+    <section id="donts">
+      <span class="sec-num"><strong>15</strong> · Don'ts</span>
+      <h2>Don'ts social media</h2>
+      <ul class="no-bullets">
+        <li class="dont-item">Nu posta DOAR poze static — algoritmul te punește, audiența scade</li>
+        <li class="dont-item">Nu folosi emoji-spam în captions corporate</li>
+        <li class="dont-item">Nu repeta aceeași poză pe ambele conturi simultan</li>
+        <li class="dont-item">Nu menționa "agenție" niciodată — întotdeauna "furnizori direcți"</li>
+        <li class="dont-item">Nu publica fără CTA explicit</li>
+        <li class="dont-item">Nu folosi #love #beautiful #amazing — hashtag-uri generice fără discovery</li>
+        <li class="dont-item">Nu posta când evenimentul s-a terminat de &gt;1 lună (relevanță scăzută)</li>
+        <li class="dont-item">Nu copia caption-uri între posts — fiecare post e o oportunitate diferențiată</li>
+      </ul>
+      <hr>
+      <p style="color: rgba(19,17,32,0.6);"><strong>Următorul update:</strong> după primele 30 zile de execuție (T+30) — review metrici reale și ajustare strategie.</p>
+    </section>
+
+  </div>
+
+  <div class="cta-back">
+    <a href="../" class="btn btn-primary">← Înapoi la Brand Book</a>
+    <a href="#top" class="btn btn-ghost" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Sus</a>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 32px;">
+      <div>
+        <img src="../assets/logos/wordmark/white/wordmark-320.png" style="width: 180px; margin-bottom: 16px;" alt="Elevarts" />
+        <p style="max-width: 380px; line-height: 1.55; font-size: 14px;">Strategia operațională social media — separată de brand book pentru actualizare regulată.</p>
+        <div class="script" style="font-size: 44px; color: var(--magenta2); margin-top: 20px; line-height: 1;">don't chase. attract.</div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-family: 'Gotham'; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 12px;">Social Playbook · v1.0</div>
+        <div style="font-size: 13px; line-height: 1.7;">
+          <a href="https://www.instagram.com/elevarts/" target="_blank" style="color: var(--magenta2);">@elevarts</a><br>
+          ask@elevarts.com<br>
+          +40 729 386 269<br>
+          elevarts.com · elevarts.ro
+        </div>
+      </div>
+    </div>
+    <div class="meta">
+      <span>© 2026 ELEVARTS. Internal · Confidential.</span>
+      <span>brand.elevarts.ro/social</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky mini-TOC injectat de JS (desktop only) -->
+<aside class="mini-toc" id="miniToc" aria-label="Navigare rapidă"></aside>
+
+<!-- Toast notification -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ============ TOAST ============
+  const toast = document.getElementById('toast');
+  function showToast(msg) {
+    toast.innerHTML = '<span class="check">✓</span>' + msg;
+    toast.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => toast.classList.remove('show'), 1800);
+  }
+
+  // ============ PILLAR CHECKLIST (localStorage) ============
+  const STORAGE_KEY = 'elevarts-social-pillars-v1';
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch (e) {}
+
+  document.querySelectorAll('.pillar').forEach((pillar, pIdx) => {
+    pillar.querySelectorAll('ul li').forEach((li, lIdx) => {
+      const key = 'p' + pIdx + '-' + lIdx;
+      if (state[key]) li.classList.add('checked');
+      li.addEventListener('click', () => {
+        li.classList.toggle('checked');
+        state[key] = li.classList.contains('checked');
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+      });
+    });
+  });
+
+  // ============ HASHTAG COPY ============
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    return Promise.resolve();
+  }
+
+  const hashtagSection = document.getElementById('hashtags');
+  if (hashtagSection) {
+    hashtagSection.querySelectorAll('code').forEach(code => {
+      const text = code.textContent.trim();
+      code.title = 'Click pentru a copia';
+      code.addEventListener('click', () => {
+        copyText(text).then(() => {
+          code.classList.add('copied');
+          setTimeout(() => code.classList.remove('copied'), 1500);
+          showToast('Copiat: ' + text);
+        });
+      });
+    });
+
+    // Add "Copy tier" button next to each h3
+    hashtagSection.querySelectorAll('h3').forEach(h3 => {
+      const btn = document.createElement('button');
+      btn.textContent = 'Copy all';
+      btn.className = 'copy-tier-btn';
+      btn.type = 'button';
+      h3.appendChild(btn);
+      btn.addEventListener('click', () => {
+        // Find next <p> and grab all codes inside
+        let next = h3.nextElementSibling;
+        while (next && next.tagName !== 'P') next = next.nextElementSibling;
+        if (!next) return;
+        const tags = Array.from(next.querySelectorAll('code')).map(c => c.textContent.trim());
+        const text = tags.join(' ');
+        copyText(text).then(() => {
+          btn.classList.add('copied');
+          btn.textContent = '✓ Copiat';
+          setTimeout(() => { btn.classList.remove('copied'); btn.textContent = 'Copy all'; }, 1800);
+          showToast(tags.length + ' hashtags copiate');
+        });
+      });
+    });
+  }
+
+  // ============ CALENDAR — click cell → copy caption template ============
+  const captionTemplates = {
+    'reel performance': '🎬 [HOOK 1 LINIE — întrebare sau statement bold]\n\n[CONTEXT 2-3 linii — eveniment, locație, costum/tip show]\n[Performer info: număr artiști, durată, recunoaștere]\n\n[PROOF — cifră, scală sau testimonial scurt]\n\nDM pentru evenimentul tău →\n\n—\n#elevarts #elevartsromania #stiltwalkers #ledperformance #eventprofs',
+    'reel costume': '✨ [HOOK — "Acum 60 sec arăta normal." sau similar transformare]\n\n[CONTEXT — care costum, ce tematică, atelier/eveniment]\n[Detalii producție: ore lucrate, materiale, echipa]\n\n[PROOF — număr de costume în garderobă, ani experiență]\n\nDM pentru tematica ta →\n\n—\n#elevarts #costume #atelierelevarts #carnival #performingarts',
+    'reel educațional': '📌 [HOOK — întrebare comună / mit care trebuie spart]\n\n[CONTEXT 2-3 linii — explică problema specifică]\n[Punctul cheie pe care îl explici]\n\n[PROOF — experiența noastră 18+ ani, exemple concrete]\n\nSalvează pentru următorul tău eveniment →\n\n—\n#elevarts #eventprofs #eventproduction #romaniantalent',
+    'reel transformare': '🔄 [HOOK — "Înainte. După. 10 secunde."]\n\n[CONTEXT — ce s-a transformat: artist→costum, atelier→produs final, day→night LED]\n[Procesul: durată, pași, complexitate]\n\n[PROOF — capacitate atelier propriu, custom production]\n\nDM pentru concept custom →\n\n—\n#elevarts #transformation #customcostume #eventmagic',
+    'reel night/led': '💡 [HOOK — "Same costume. Different planet." sau similar day vs night]\n\n[CONTEXT — show LED, festival noaptea, atmosferă]\n[Tehnologia: LED-uri programabile, sincronizare beat]\n\n[PROOF — show-uri unice în RO, recognoscut de top brands]\n\nDM pentru festival →\n\n—\n#elevarts #ledperformance #festivalproduction #nightevent #leddrummers',
+    'reel team intro': '👋 [HOOK — "Cunoaște echipa care face show-ul."]\n\n[CONTEXT — un membru core, rol, ani în Elevarts]\n[Pasiunea / specializarea acelui artist]\n\n[PROOF — comunitate Tribe, training-uri, repetiții constante]\n\nUrmărește pentru mai multe story-uri →\n\n—\n#elevarts #elevartstribe #performingartists #romaniantalent',
+    'story bts': '[Story BTS — text overlay scurt 3-5 cuvinte]\n\nIdei conținut:\n• Time-lapse construcție costum (atelier)\n• Repetiții picioroange (sală/parc)\n• Cumpărături materiale, sketch-uri\n• Coffee cu echipa, glume backstage\n• Punct de vedere artist înainte de show\n\nReguli: 3-5 frame-uri, sound natural sau muzică minimal, sticker location/mention, CTA în ultimul frame ("DM pentru evenimentul tău").',
+    'story event live': '[Story event live — la fața locului]\n\nIdei conținut:\n• POV intrare în public (picioroange)\n• Reacția publicului filmată discret\n• Detalii costum în lumini de scenă\n• Mention partener: brand client / festival\n• "Ce vezi când ești la 160 cm" (POV vertical)\n\nReguli: live sau cu max 1h delay; geo-tag eveniment; tag client; CTA discret.',
+    'carousel proof': '[Carousel "5 momente de la [Eveniment X]"]\n\nSlide 1: Title slide — "5 momente de la [Eveniment]"\nSlide 2-6: O imagine + caption scurt per slide (max 12 cuvinte)\nSlide final: CTA "DM pentru festivalul tău" + logo Elevarts\n\nCAPTION:\n[HOOK — eveniment + scală: "5000 de oameni. 12 minute show."]\n[CONTEXT — ce am livrat: număr artiști, costume, durată]\n[PROOF — feedback client + cifră concretă]\n[CTA — DM sau link in bio]\n\n—\n#elevarts #eventrecap #festivalproduction #brandactivation',
+    'carousel testimonial': '[Carousel testimonial client]\n\nSlide 1: Quote "[Citat scurt 1-2 linii]" — Nume, Rol, Companie\nSlide 2-3: Context — ce eveniment, ce am livrat\nSlide 4-5: Numbers — durată, scală, rezultat client\nSlide final: "Vrei rezultate similare? DM →"\n\nCAPTION:\n[HOOK — quote din testimonial]\n[CONTEXT — relația cu clientul, durată colaborare]\n[PROOF — recurence: ani lucrați împreună / nr evenimente]\n[CTA]\n\n—\n#elevarts #clientlove #corporateevents #eventprofs',
+    'carousel bts': '[Carousel "Behind the scenes" — atelier sau echipă]\n\nSlide 1: Title — "Cum se naște un costum LED"\nSlide 2-7: Pași producție (sketch → croit → asamblare LED → test → finit)\nSlide final: "Vrei un costum custom? DM →"\n\nCAPTION:\n[HOOK — durata totală: "8 ore. 1 costum. 1000 zâmbete."]\n[CONTEXT — atelier propriu, echipă artistic-tech]\n[PROOF — peste 800 costume în garderobă, atelier 18+ ani]\n[CTA]\n\n—\n#elevarts #behindthescenes #customcostume #atelierelevarts',
+    'carousel "best of luna"': '[Carousel "Best of [Luna] @ Elevarts"]\n\nSlide 1: Title — "Ce am făcut în [Luna] 2026"\nSlide 2-6: Highlights — un eveniment per slide, foto + locație + scală\nSlide final: "Următoarea ta locație? DM →"\n\nCAPTION:\n[HOOK — total events sau cifră impresionantă]\n[CONTEXT — varietatea: festivaluri, corporate, mall openings, etc.]\n[PROOF — diversitate clienți]\n[CTA]\n\n—\n#elevarts #monthlyrecap #liveentertainment #romaniantalent'
+  };
+
+  const calendarSection = document.getElementById('calendar');
+  if (calendarSection) {
+    calendarSection.querySelectorAll('table td').forEach(td => {
+      const text = td.textContent.trim().toLowerCase();
+      if (!text || text === '—' || /^\d+$/.test(text) || text.length < 4) return;
+      const template = captionTemplates[text];
+      if (!template) return;
+      td.classList.add('clickable');
+      td.title = 'Click pentru a copia template caption';
+      td.addEventListener('click', () => {
+        copyText(template).then(() => {
+          td.classList.add('copied');
+          setTimeout(() => td.classList.remove('copied'), 1500);
+          showToast('Template copiat: ' + td.textContent.trim());
+        });
+      });
+    });
+  }
+
+  // ============ STICKY MINI-TOC ============
+  const miniToc = document.getElementById('miniToc');
+  if (miniToc) {
+    const tocLinks = document.querySelectorAll('.toc-list a');
+    miniToc.innerHTML = '<div class="mini-toc-title">Secțiuni</div>' +
+      Array.from(tocLinks).map(a => {
+        const num = a.querySelector('.num') ? a.querySelector('.num').textContent : '';
+        const txt = a.textContent.replace(num, '').trim();
+        return '<a href="' + a.getAttribute('href') + '"><span class="num">' + num + '</span>' + txt + '</a>';
+      }).join('');
+
+    // Active section highlight on scroll
+    const sections = Array.from(document.querySelectorAll('.content section[id]'));
+    const tocAnchors = miniToc.querySelectorAll('a');
+    function updateActive() {
+      const y = window.scrollY + 120;
+      let active = null;
+      for (const s of sections) if (s.offsetTop <= y) active = s;
+      tocAnchors.forEach(a => {
+        a.classList.toggle('active', active && a.getAttribute('href') === '#' + active.id);
+      });
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+  }
+})();
+</script>
+
+</body>
+</html>
