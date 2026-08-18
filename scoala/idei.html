@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="ro"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nu știi ce vrei? Noi venim cu ideea. — Elevarts</title>
+<style>
+:root{
+  --ink:#241033; --body:#4a4460; --mut:#9a90ab;
+  --magenta:#e0398f; --purple:#7b3fe4; --orange:#ff6b35; --teal:#17b5c9;
+  --dark:#1c0f2e; --line:#efe6f7; --card:#fff; --bg:#f3ecfb; --rad:16px;
+  --font:'Segoe UI',Roboto,-apple-system,Arial,sans-serif;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);font-family:var(--font)}
+.wrap{max-width:600px;margin:24px auto;background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.hero{background:linear-gradient(135deg,#ff5a3c 0%,#e0398f 38%,#7b3fe4 72%,#2ec4d6 100%);padding:34px 30px 36px;color:#fff}
+.hero img.logo{width:140px;display:block;margin:0 0 22px}
+.eyebrow{font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.9;margin:0 0 12px}
+.hero h1{font-size:34px;line-height:1.12;margin:0 0 14px;font-weight:800}
+.hero p{font-size:17px;line-height:1.6;opacity:.95;margin:0 0 24px}
+.btn{display:inline-block;background:#fff;color:var(--purple);font-weight:800;font-size:16px;padding:15px 30px;border-radius:var(--rad);text-decoration:none}
+.sect{padding:28px 30px 4px}
+.sect h2{font-size:22px;line-height:1.3;color:var(--ink);margin:0 0 8px;font-weight:800}
+.sect p{font-size:16px;line-height:1.65;color:var(--body);margin:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:18px 24px 6px}
+.card{border:0;padding:0;background:var(--cc);border-radius:var(--rad);overflow:hidden;cursor:pointer;text-align:left;display:block;transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.cardimg{position:relative;background:#fff;height:210px;display:flex;align-items:center;justify-content:center}
+.cardimg img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.badge{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;font-weight:700;padding:4px 9px;border-radius:20px}
+.cardcap{padding:14px 16px 16px;color:#fff}
+.ct{font-weight:800;font-size:17px;margin:0 0 5px}
+.cd{font-size:13.5px;line-height:1.55;opacity:.95}
+.more{font-size:12.5px;font-weight:700;margin:10px 0 0;opacity:.95}
+.steps{padding:24px 30px 8px}
+.steps h2{font-size:18px;color:var(--ink);margin:0 0 18px;font-weight:800}
+.step{display:flex;align-items:center;gap:14px;margin:0 0 16px;font-size:16px;color:var(--body)}
+.num{flex:0 0 34px;width:34px;height:34px;border-radius:50%;color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center}
+.ctaf{padding:10px 30px 30px;text-align:center}
+.ctaf a{display:inline-block;background:linear-gradient(135deg,var(--orange),var(--magenta) 55%,var(--purple));color:#fff;font-weight:800;font-size:17px;padding:16px 38px;border-radius:var(--rad);text-decoration:none}
+.ctaf .mi{font-size:13px;color:var(--mut);margin:14px 0 0}
+.sig{padding:8px 30px 26px}
+.sigin{display:flex;gap:16px;border-top:1px solid var(--line);padding-top:20px}
+.sigl{flex:0 0 auto;text-align:center}
+.sigl img.av{width:76px;height:76px;border-radius:50%;border:3px solid var(--magenta);display:block}
+.sigl img.lg{width:86px;display:block;margin:10px 0 0}
+.sigbar{flex:0 0 3px;width:3px;background:var(--magenta);border-radius:2px;align-self:stretch}
+.signame{font-weight:800;font-size:19px;color:var(--purple)}
+.sigrole{font-weight:700;font-size:13px;color:var(--magenta);margin:0 0 10px}
+.sigrow{font-size:13px;line-height:1.9;color:var(--body)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin:0 8px 1px 0}
+.sigtag{font-weight:700;font-size:10.5px;letter-spacing:.08em;color:var(--mut);margin:12px 0 0}
+.foot{background:var(--dark);padding:26px 30px;color:#c9bcda}
+.foot img{width:132px;display:block;margin:0 0 14px}
+.foot .c{font-size:13px;line-height:1.8}
+.socs{margin:16px 0 0;display:flex;gap:10px;flex-wrap:wrap}
+.soc{background:var(--sc);color:#fff;font-weight:700;font-size:12.5px;padding:8px 16px;border-radius:20px;text-decoration:none}
+.foot .un{font-size:12px;margin:16px 0 0}.foot .un a{color:#b7a8cc}
+/* lightbox */
+.lb{display:none;position:fixed;inset:0;background:rgba(20,8,32,.94);z-index:99;align-items:center;justify-content:center;flex-direction:column}
+.lb.open{display:flex}
+.lbimg{max-width:90vw;max-height:78vh;object-fit:contain;border-radius:12px}
+.lbn{color:#fff;font-weight:700;margin:14px 0 0;font-size:15px}
+.lbx{position:absolute;top:20px;right:24px;color:#fff;font-size:34px;cursor:pointer;line-height:1;background:none;border:0}
+.lbnav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:44px;cursor:pointer;background:none;border:0;padding:0 18px}
+.lbnav.p{left:6px}.lbnav.n{right:6px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.hero h1{font-size:28px}}
+</style></head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <img class="logo" src="https://raw.githubusercontent.com/1elevarts/elevarts-brand-kit/main/web/wordmark/white/wordmark-480.png" alt="Elevarts">
+    <div class="eyebrow">Școli și grădinițe</div>
+    <h1>Nu știi ce vrei?<br>Noi venim cu ideea.</h1>
+    <p>Tu ne spui ocazia — sau nici măcar atât. De la mascote la poartă până la show-ul LED de seară, ideea, personajele și tot spectacolul le aducem noi. Nimic prea mic, nimic prea mare.</p>
+    <a class="btn" href="https://wa.me/40770115511?text=Bun%C4%83!%20Avem%20un%20eveniment%20la%20%C8%99coal%C4%83%2Fgr%C4%83dini%C8%9B%C4%83%20%C8%99i%20am%20vrea%20c%C3%A2teva%20idei%20de%20la%20voi.">Spune-ne ce ocazie ai</a>
+  </div>
+
+  <div class="sect">
+    <h2>Tu vii cu ideea? Bun.<br>N-ai nicio idee? Și mai bun.</h2>
+    <p>Nu trebuie să știi cum vrei să arate. Trebuie doar să știi că vrei ceva frumos pentru copii. Restul — concept, personaje, muzică, momentul — punem noi pe masă.</p>
+  </div>
+
+  <div class="grid">
+  <button class="card" style="--cc:var(--magenta)" onclick="lbOpen('mascote')">
+    <div class="cardimg"><img src="https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/unicorn-0.jpg" alt="Prima zi de școală" loading="lazy">
+      <span class="badge">◍ 11 poze</span></div>
+    <div class="cardcap"><div class="ct">Prima zi de școală</div><div class="cd">Mascote care întâmpină copiii chiar la poartă.</div>
+      <div class="more">Vezi toate personajele →</div></div>
+  </button>
+  <button class="card" style="--cc:var(--purple)" onclick="lbOpen('serbare')">
+    <div class="cardimg"><img src="https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/gentleman-0.jpg" alt="O serbare mare" loading="lazy">
+      <span class="badge">◍ 8 poze</span></div>
+    <div class="cardcap"><div class="ct">O serbare mare</div><div class="cd">Paradă, personaje și momente pe scenă.</div>
+      <div class="more">Vezi toate personajele →</div></div>
+  </button>
+  <button class="card" style="--cc:var(--orange)" onclick="lbOpen('final')">
+    <div class="cardimg"><img src="https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/phoenix-0.jpg" alt="Un final de an" loading="lazy">
+      <span class="badge">◍ 6 poze</span></div>
+    <div class="cardcap"><div class="ct">Un final de an</div><div class="cd">Show LED care rămâne în amintiri.</div>
+      <div class="more">Vezi toate personajele →</div></div>
+  </button>
+  <button class="card" style="--cc:var(--teal)" onclick="lbOpen('surpriza')">
+    <div class="cardimg"><img src="https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/butterflies-0.jpg" alt="Încă nu știi?" loading="lazy">
+      <span class="badge">◍ 6 poze</span></div>
+    <div class="cardcap"><div class="ct">Încă nu știi?</div><div class="cd">Cel mai simplu. Spune-ne data — ideea vine de la noi.</div>
+      <div class="more">Vezi toate personajele →</div></div>
+  </button></div>
+
+  <div class="steps">
+    <h2>Cât de simplu e</h2>
+    <div class="step"><span class="num" style="background:var(--magenta)">1</span><span>Ne spui ocazia — sau ne lași pe noi să propunem.</span></div>
+    <div class="step"><span class="num" style="background:var(--orange)">2</span><span>Primești câteva idei și oferta, în aceeași zi.</span></div>
+    <div class="step"><span class="num" style="background:var(--teal)">3</span><span>Venim și facem show-ul. Tu te bucuri de reacțiile copiilor.</span></div>
+  </div>
+
+  <div class="ctaf">
+    <a href="https://wa.me/40770115511?text=Bun%C4%83!%20Avem%20un%20eveniment%20la%20%C8%99coal%C4%83%2Fgr%C4%83dini%C8%9B%C4%83%20%C8%99i%20am%20vrea%20c%C3%A2teva%20idei%20de%20la%20voi.">Spune-ne ideea ta →</a>
+    <div class="mi">Răspundem în aceeași zi · Ofertă în 24h</div>
+  </div>
+
+  <div class="sig"><div class="sigin">
+    <div class="sigl"><img class="av" src="https://shows.ai-ai.ro/img/sig/bogdan.png" alt="Bogdan Trifan"><img class="lg" src="https://raw.githubusercontent.com/1elevarts/elevarts-brand-kit/main/web/wordmark/color/wordmark-480.png" alt="Elevarts"></div>
+    <div class="sigbar"></div>
+    <div>
+      <div class="signame">Bogdan Trifan</div>
+      <div class="sigrole">Social Wizzard</div>
+      <div class="sigrow">
+        <span class="dot" style="background:var(--orange)"></span>+40 765 482 798<br>
+        <span class="dot" style="background:var(--magenta)"></span>social@elevarts.com<br>
+        <span class="dot" style="background:var(--teal)"></span>elevarts.com
+      </div>
+      <div class="sigtag">ELEVATED ARTS · EVENTS · EMOTIONS</div>
+    </div>
+  </div></div>
+
+  <div class="foot">
+    <img src="https://raw.githubusercontent.com/1elevarts/elevarts-brand-kit/main/web/wordmark/white/wordmark-480.png" alt="Elevarts">
+    <div class="c">+40 770 115 511 · ask@elevarts.com · elevarts.com<br>Strada Lipscani 104, Sector 3, București</div>
+    <div class="socs"><a class="soc" style="--sc:#e0398f" href="https://instagram.com/elevarts">Instagram</a><a class="soc" style="--sc:#1877f2" href="https://facebook.com/1elevarts">Facebook</a><a class="soc" style="--sc:#17b5c9" href="https://tiktok.com/@1elevarts">TikTok</a></div>
+    <div class="un"><a href="#">Dezabonare</a> · <a href="#">Preferințe email</a></div>
+  </div>
+</div>
+
+<div class="lb" id="lb">
+  <button class="lbx" onclick="lbClose()">×</button>
+  <button class="lbnav p" onclick="lbNav(-1)">‹</button>
+  <img class="lbimg" id="lbimg" alt="Personaj Elevarts" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+  <button class="lbnav n" onclick="lbNav(1)">›</button>
+  <div class="lbn" id="lbn"></div>
+</div>
+<script>
+const G={"mascote":["https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/unicorn-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/panda-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/stitch-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/masha-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/kuromi-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/iepure-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/capybara-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/clovn-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/monster-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/ratusca-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/ursverde-0.jpg"],"serbare":["https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/gentleman-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/cascade-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/octopus-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/colorpop-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/circles-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/neon-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/wiz-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/puppets-0.jpg"],"final":["https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/phoenix-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/ledrobots-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/drummers-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/mirror-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/ledManequin-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/angels-0.jpg"],"surpriza":["https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/butterflies-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/trioButt-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/goldButt-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/transformers-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/optimus-0.jpg","https://1elevarts.github.io/elevarts-brand-kit/scoala/img/clean/bumblebee-0.jpg"]};let cur=[],i=0;
+function lbOpen(id){cur=G[id];i=0;lbShow();document.getElementById('lb').classList.add('open')}
+function lbShow(){document.getElementById('lbimg').src=cur[i];document.getElementById('lbn').textContent=(i+1)+' / '+cur.length}
+function lbNav(d){i=(i+d+cur.length)%cur.length;lbShow()}
+function lbClose(){document.getElementById('lb').classList.remove('open')}
+document.getElementById('lb').addEventListener('click',e=>{if(e.target.id==='lb')lbClose()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lbClose();if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1)});
+</script>
+</body></html>
