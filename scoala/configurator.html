@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Construiește-ți pachetul · ELEVARTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf8fd; --ink:#16122a; --muted:#6b6482;
+    --hero:#131120; --pink:#ff8ab8; --magenta:#c1397d;
+    --grad:linear-gradient(96deg,#d6413a 0%,#862d91 38%,#645faa 68%,#6ba3d7 100%);
+    --green:#25d366; --line:#ece5f4; --card:#ffffff;
+    --disp:'General Sans',Manrope,system-ui,sans-serif;
+    --body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:var(--disp);font-weight:600;margin:0}
+  .gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .eyebrow{font-weight:700;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--magenta)}
+
+  header.hero{position:relative;color:#fff;background:var(--hero);overflow:hidden;
+    background-image:
+      radial-gradient(70% 60% at 88% 8%, rgba(134,45,145,.55) 0%, rgba(134,45,145,0) 62%),
+      radial-gradient(60% 55% at 4% 96%, rgba(100,95,170,.55) 0%, rgba(100,95,170,0) 60%);}
+  .htop{display:flex;justify-content:space-between;align-items:flex-start;padding:22px 0 0}
+  .htop img{height:26px}
+  .hright{display:flex;flex-direction:column;align-items:flex-end;gap:11px}
+  .langtoggle{display:inline-flex;background:rgba(255,255,255,.1);border-radius:999px;padding:3px;gap:2px}
+  .langtoggle button{border:none;background:transparent;color:#c9c2e0;font-weight:700;font-size:12px;
+    padding:5px 12px;border-radius:999px;cursor:pointer;font-family:var(--body);letter-spacing:.04em}
+  .langtoggle button.on{background:#fff;color:var(--ink)}
+  .tagline{text-align:right;font-size:11px;letter-spacing:.22em;color:#c9c2e0;line-height:1.7;font-weight:600}
+  .hero .eyebrow{color:var(--pink)}
+  .hbody{padding:26px 0 8px}
+  h1{font-size:clamp(34px,6vw,60px);line-height:1.06;letter-spacing:-.01em}
+  .hsub{color:#d7d0ea;font-size:16px;line-height:1.55;max-width:560px;margin:16px 0 0}
+  .meta{display:flex;gap:22px;flex-wrap:wrap;color:#c9c2e0;font-size:13.5px;margin:20px 0 0}
+  .meta span{display:inline-flex;align-items:center;gap:7px}
+  .wa{display:inline-flex;align-items:center;gap:9px;background:var(--green);color:#08301a;
+    font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;text-decoration:none;margin:22px 0 4px}
+  .wa:hover{filter:brightness(1.04)}
+
+  .picks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:26px 0 40px}
+  .pk{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);border-radius:16px;
+    padding:16px 17px;cursor:pointer;transition:.16s;text-align:left;color:#fff}
+  .pk:hover{background:rgba(255,255,255,.08)}
+  .pk.on{border-color:var(--pink);background:rgba(193,57,125,.14);box-shadow:0 12px 34px rgba(193,57,125,.28)}
+  .pk .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);font-weight:700}
+  .pk h3{font-size:18px;margin:7px 0 3px;color:#fff}
+  .pk .d{font-size:12.5px;color:#b9b2d0;min-height:32px}
+  .pk .p{font-family:var(--disp);font-weight:600;font-size:20px;margin-top:8px}
+  .pk .p small{font-size:11px;color:#b9b2d0;font-weight:600;letter-spacing:.04em}
+
+  .body{padding:40px 0 0}
+  .body .eyebrow{margin-bottom:10px}
+  .body h2{font-size:clamp(26px,4vw,38px);line-height:1.1}
+  .lead{color:var(--muted);font-size:15.5px;line-height:1.6;max-width:640px;margin:12px 0 0}
+  .hint{color:var(--muted);font-size:13.5px;margin:20px 0 0}
+  .hint b{color:var(--ink)}
+
+  .intro{border-left:3px solid transparent;border-image:var(--grad) 1;padding:2px 0 2px 22px;margin:4px 0 40px}
+  .intro h2{font-size:clamp(24px,3.4vw,32px);line-height:1.14;margin:8px 0 0}
+  .intro .lead{margin-top:14px}
+  .cfg-head{margin-top:8px}
+
+  .durbar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 18px;margin:22px 0 0;box-shadow:0 8px 26px rgba(30,16,54,.05)}
+  .durlbl{font-family:var(--disp);font-weight:600;font-size:15px;max-width:560px}
+  .durnote{display:block;font-family:var(--body);font-weight:400;font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.5}
+  .durnote b{color:var(--magenta)}
+  .durseg{display:inline-flex;background:#f3edfa;border-radius:12px;padding:4px;gap:3px;flex:none}
+  .durseg button{border:none;background:transparent;color:var(--muted);font-family:var(--disp);font-weight:600;
+    font-size:14px;padding:9px 16px;border-radius:9px;cursor:pointer;transition:.14s;white-space:nowrap}
+  .durseg button.on{background:#fff;color:var(--ink);box-shadow:0 3px 10px rgba(30,16,54,.12)}
+
+  .catbox{margin:22px 0 0;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    background:linear-gradient(100deg,#fbf4ff,#fff6ef);border:1px solid var(--line);border-radius:16px;padding:16px 20px}
+  .catbox .ct{font-family:var(--disp);font-weight:600;font-size:15px}
+  .catbox .cs{font-size:13px;color:var(--muted);margin-top:2px}
+  .catbtn{flex:none;display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#fff;
+    background:var(--grad);font-weight:700;font-size:14px;padding:12px 20px;border-radius:999px}
+  .catbtn:hover{filter:brightness(1.05)}
+
+  .slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(184px,1fr));gap:16px;margin:18px 0 0}
+  .slot{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    position:relative;display:flex;flex-direction:column;box-shadow:0 8px 26px rgba(30,16,54,.06)}
+  .slot .ph{aspect-ratio:4/5;background:#efe9f7 center/cover no-repeat;position:relative}
+  .slot.dark .ph{background-color:#141024}
+  .slot .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,32,0) 55%,rgba(19,17,32,.5) 100%)}
+  .badge{position:absolute;left:11px;top:11px;z-index:2;font-size:10px;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:#fff;padding:5px 10px;border-radius:999px;background:var(--grad)}
+  .slot .rm{position:absolute;top:9px;right:9px;z-index:2;width:26px;height:26px;border-radius:50%;
+    border:none;background:rgba(19,17,32,.62);color:#fff;font-size:15px;cursor:pointer;line-height:1;backdrop-filter:blur(4px)}
+  .slot .body2{padding:12px 14px 14px}
+  .slot .nm{font-family:var(--disp);font-weight:600;font-size:14.5px;line-height:1.2;min-height:34px}
+  .slot .pr{color:var(--ink);font-weight:700;font-size:14px;margin-top:4px}
+  .slot .pr b{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .slot .art,.pick .art{font-size:11.5px;color:var(--muted);font-weight:600;margin-top:3px;display:flex;align-items:center;gap:5px}
+  .slot .art::before,.pick .art::before{content:"◍";color:var(--magenta);font-size:10px}
+  .slot .swap{margin-top:11px;width:100%;border:1.4px solid #e3d7f0;color:var(--magenta);background:#fff;
+    border-radius:11px;padding:9px;font-weight:700;font-size:12.5px;font-family:var(--body);cursor:pointer;transition:.14s}
+  .slot .swap:hover{border-color:var(--magenta);background:#fdf4f8}
+  .addslot{border:1.6px dashed #d9c9ec;border-radius:18px;background:#fbf7ff;color:var(--magenta);
+    font-family:var(--disp);font-weight:600;font-size:14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;
+    align-items:center;justify-content:center;min-height:150px;text-align:center;padding:14px;transition:.14s}
+  .addslot:hover{background:#f6edff;border-color:var(--magenta)}
+  .addslot .plus{font-size:26px;line-height:1}
+
+  .incluse{margin:26px 0 0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:0 8px 26px rgba(30,16,54,.05)}
+  .incluse .t{font-family:var(--disp);font-weight:600;font-size:15px;margin-bottom:12px}
+  .incluse ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  .incluse li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:#3a3350}
+  .chk{flex:none;width:20px;height:20px;border-radius:50%;background:rgba(37,211,102,.14);color:#12a150;
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:1px}
+  .incluse li.off{color:var(--muted)}
+  .chk-off{background:#efe9f4 !important;color:#a99fbb !important}
+
+  .totalbar{position:sticky;bottom:16px;margin:26px 0 0;background:var(--hero);color:#fff;border-radius:20px;
+    padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    box-shadow:0 18px 44px rgba(19,17,32,.34);background-image:radial-gradient(60% 120% at 92% 10%, rgba(134,45,145,.5) 0%, rgba(134,45,145,0) 60%)}
+  .totalbar .lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#b9b2d0}
+  .totalbar .amt{font-family:var(--disp);font-weight:600;font-size:34px;line-height:1;margin-top:4px}
+  .totalbar .amt small{font-size:15px;font-weight:600;color:#c9c2e0}
+  .totalbar .tva{font-size:12.5px;color:#c9c2e0;margin-top:6px}
+  .totalbar .tva b{color:#fff}
+  .totalbar .wa{margin:0}
+
+  .note{margin:26px 0 0;background:#fff6e0;border:1px solid #f3e2ac;color:#7a5a00;border-radius:14px;padding:12px 16px;font-size:12.5px;text-align:center}
+
+  /* SUMMARY (view ofertă client) */
+  #summary{padding:38px 22px 0}
+  .sumcard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:8px 8px 8px;box-shadow:0 14px 40px rgba(30,16,54,.08);overflow:hidden}
+  .summeta{font-family:var(--disp);font-weight:600;font-size:15px;color:var(--magenta);padding:16px 18px 4px}
+  .sitems{display:grid;gap:2px;padding:6px 8px}
+  .sitem{display:flex;align-items:center;gap:14px;padding:12px 10px;border-radius:14px}
+  .sitem:nth-child(odd){background:#faf7fe}
+  .sitem .sph{flex:none;width:60px;height:72px;border-radius:11px;background:#efe9f7 center/cover no-repeat}
+  .sitem .sph.dark{background-color:#141024}
+  .sitem .sinfo{flex:1;min-width:0}
+  .sitem .snm{font-family:var(--disp);font-weight:600;font-size:15px;line-height:1.2}
+  .sitem .sart{font-size:12px;color:var(--muted);font-weight:600;margin-top:3px;display:flex;align-items:center;gap:5px}
+  .sitem .sart::before{content:"◍";color:var(--magenta);font-size:10px}
+  .sitem .spr{flex:none;font-weight:800;font-size:15px}
+  .sitem .spr b{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .sumincl{padding:14px 18px 4px;border-top:1px solid var(--line);margin-top:6px}
+  .sumincl .t{font-family:var(--disp);font-weight:600;font-size:14px;margin-bottom:9px}
+  .sumincl ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  .sumincl li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#3a3350}
+  .sumtotal{margin:10px 8px 8px;background:var(--hero);color:#fff;border-radius:16px;padding:18px 22px;
+    background-image:radial-gradient(60% 120% at 92% 10%, rgba(134,45,145,.5) 0%, rgba(134,45,145,0) 60%)}
+  .sumtotal .lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#b9b2d0}
+  .sumtotal .amt{font-family:var(--disp);font-weight:600;font-size:34px;line-height:1;margin-top:4px}
+  .sumtotal .amt small{font-size:15px;font-weight:600;color:#c9c2e0}
+  .sumtotal .tva{font-size:12.5px;color:#c9c2e0;margin-top:6px}
+  .sumtotal .tva b{color:#fff}
+  .editrow{text-align:center;margin:18px 0 0}
+  .editrow a{color:var(--magenta);font-weight:700;font-size:13.5px;text-decoration:none}
+
+  footer{padding:34px 0 46px;text-align:center;color:var(--muted);font-size:12.5px}
+  footer img{height:18px;vertical-align:middle;opacity:.7;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto}
+
+  .modal{position:fixed;inset:0;background:rgba(19,17,32,.62);display:none;z-index:50;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px)}
+  .modal.open{display:flex}
+  .sheet{background:var(--bg);width:100%;max-width:1080px;max-height:88vh;border-radius:24px 24px 0 0;overflow:auto;padding:20px 22px 30px}
+  .sheet h3{font-size:19px}
+  .sh-sub{color:var(--muted);font-size:13px;margin:3px 0 14px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .chip{border:1.3px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;cursor:pointer;color:var(--muted);font-family:var(--body)}
+  .chip.on{border-color:var(--magenta);color:var(--magenta);background:#fdf4f8}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+  .pick{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;cursor:pointer;transition:.13s;position:relative}
+  .pick:hover{border-color:var(--magenta);transform:translateY(-3px);box-shadow:0 12px 24px rgba(193,57,125,.16)}
+  .pick .ph{aspect-ratio:4/5;background:#efe9f7 center/cover no-repeat}
+  .pick.dark .ph{background-color:#141024}
+  .pick .nm{padding:9px 10px 2px;font-family:var(--disp);font-weight:600;font-size:12.5px;line-height:1.2;min-height:30px}
+  .pick .pr{padding:0 10px 10px;font-weight:700;font-size:12.5px}
+  .pick .pr b{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .pick .art{padding:0 10px 10px;margin-top:-4px}
+  .close{position:sticky;top:0;float:right;border:none;background:var(--hero);color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer}
+  @media(max-width:720px){.picks{grid-template-columns:1fr;gap:10px}.htop img{height:22px}}
+</style>
+</head>
+<body>
+<header class="hero">
+ <div class="wrap">
+  <div class="htop">
+    <img src="https://raw.githubusercontent.com/1elevarts/elevarts-brand-kit/main/web/wordmark/color/wordmark-480.png" alt="ELEVARTS">
+    <div class="hright">
+      <div class="langtoggle" id="langtoggle">
+        <button data-l="ro" onclick="setLang('ro')">RO</button>
+        <button data-l="en" onclick="setLang('en')">EN</button>
+      </div>
+      <div class="tagline">EVENTS · EMOTIONS<br>ARTS — ELEVATED</div>
+    </div>
+  </div>
+  <div class="hbody">
+    <div class="eyebrow" id="heroEyebrow"></div>
+    <h1 id="heroH1" style="margin-top:12px"></h1>
+    <p class="hsub" id="heroSub"></p>
+    <div class="meta" id="metaWrap"></div>
+    <a class="wa" href="#" id="wa-top"></a>
+  </div>
+  <div class="picks" id="picks"></div>
+ </div>
+</header>
+
+<div class="wrap body" id="builder">
+  <div class="intro">
+    <div class="eyebrow" id="introEyebrow"></div>
+    <h2 id="introH2"></h2>
+    <p class="lead" id="introLead"></p>
+  </div>
+
+  <div class="cfg-head">
+    <div>
+      <div class="eyebrow" id="b-eyebrow"></div>
+      <h2 id="b-title">—</h2>
+    </div>
+  </div>
+  <p class="lead" id="b-lead">—</p>
+
+  <div class="durbar">
+    <div class="durlbl"><span id="locLblText"></span><span class="durnote" id="locNote"></span></div>
+    <div class="durseg" id="locseg"></div>
+  </div>
+
+  <div class="durbar">
+    <div class="durlbl"><span id="entLblText"></span><span class="durnote" id="entNote"></span></div>
+    <div class="durseg" id="entseg"></div>
+  </div>
+
+  <p class="hint" id="hint"></p>
+
+  <div class="slots" id="slots"></div>
+
+  <div class="incluse">
+    <div class="t" id="inclTitle"></div>
+    <ul id="incluse"></ul>
+  </div>
+
+  <div class="catbox">
+    <div>
+      <div class="ct" id="catCt"></div>
+      <div class="cs" id="catCs"></div>
+    </div>
+    <a class="catbtn" id="catBtn" href="https://drive.google.com/file/d/1izQMPMm3KWu2JgZ6_JpP3hx-WT1d_TV9/view" target="_blank" rel="noopener"></a>
+  </div>
+
+  <div class="totalbar">
+    <div>
+      <div class="lbl"><span id="totalLbl"></span> · <span id="durtxt"></span></div>
+      <div class="amt" id="total">0 <small>€ net</small></div>
+      <div class="tva" id="tva"></div>
+    </div>
+    <a class="wa" id="send" href="#"></a>
+  </div>
+
+  <div class="note" id="note"></div>
+</div>
+
+<div class="wrap" id="summary" style="display:none"></div>
+
+<footer class="wrap">
+  <img src="https://raw.githubusercontent.com/1elevarts/elevarts-brand-kit/main/web/wordmark/color/wordmark-480.png" alt="ELEVARTS">
+  <span id="footerText"></span>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="sheet">
+    <button class="close" id="close">×</button>
+    <h3 id="pickTitle"></h3>
+    <div class="sh-sub" id="pickSub"></div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</div>
+
+<script src="cfg-data.js"></script>
+<script>
+const BASE="img/clean/";
+const DARK=new Set(["neon","trioButt","ledManequin","angels","mirror","mirrorPici","ledrobots","phoenix"]);
+// [slug, nameRO, price, cat, flat, imgSlug]
+const D=[
+  ["unicorn","Unicorn gonflabil",150,"masca"],["stitch","Stitch gonflabil",150,"masca"],
+  ["panda","Panda gonflabil",150,"masca"],["iepure","Iepure inimă gonflabil",150,"masca"],
+  ["capybara","Capybara gonflabil",150,"masca"],["kuromi","Kuromi gonflabil",150,"masca"],
+  ["masha","Ursul Mashei gonflabil",150,"masca"],["monster","Monster Inc gonflabil",150,"masca"],
+  ["ratusca","Rățușca gonflabilă",150,"masca"],["clovn","Clovn gonflabil",150,"masca"],
+  ["ursverde","Urs verde gonflabil",150,"masca"],
+  ["colorpop","Color Pop",150,"parada"],["circles","Colorful Circles",150,"parada"],
+  ["neon","Neon Waves",150,"parada"],["wiz","Rainbow Wizards",150,"parada"],
+  ["octopus","Octopus picioroange",250,"parada"],["mirror","Mirror Men sol",150,"parada"],
+  ["mirrorPici","Mirror Men picioroange",250,"parada"],
+  ["cascade","Cascade Flowers picioroange",250,"parada"],
+  ["butterflies","Fluturi de poveste",200,"aripi"],["goldButt","Fluturi aurii",300,"aripi"],
+  ["trioButt","Trio fluturi",400,"aripi"],
+  ["puppets","Păpuși gigant Smiley",250,"papusi"],["gentleman","Rainbow Gentleman gigant",250,"papusi"],
+  ["ledManequin","Manechin LED gigant",250,"papusi"],
+  ["phoenix","Pheonyx Birds picioroange",500,"led"],["angels","White Angels picioroange",500,"led"],
+  ["ledrobots","Roboți LED",500,"led"],
+  ["trShowV1","Transformers V1 — Show",1000,"show",true,"transformers"],
+  ["trShowV2","Transformers V2 — Show",1250,"show",true,"transformersV2"],
+];
+const EN_NAME={
+  unicorn:"Inflatable Unicorn",stitch:"Inflatable Stitch",panda:"Inflatable Panda",
+  iepure:"Inflatable Heart Bunny",capybara:"Inflatable Capybara",kuromi:"Inflatable Kuromi",
+  masha:"Masha's Bear (inflatable)",monster:"Inflatable Monster",ratusca:"Inflatable Duck",
+  clovn:"Inflatable Clown",ursverde:"Inflatable Green Bear",
+  colorpop:"Color Pop",circles:"Colorful Circles",neon:"Neon Waves",wiz:"Rainbow Wizards",
+  octopus:"Octopus (stilts)",mirror:"Mirror Men (ground)",mirrorPici:"Mirror Men (stilts)",cascade:"Cascade Flowers (stilts)",
+  butterflies:"Storybook Butterflies",goldButt:"Golden Butterflies",trioButt:"Butterfly Trio",
+  puppets:"Smiley Giant Puppets",gentleman:"Rainbow Gentleman (giant)",ledManequin:"Giant LED Mannequin",
+  transformers:"Transformers V1",transformersV2:"Transformers V2",optimus:"Optimus Prime V1",
+  optimusV2:"Optimus Prime V2",bumblebee:"Bumblebee V1",bumblebeeV2:"Bumblebee V2",
+  phoenix:"Pheonyx Birds (stilts)",angels:"White Angels (stilts)",ledrobots:"LED Robots",
+  trShowV1:"Transformers V1 — Show",trShowV2:"Transformers V2 — Show",
+};
+const BY={}; D.forEach(x=>BY[x[0]]={slug:x[0],name:x[1],price:x[2],cat:x[3],flat:x[4]||false,img:x[5]||x[0]});
+// Sursă unică de adevăr din catalog (cfg-data.js): suprascrie doar preț + nr. artiști.
+// NU atinge img/name/cat/flat. Fallback la valorile hardcodate dacă fișierul lipsește.
+const CFG=(typeof window!=='undefined'&&window.CFG_COSTUMES)||null;
+if(CFG){ Object.keys(BY).forEach(s=>{ if(CFG[s]&&typeof CFG[s].price==='number') BY[s].price=CFG[s].price; }); }
+const img=s=>BASE+((BY[s]&&BY[s].img)||s)+"-0.jpg";
+// nr artisti per act (default_artists din catalog); implicit 1
+const ART={butterflies:2,goldButt:2,trioButt:3,phoenix:2,angels:2,ledrobots:2,trShowV1:3,trShowV2:3};
+const artists=s=>(CFG&&CFG[s]&&typeof CFG[s].artists==='number')?CFG[s].artists:(ART[s]||1);
+
+const PACKS=[
+  {key:"esent",name:"Esențial",tag:"Simplu și cald · 2 personaje",
+   lead:"Două personaje care aduc bucurie și energie, fără complicații. Merge oriunde — grădiniță, școală, liceu sau primărie.",
+   enName:"Essential",enTag:"Simple & warm · 2 characters",
+   enLead:"Two friendly characters that bring joy and energy, no fuss. Works anywhere — kindergarten, school, high school or town hall.",
+   slots:["unicorn","panda"]},
+  {key:"complet",name:"Complet",tag:"Culoare & energie · mix bogat",
+   lead:"Un mix mai bogat, cu paradă și culoare, care ține tot evenimentul viu. Se potrivește oricărui loc și oricărei vârste.",
+   enName:"Complete",enTag:"Colour & energy · rich mix",
+   enLead:"A richer mix, with parade and colour, that keeps the whole event alive. It fits any place and any age.",
+   slots:["unicorn","cascade","butterflies"]},
+  {key:"premium",name:"Premium",tag:"Deschidere mare · show LED & roboți",
+   lead:"Momente spectaculoase — roboți, LED și show-uri care se filmează singure. Pentru când vrei o deschidere pe scenă mare, oriunde ar fi.",
+   enName:"Premium",enTag:"Big opening · LED & robots show",
+   enLead:"Spectacular moments — robots, LED and shows that film themselves. For when you want a big-stage opening, wherever it is.",
+   slots:["trShowV2","ledrobots","phoenix"]},
+];
+const LOC={buc:{min:2},afara:{min:3}};
+
+const TXT={
+ ro:{
+  title:"Construiește-ți pachetul · ELEVARTS",
+  heroEyebrow:"Prima zi de școală · Septembrie 2026",
+  heroH1:'Construiește-ți<br><span class="gt">pachetul perfect</span>',
+  heroSub:"Se apropie prima zi de școală și nu știi cu ce să începi? Lasă pe noi. Alege un pachet gata-făcut, potrivește-l în câteva secunde — prețul se mișcă live — și ni-l trimiți pe WhatsApp. Confirmăm în aceeași zi.",
+  meta:["◆ 3 pachete gata-făcute","◆ Peste 30 de personaje","◆ Ofertă fermă în 24h"],
+  waTop:"Scrie-ne pe WhatsApp",
+  introEyebrow:"Nu mai căuta ore întregi",
+  introH2:"Ți-am pregătit deja pachetele.<br>Tu doar le potrivești.",
+  introLead:"Începutul de an vine repede și de obicei prinde pe toată lumea nepregătită. De-aia am făcut noi treaba grea: trei pachete gândite pentru prima zi de școală, pe care le personalizezi cum vrei. Schimbi personajele, adaugi sau scoți, alegi câte intrări — și vezi pe loc cât costă.",
+  locLbl:"Unde e evenimentul?",
+  locNote:"Minim <b>2 intrări în București</b> · minim <b>3 în afara Bucureștiului</b>. O intrare = o oră: <b>45 min activitate + 15 min pauză</b>.",
+  entLbl:"Câte intrări?",
+  entNote:"Prețul din carduri e pentru <b>o intrare</b>. Fiecare intrare în plus se adună la total.",
+  hint:"Apasă <b>Schimbă</b> pe orice personaj ca să-l înlocuiești. Poți adăuga sau scoate personaje — prețul se recalculează instant.",
+  inclTitle:"Ce aducem cu noi",
+  incl:["Costumele și personajele pe care le alegi","Energie și voie bună de la echipă","Timp alocat pentru poze cu personajele (cu telefonul vostru)"],
+  mcOn:"MC / prezentator — inclus în show-ul de Transformers",
+  mcOff:"MC / prezentator — doar la show-ul de Transformers",
+  catCt:"Vrei să vezi chiar tot ce avem?",
+  catCs:"Peste 200 de costume și show-uri în catalogul complet Colorful.",
+  catBtn:"Vezi catalogul Colorful →",
+  totalLbl:"Total pachet",
+  vat:"Cu TVA 21%",orNoVat:"sau fără TVA dacă e mai simplu",
+  send:"Trimite pachetul pe WhatsApp →",
+  note:"Prototip de lucru — prețuri exacte din catalog (EUR, net fără TVA). Câteva costume au variante sol/picioroange de confirmat. Pozele finale = shooting studio pe fundal Elevarts, nu decupaje.",
+  footer:"Royal Entertainment · București · (+40) 0770 115 511 · ask@elevarts.com",
+  pickTitle:"Alege personajul",pickSub:"Prețul pachetului se actualizează instant.",all:"Toate",
+  cat:{masca:"Mascote",parada:"Picioroange & paradă",aripi:"Aripi",papusi:"Păpuși gigant",led:"Moment LED",show:"Show-uri"},
+  loc:{buc:"În București",afara:"În afara Bucureștiului"},
+  pkLbl:"Pachetul",from:"de la",perEntry:"/ intrare · NET",swap:"Schimbă personajul",add:"Adaugă personaj",fixed:"fix",netUnit:"€ net",
+  sumEyebrow:"Oferta aleasă de client",editLink:"Deschide în configurator (modifică) →",
+  ent:n=>n+(n===1?" intrare":" intrări"),
+  artists:n=>n+(n===1?" artist":" artiști"),
+  waMsg:(P,l,e,lines,net,tva,link)=>"Bună! Am construit un pachet pentru prima zi de școală.\nPachet: "+P+" · "+l+" · "+e+"\n"+lines+"\nTotal: "+net+" € net (cu TVA 21%: "+tva+" €).\nOferta mea (deschide să vezi exact ce am ales): "+link,
+  waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — de la "+pr+"€, preț fix":" — "+pr+"€/intrare"),
+ },
+ en:{
+  title:"Build your package · ELEVARTS",
+  heroEyebrow:"First day of school · September 2026",
+  heroH1:'Build your<br><span class="gt">perfect package</span>',
+  heroSub:"First day of school is almost here and you're not sure where to begin? Leave it to us. Pick a ready-made package, tweak it in seconds — the price updates live — and send it to us on WhatsApp. We reply the same day.",
+  meta:["◆ 3 ready-made packages","◆ 30+ characters","◆ Firm quote in 24h"],
+  waTop:"Message us on WhatsApp",
+  introEyebrow:"Stop hunting for hours",
+  introH2:"We've already built the packages.<br>You just tweak them.",
+  introLead:"The new school year comes fast and usually catches everyone unprepared. So we did the hard part: three packages made for the first day of school, that you personalise however you like. Swap characters, add or remove, choose how many entries — and see the price on the spot.",
+  locLbl:"Where's the event?",
+  locNote:"Minimum <b>2 entries in Bucharest</b> · minimum <b>3 outside Bucharest</b>. One entry = one hour: <b>45 min of activity + 15 min break</b>.",
+  entLbl:"How many entries?",
+  entNote:"The card price is for <b>one entry</b>. Each extra entry adds to the total.",
+  hint:"Tap <b>Swap</b> on any character to replace it. You can add or remove characters — the price recalculates instantly.",
+  inclTitle:"What we bring",
+  incl:["The costumes and characters you pick","Energy and good vibes from the team","Time set aside for photos with the characters (on your own phone)"],
+  mcOn:"MC / host — included in the Transformers show",
+  mcOff:"MC / host — only with the Transformers show",
+  catCt:"Want to see everything we have?",
+  catCs:"Over 200 costumes and shows in the full Colorful catalogue.",
+  catBtn:"See the Colorful catalogue →",
+  totalLbl:"Package total",
+  vat:"With 21% VAT",orNoVat:"or without VAT if simpler",
+  send:"Send package on WhatsApp →",
+  note:"Working prototype — exact catalogue prices (EUR, net without VAT). A few costumes have ground/stilt variants to confirm. Final photos = studio shoot on the Elevarts backdrop, not cut-outs.",
+  footer:"Royal Entertainment · Bucharest · (+40) 0770 115 511 · ask@elevarts.com",
+  pickTitle:"Choose a character",pickSub:"The package price updates instantly.",all:"All",
+  cat:{masca:"Mascots",parada:"Stilts & parade",aripi:"Wings",papusi:"Giant puppets",led:"LED moment",show:"Shows"},
+  loc:{buc:"In Bucharest",afara:"Outside Bucharest"},
+  pkLbl:"Package",from:"from",perEntry:"/ entry · NET",swap:"Swap character",add:"Add character",fixed:"fixed",netUnit:"€ net",
+  sumEyebrow:"The client's chosen offer",editLink:"Open in configurator (edit) →",
+  ent:n=>n+" "+(n===1?"entry":"entries"),
+  artists:n=>n+" "+(n===1?"artist":"artists"),
+  waMsg:(P,l,e,lines,net,tva,link)=>"Hi! I built a package for the first day of school.\nPackage: "+P+" · "+l+" · "+e+"\n"+lines+"\nTotal: "+net+" € net (with 21% VAT: "+tva+" €).\nMy offer (open to see exactly what I picked): "+link,
+  waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — from "+pr+"€, fixed price":" — "+pr+"€/entry"),
+ },
+};
+
+let cur=0, slots=[], pickIndex=null, filter="all", loc="buc", entries=2, L="ro", T=TXT.ro, mode="build";
+const $=id=>document.getElementById(id);
+const fmt=n=>n.toLocaleString(L==="en"?"en-US":"ro-RO");
+const nm=s=>(L==="en"&&EN_NAME[s])?EN_NAME[s]:BY[s].name;
+const catL=k=>T.cat[k];
+const pkName=i=>L==="en"?PACKS[i].enName:PACKS[i].name;
+const pkTag=i=>L==="en"?PACKS[i].enTag:PACKS[i].tag;
+const pkLead=i=>L==="en"?PACKS[i].enLead:PACKS[i].lead;
+
+function encodeState(){
+  return btoa(unescape(encodeURIComponent(JSON.stringify([cur,loc,entries,slots,L])))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function decodeState(t){
+  try{let b=t.replace(/-/g,'+').replace(/_/g,'/');while(b.length%4)b+='=';return JSON.parse(decodeURIComponent(escape(atob(b))));}catch(e){return null;}
+}
+
+function setLang(l){ if(l===L) return; L=l; T=TXT[l]; applyLang(); }
+function applyLang(){
+  document.documentElement.lang=L;
+  document.title=T.title;
+  [...document.querySelectorAll('#langtoggle button')].forEach(b=>b.classList.toggle('on',b.dataset.l===L));
+  $("heroEyebrow").textContent=T.heroEyebrow;
+  $("heroH1").innerHTML=T.heroH1;
+  $("heroSub").textContent=T.heroSub;
+  $("metaWrap").innerHTML=T.meta.map(m=>`<span>${m}</span>`).join("");
+  $("wa-top").textContent=T.waTop;
+  $("introEyebrow").textContent=T.introEyebrow;
+  $("introH2").innerHTML=T.introH2;
+  $("introLead").textContent=T.introLead;
+  $("locLblText").textContent=T.locLbl;
+  $("locNote").innerHTML=T.locNote;
+  $("entLblText").textContent=T.entLbl;
+  $("entNote").innerHTML=T.entNote;
+  $("hint").innerHTML=T.hint;
+  $("inclTitle").textContent=T.inclTitle;
+  $("catCt").textContent=T.catCt;
+  $("catCs").textContent=T.catCs;
+  $("catBtn").textContent=T.catBtn;
+  $("totalLbl").textContent=T.totalLbl;
+  $("send").textContent=T.send;
+  $("note").textContent=T.note;
+  $("footerText").textContent=T.footer;
+  $("pickTitle").textContent=T.pickTitle;
+  $("pickSub").textContent=T.pickSub;
+  render();
+  // vizibilitate build vs sumar ofertă
+  const sum=mode==='summary';
+  $("builder").style.display=sum?'none':'';
+  $("summary").style.display=sum?'':'none';
+  $("picks").style.display=sum?'none':'';
+  $("metaWrap").style.display=sum?'none':'';
+  $("wa-top").style.display=sum?'none':'';
+  $("heroSub").style.display=sum?'none':'';
+  if(sum){ $("heroEyebrow").textContent=T.sumEyebrow; $("heroH1").textContent=pkName(cur); renderSummary(); }
+}
+function renderSummary(){
+  const items=slots.map(s=>{const c=BY[s];const dk=DARK.has(s)?'dark':'';
+    return `<div class="sitem">
+      <div class="sph ${dk}" style="background-image:url('${img(s)}')"></div>
+      <div class="sinfo"><div class="snm">${nm(s)}</div><div class="sart">${T.artists(artists(s))}</div></div>
+      <div class="spr">${c.flat?`${T.from} <b>${fmt(c.price)} €</b> · ${T.fixed}`:`<b>${fmt(c.price)} €</b>`}</div>
+    </div>`;}).join('');
+  const perHour=slots.filter(s=>!BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
+  const flatSum=slots.filter(s=>BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
+  const net=perHour*entries+flatSum, tva=Math.round(net*1.21);
+  const hasMC=slots.some(s=>BY[s].flat);
+  const inc=[T.incl[0],T.incl[1],T.incl[2]]; if(hasMC) inc.push(T.mcOn);
+  $("summary").innerHTML=`<div class="sumcard">
+    <div class="summeta">${T.loc[loc]} · ${T.ent(entries)}</div>
+    <div class="sitems">${items}</div>
+    <div class="sumincl"><div class="t">${T.inclTitle}</div><ul>${inc.map(t=>`<li><span class="chk">✓</span> ${t}</li>`).join('')}</ul></div>
+    <div class="sumtotal"><div class="lbl">${T.totalLbl} · ${T.ent(entries)}</div><div class="amt">${fmt(net)} <small>${T.netUnit}</small></div><div class="tva">${T.vat}: <b>${fmt(tva)} €</b></div></div>
+  </div>
+  <div class="editrow"><a href="#" onclick="toBuilder();return false;">${T.editLink}</a></div>`;
+}
+function toBuilder(){mode='build';applyLang();window.scrollTo(0,0);}
+
+function renderDur(){
+  $("locseg").innerHTML=Object.keys(LOC).map(k=>
+    `<button class="${k===loc?'on':''}" onclick="setLoc('${k}')">${T.loc[k]}</button>`).join("");
+  const min=LOC[loc].min, opts=[min,min+1,min+2,min+3];
+  $("entseg").innerHTML=opts.map(n=>
+    `<button class="${n===entries?'on':''}" onclick="setEnt(${n})">${T.ent(n)}</button>`).join("");
+}
+function setLoc(l){loc=l; entries=LOC[l].min; render();}
+function setEnt(n){entries=n;render();}
+
+function renderPicks(){
+  $("picks").innerHTML=PACKS.map((p,i)=>{
+    const perH=p.slots.filter(s=>!BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
+    const flat=p.slots.filter(s=>BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
+    // pachet cu show (flat) → afisam pretul real de pornire (min 2 intrari); altfel pret/intrare
+    const pr=flat? `${T.from} ${fmt(perH*2+flat)} <small>${T.netUnit}</small>`
+               : `${T.from} ${fmt(perH)} € <small>${T.perEntry}</small>`;
+    return `<button class="pk ${i==cur?'on':''}" onclick="pickPack(${i})">
+      <div class="lbl">${T.pkLbl} ${i+1}</div>
+      <h3>${pkName(i)}</h3><div class="d">${pkTag(i)}</div>
+      <div class="p">${pr}</div></button>`;
+  }).join("");
+}
+function pickPack(i){cur=i;slots=[...PACKS[i].slots];render();}
+
+function render(){
+  if(slots.some(s=>BY[s].flat)) slots=slots.filter(s=>BY[s].cat!=='roboti');
+  if(!slots.length) slots=[...PACKS[cur].slots];
+  renderPicks();
+  renderDur();
+  $("b-eyebrow").textContent=T.pkLbl+" "+(cur+1)+" · "+pkName(cur);
+  $("b-title").textContent=pkName(cur);
+  $("b-lead").textContent=pkLead(cur);
+  $("slots").innerHTML=slots.map((s,idx)=>{
+    const c=BY[s];const dk=DARK.has(s)?'dark':'';
+    return `<div class="slot ${dk}">
+      <div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>
+        ${slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:''}</div>
+      <div class="body2"><div class="nm">${nm(s)}</div>
+        <div class="pr">${c.flat?`${T.from} <b>${fmt(c.price)} €</b> · ${T.fixed}`:`<b>${fmt(c.price)} €</b>`}</div>
+        <div class="art">${T.artists(artists(s))}</div>
+        <button class="swap" onclick="openPick(${idx})">${T.swap}</button></div></div>`;
+  }).join("") + `<button class="addslot" onclick="addSlot()"><span class="plus">＋</span>${T.add}</button>`;
+  const hasMC=slots.some(s=>BY[s].flat);
+  const inc=[[T.incl[0],true],[T.incl[1],true],[T.incl[2],true], hasMC?[T.mcOn,true]:[T.mcOff,false]];
+  $("incluse").innerHTML=inc.map(([t,on])=>
+    `<li class="${on?'':'off'}"><span class="chk ${on?'':'chk-off'}">${on?'✓':'—'}</span> ${t}</li>`).join('');
+  const perHour=slots.filter(s=>!BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
+  const flatSum=slots.filter(s=>BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
+  const net=perHour*entries+flatSum, tva=Math.round(net*1.21);
+  $("durtxt").textContent=T.ent(entries)+" · "+T.loc[loc];
+  $("total").innerHTML=fmt(net)+' <small>'+T.netUnit+'</small>';
+  $("tva").innerHTML=`${T.vat}: <b>${fmt(tva)} €</b> · ${T.orNoVat}`;
+  const link=location.origin+location.pathname+'?o='+encodeState();
+  const lines=slots.map(s=>T.waLine(nm(s),BY[s].price,BY[s].flat)).join('\n');
+  const text=T.waMsg(pkName(cur),T.loc[loc],T.ent(entries),lines,fmt(net),fmt(tva),link);
+  const href='https://wa.me/40770115511?text='+encodeURIComponent(text);
+  $("send").href=href; $("wa-top").href=href;
+}
+function rmSlot(i){slots.splice(i,1);render();}
+function addSlot(){slots.push(slots[slots.length-1]||"unicorn");render();openPick(slots.length-1);}
+function openPick(i){pickIndex=i;filter="all";renderPicker();$("modal").classList.add("open");}
+function closePick(){$("modal").classList.remove("open");}
+function renderPicker(){
+  const cats=["all",...Object.keys(T.cat)];
+  $("filters").innerHTML=cats.map(k=>`<div class="chip ${k==filter?'on':''}" onclick="setFilter('${k}')">${k=='all'?T.all:T.cat[k]}</div>`).join("");
+  // ieftin → scump, stabil (la preț egal păstrează ordinea originală pe categorii)
+  const list=D.filter(x=>filter=="all"||x[3]==filter).slice().sort((a,b)=>a[2]-b[2]);
+  $("grid").innerHTML=list.map(x=>{
+    const dk=DARK.has(x[0])?'dark':'';
+    return `<div class="pick ${dk}" onclick="choose('${x[0]}')">
+      <div class="ph" style="background-image:url('${img(x[0])}')"></div>
+      <div class="nm">${nm(x[0])}</div><div class="pr">${x[4]?`${T.from} <b>${fmt(x[2])} €</b>`:`<b>${fmt(x[2])} €</b>`}</div><div class="art">${T.artists(artists(x[0]))}</div></div>`;
+  }).join("");
+}
+function setFilter(k){filter=k;renderPicker();}
+function choose(slug){slots[pickIndex]=slug;closePick();render();}
+$("close").onclick=closePick;
+$("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
+
+(function init(){
+  const q=new URLSearchParams(location.search);
+  let st=null;
+  if(q.has('o')) st=decodeState(q.get('o'));
+  else if(q.has('c')) st=[parseInt(q.get('p'))||0,q.get('loc'),parseInt(q.get('e')),q.get('c').split(',')];
+  if(st){
+    cur=Math.max(0,Math.min(PACKS.length-1,parseInt(st[0])||0));
+    loc=LOC[st[1]]?st[1]:'buc';
+    const valid=(st[3]||[]).filter(s=>BY[s]);
+    slots=valid.length?valid:[...PACKS[cur].slots];
+    entries=Math.max(LOC[loc].min,parseInt(st[2])||LOC[loc].min);
+    if(st[4]==='en'||st[4]==='ro'){L=st[4];T=TXT[L];}
+    mode='summary'; // linkul din WhatsApp deschide direct oferta aleasă (read-only)
+  } else { slots=[...PACKS[0].slots]; }
+  applyLang();
+})();
+</script>
+</body>
+</html>
