@@ -433,7 +433,7 @@ const TXT={
 };
 
 let cur=0, slots=[], pickIndex=null, filter="all", loc="buc", entries=2, L="ro", T=TXT.ro, mode="build", CURR="EUR";
-const RATE=5;  // curs EUR→RON (orientativ; ajustabil)
+let RATE=5.2536;  // curs BNR EUR→RON (fallback; actualizat din bnr-rate.json — cron zilnic)
 const $=id=>document.getElementById(id);
 const fmt=n=>n.toLocaleString(L==="en"?"en-US":"ro-RO");
 // preț cu moneda aleasă: EUR = „300 €"; RON = „1.500 lei"
@@ -609,6 +609,10 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
     mode='summary'; // linkul din WhatsApp deschide direct oferta aleasă (read-only)
   } else { slots=[...PACKS[0].slots]; }
   applyLang();
+  // curs BNR live: bnr-rate.json e lângă pagină (same-origin, fără CORS), updatat de cron zilnic
+  fetch('bnr-rate.json?t='+Date.now()).then(r=>r.ok?r.json():null).then(d=>{
+    if(d && d.eur>0){ RATE=+d.eur; render(); }
+  }).catch(()=>{});
 })();
 </script>
 </body>
