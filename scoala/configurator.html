@@ -35,6 +35,7 @@
   .langtoggle button{border:none;background:transparent;color:#c9c2e0;font-weight:700;font-size:12px;
     padding:5px 12px;border-radius:999px;cursor:pointer;font-family:var(--body);letter-spacing:.04em}
   .langtoggle button.on{background:#fff;color:var(--ink)}
+  .toggles{display:flex;gap:8px}
   .tagline{text-align:right;font-size:11px;letter-spacing:.22em;color:#c9c2e0;line-height:1.7;font-weight:600}
   .hero .eyebrow{color:var(--pink)}
   .hbody{padding:26px 0 8px}
@@ -192,9 +193,15 @@
   <div class="htop">
     <img src="https://raw.githubusercontent.com/1elevarts/elevarts-brand-kit/main/web/wordmark/color/wordmark-480.png" alt="ELEVARTS">
     <div class="hright">
-      <div class="langtoggle" id="langtoggle">
-        <button data-l="ro" onclick="setLang('ro')">RO</button>
-        <button data-l="en" onclick="setLang('en')">EN</button>
+      <div class="toggles">
+        <div class="langtoggle" id="langtoggle">
+          <button data-l="ro" onclick="setLang('ro')">RO</button>
+          <button data-l="en" onclick="setLang('en')">EN</button>
+        </div>
+        <div class="langtoggle" id="curtoggle">
+          <button data-c="RON" onclick="setCurr('RON')">RON</button>
+          <button data-c="EUR" onclick="setCurr('EUR')">EUR</button>
+        </div>
       </div>
       <div class="tagline">EVENTS · EMOTIONS<br>ARTS — ELEVATED</div>
     </div>
@@ -379,12 +386,12 @@ const TXT={
   pickTitle:"Alege personajul",pickSub:"Prețul pachetului se actualizează instant.",all:"Toate",
   cat:{masca:"Mascote",parada:"Picioroange & paradă",aripi:"Aripi",papusi:"Păpuși gigant",led:"Moment LED",show:"Show-uri"},
   loc:{buc:"În București",afara:"În afara Bucureștiului"},
-  pkLbl:"Pachetul",from:"de la",perEntry:"/ intrare · NET",swap:"Schimbă personajul",add:"Adaugă personaj",fixed:"fix",netUnit:"€ net",
+  pkLbl:"Pachetul",from:"de la",perEntry:"/ intrare · NET",swap:"Schimbă personajul",add:"Adaugă personaj",fixed:"fix",netUnit:"net",
   sumEyebrow:"Oferta aleasă de client",editLink:"Deschide în configurator (modifică) →",
   ent:n=>n+(n===1?" intrare":" intrări"),
   artists:n=>n+(n===1?" artist":" artiști"),
-  waMsg:(P,l,e,lines,net,tva,link)=>"Bună! Am construit un pachet pentru prima zi de școală.\nPachet: "+P+" · "+l+" · "+e+"\n"+lines+"\nTotal: "+net+" € net (cu TVA 21%: "+tva+" €).\nOferta mea (deschide să vezi exact ce am ales): "+link,
-  waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — de la "+pr+"€, preț fix":" — "+pr+"€/intrare"),
+  waMsg:(P,l,e,lines,net,tva,link)=>"Bună! Am construit un pachet pentru prima zi de școală.\nPachet: "+P+" · "+l+" · "+e+"\n"+lines+"\nTotal: "+net+" net (cu TVA 21%: "+tva+").\nOferta mea (deschide să vezi exact ce am ales): "+link,
+  waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — de la "+pr+", preț fix":" — "+pr+"/intrare"),
  },
  en:{
   title:"Build your package · ELEVARTS",
@@ -416,18 +423,22 @@ const TXT={
   pickTitle:"Choose a character",pickSub:"The package price updates instantly.",all:"All",
   cat:{masca:"Mascots",parada:"Stilts & parade",aripi:"Wings",papusi:"Giant puppets",led:"LED moment",show:"Shows"},
   loc:{buc:"In Bucharest",afara:"Outside Bucharest"},
-  pkLbl:"Package",from:"from",perEntry:"/ entry · NET",swap:"Swap character",add:"Add character",fixed:"fixed",netUnit:"€ net",
+  pkLbl:"Package",from:"from",perEntry:"/ entry · NET",swap:"Swap character",add:"Add character",fixed:"fixed",netUnit:"net",
   sumEyebrow:"The client's chosen offer",editLink:"Open in configurator (edit) →",
   ent:n=>n+" "+(n===1?"entry":"entries"),
   artists:n=>n+" "+(n===1?"artist":"artists"),
-  waMsg:(P,l,e,lines,net,tva,link)=>"Hi! I built a package for the first day of school.\nPackage: "+P+" · "+l+" · "+e+"\n"+lines+"\nTotal: "+net+" € net (with 21% VAT: "+tva+" €).\nMy offer (open to see exactly what I picked): "+link,
-  waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — from "+pr+"€, fixed price":" — "+pr+"€/entry"),
+  waMsg:(P,l,e,lines,net,tva,link)=>"Hi! I built a package for the first day of school.\nPackage: "+P+" · "+l+" · "+e+"\n"+lines+"\nTotal: "+net+" net (with 21% VAT: "+tva+").\nMy offer (open to see exactly what I picked): "+link,
+  waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — from "+pr+", fixed price":" — "+pr+"/entry"),
  },
 };
 
-let cur=0, slots=[], pickIndex=null, filter="all", loc="buc", entries=2, L="ro", T=TXT.ro, mode="build";
+let cur=0, slots=[], pickIndex=null, filter="all", loc="buc", entries=2, L="ro", T=TXT.ro, mode="build", CURR="EUR";
+const RATE=5;  // curs EUR→RON (orientativ; ajustabil)
 const $=id=>document.getElementById(id);
 const fmt=n=>n.toLocaleString(L==="en"?"en-US":"ro-RO");
+// preț cu moneda aleasă: EUR = „300 €"; RON = „1.500 lei"
+const money=eur=> CURR==="EUR" ? fmt(eur)+" €" : fmt(Math.round(eur*RATE))+" lei";
+function setCurr(c){CURR=c;render();}
 const nm=s=>(L==="en"&&EN_NAME[s])?EN_NAME[s]:BY[s].name;
 const catL=k=>T.cat[k];
 const pkName=i=>L==="en"?PACKS[i].enName:PACKS[i].name;
@@ -435,7 +446,7 @@ const pkTag=i=>L==="en"?PACKS[i].enTag:PACKS[i].tag;
 const pkLead=i=>L==="en"?PACKS[i].enLead:PACKS[i].lead;
 
 function encodeState(){
-  return btoa(unescape(encodeURIComponent(JSON.stringify([cur,loc,entries,slots,L])))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  return btoa(unescape(encodeURIComponent(JSON.stringify([cur,loc,entries,slots,L,CURR])))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 }
 function decodeState(t){
   try{let b=t.replace(/-/g,'+').replace(/_/g,'/');while(b.length%4)b+='=';return JSON.parse(decodeURIComponent(escape(atob(b))));}catch(e){return null;}
@@ -484,7 +495,7 @@ function renderSummary(){
     return `<div class="sitem">
       <div class="sph ${dk}" style="background-image:url('${img(s)}')"></div>
       <div class="sinfo"><div class="snm">${nm(s)}</div><div class="sart">${T.artists(artists(s))}</div></div>
-      <div class="spr">${c.flat?`${T.from} <b>${fmt(c.price)} €</b> · ${T.fixed}`:`<b>${fmt(c.price)} €</b>`}</div>
+      <div class="spr">${c.flat?`${T.from} <b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
     </div>`;}).join('');
   const perHour=slots.filter(s=>!BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
   const flatSum=slots.filter(s=>BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
@@ -495,7 +506,7 @@ function renderSummary(){
     <div class="summeta">${T.loc[loc]} · ${T.ent(entries)}</div>
     <div class="sitems">${items}</div>
     <div class="sumincl"><div class="t">${T.inclTitle}</div><ul>${inc.map(t=>`<li><span class="chk">✓</span> ${t}</li>`).join('')}</ul></div>
-    <div class="sumtotal"><div class="lbl">${T.totalLbl} · ${T.ent(entries)}</div><div class="amt">${fmt(net)} <small>${T.netUnit}</small></div><div class="tva">${T.vat}: <b>${fmt(tva)} €</b></div></div>
+    <div class="sumtotal"><div class="lbl">${T.totalLbl} · ${T.ent(entries)}</div><div class="amt">${money(net)} <small>${T.netUnit}</small></div><div class="tva">${T.vat}: <b>${money(tva)}</b></div></div>
   </div>
   <div class="editrow"><a href="#" onclick="toBuilder();return false;">${T.editLink}</a></div>`;
 }
@@ -516,8 +527,8 @@ function renderPicks(){
     const perH=p.slots.filter(s=>!BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
     const flat=p.slots.filter(s=>BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
     // pachet cu show (flat) → afisam pretul real de pornire (min 2 intrari); altfel pret/intrare
-    const pr=flat? `${T.from} ${fmt(perH*2+flat)} <small>${T.netUnit}</small>`
-               : `${T.from} ${fmt(perH)} € <small>${T.perEntry}</small>`;
+    const pr=flat? `${T.from} ${money(perH*2+flat)} <small>${T.netUnit}</small>`
+               : `${T.from} ${money(perH)} <small>${T.perEntry}</small>`;
     return `<button class="pk ${i==cur?'on':''}" onclick="pickPack(${i})">
       <div class="lbl">${T.pkLbl} ${i+1}</div>
       <h3>${pkName(i)}</h3><div class="d">${pkTag(i)}</div>
@@ -531,6 +542,7 @@ function render(){
   if(!slots.length) slots=[...PACKS[cur].slots];
   renderPicks();
   renderDur();
+  [...document.querySelectorAll('#curtoggle button')].forEach(b=>b.classList.toggle('on',b.dataset.c===CURR));
   $("b-eyebrow").textContent=T.pkLbl+" "+(cur+1)+" · "+pkName(cur);
   $("b-title").textContent=pkName(cur);
   $("b-lead").textContent=pkLead(cur);
@@ -540,7 +552,7 @@ function render(){
       <div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>
         ${slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:''}</div>
       <div class="body2"><div class="nm">${nm(s)}</div>
-        <div class="pr">${c.flat?`${T.from} <b>${fmt(c.price)} €</b> · ${T.fixed}`:`<b>${fmt(c.price)} €</b>`}</div>
+        <div class="pr">${c.flat?`${T.from} <b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
         <div class="art">${T.artists(artists(s))}</div>
         <button class="swap" onclick="openPick(${idx})">${T.swap}</button></div></div>`;
   }).join("") + `<button class="addslot" onclick="addSlot()"><span class="plus">＋</span>${T.add}</button>`;
@@ -552,11 +564,11 @@ function render(){
   const flatSum=slots.filter(s=>BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
   const net=perHour*entries+flatSum, tva=Math.round(net*1.21);
   $("durtxt").textContent=T.ent(entries)+" · "+T.loc[loc];
-  $("total").innerHTML=fmt(net)+' <small>'+T.netUnit+'</small>';
-  $("tva").innerHTML=`${T.vat}: <b>${fmt(tva)} €</b> · ${T.orNoVat}`;
+  $("total").innerHTML=money(net)+' <small>'+T.netUnit+'</small>';
+  $("tva").innerHTML=`${T.vat}: <b>${money(tva)}</b> · ${T.orNoVat}`;
   const link=location.origin+location.pathname+'?o='+encodeState();
-  const lines=slots.map(s=>T.waLine(nm(s),BY[s].price,BY[s].flat)).join('\n');
-  const text=T.waMsg(pkName(cur),T.loc[loc],T.ent(entries),lines,fmt(net),fmt(tva),link);
+  const lines=slots.map(s=>T.waLine(nm(s),money(BY[s].price),BY[s].flat,T.artists(artists(s)))).join('\n');
+  const text=T.waMsg(pkName(cur),T.loc[loc],T.ent(entries),lines,money(net),money(tva),link);
   const href='https://wa.me/40770115511?text='+encodeURIComponent(text);
   $("send").href=href; $("wa-top").href=href;
 }
@@ -573,7 +585,7 @@ function renderPicker(){
     const dk=DARK.has(x[0])?'dark':'';
     return `<div class="pick ${dk}" onclick="choose('${x[0]}')">
       <div class="ph" style="background-image:url('${img(x[0])}')"></div>
-      <div class="nm">${nm(x[0])}</div><div class="pr">${x[4]?`${T.from} <b>${fmt(x[2])} €</b>`:`<b>${fmt(x[2])} €</b>`}</div><div class="art">${T.artists(artists(x[0]))}</div></div>`;
+      <div class="nm">${nm(x[0])}</div><div class="pr">${x[4]?`${T.from} <b>${money(x[2])}</b>`:`<b>${money(x[2])}</b>`}</div><div class="art">${T.artists(artists(x[0]))}</div></div>`;
   }).join("");
 }
 function setFilter(k){filter=k;renderPicker();}
@@ -593,6 +605,7 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
     slots=valid.length?valid:[...PACKS[cur].slots];
     entries=Math.max(LOC[loc].min,parseInt(st[2])||LOC[loc].min);
     if(st[4]==='en'||st[4]==='ro'){L=st[4];T=TXT[L];}
+    if(st[5]==='RON'||st[5]==='EUR'){CURR=st[5];}
     mode='summary'; // linkul din WhatsApp deschide direct oferta aleasă (read-only)
   } else { slots=[...PACKS[0].slots]; }
   applyLang();
