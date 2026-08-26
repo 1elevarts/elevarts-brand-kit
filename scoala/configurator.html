@@ -352,12 +352,15 @@ const D=[
   ["neon","Neon Waves",150,"parada"],["wiz","Rainbow Wizards",150,"parada"],
   ["octopus","Octopus picioroange",250,"parada"],["mirror","Mirror Men sol",150,"parada"],
   ["mirrorPici","Mirror Men picioroange",250,"parada"],
-  ["cascade","Cascade Flowers picioroange",250,"parada"],
-  ["butterflies","Fluturi de poveste",200,"parada"],["goldButt","Fluturi aurii",300,"parada"],
-  ["trioButt","Trio fluturi",400,"parada"],
+  ["cascade","Cascade Flowers picioroange",250,"parada"],["cascadeSol","Cascade Flowers la sol",150,"parada"],
+  ["troll","Troll",150,"parada"],["trollita","Trollița",150,"parada"],
+  ["trollButterfly","Troll cu aripi",200,"aripi"],["trollitaButterfly","Trollița cu aripi",200,"aripi"],
+  ["countryRed","Country Red",150,"parada"],["morphsuits","Morphsuits",100,"parada"],["partyHoppers","Party Hoppers",100,"parada"],
+  ["butterflies","Fluturi de poveste",200,"aripi"],["goldButt","Fluturi aurii",300,"aripi"],
+  ["trioButt","Trio fluturi",400,"aripi"],
   ["puppets","Păpuși gigant Smiley",250,"papusi"],["gentleman","Rainbow Gentleman gigant",250,"papusi"],
   ["ledManequin","Manechin LED gigant",250,"papusi"],
-  ["phoenix","Pheonyx Birds picioroange",500,"led"],["angels","White Angels picioroange",500,"led"],
+  ["phoenix","Pheonyx Birds picioroange",500,"led"],["phoenixSol","Pheonyx Birds LED la sol",300,"led"],["angels","White Angels picioroange",500,"led"],
   ["ledrobots","Roboți LED",500,"led"],
   ["trShowV1","Transformers V1 — Show",1000,"show",true,"transformers"],
   ["trShowV2","Transformers V2 — Show",1250,"show",true,"transformersV2"],
@@ -377,6 +380,9 @@ const EN_NAME={
   optimusV2:"Optimus Prime V2",bumblebee:"Bumblebee V1",bumblebeeV2:"Bumblebee V2",
   phoenix:"Pheonyx Birds (stilts)",angels:"White Angels (stilts)",ledrobots:"LED Robots",
   iepureColorat:"Colourful Bunny (inflatable)",bulb:"Inflatable Bulb",
+  troll:"Troll",trollita:"Trollita",trollButterfly:"Butterfly Troll",trollitaButterfly:"Butterfly Trollita",
+  countryRed:"Country Red",morphsuits:"Morphsuits",partyHoppers:"Party Hoppers",
+  cascadeSol:"Cascade Flowers (ground)",phoenixSol:"Pheonyx Birds LED (ground)",
   trShowV1:"Transformers V1 — Show",trShowV2:"Transformers V2 — Show",
   magicomedie:"MagiComedie — Show",jonglerie:"Wheels in Motion — Show",
 };
@@ -390,7 +396,7 @@ const img=s=>BASE+((BY[s]&&BY[s].img)||s)+"-0.jpg";
 const PHOTOS={magicomedie:3,jonglerie:3};
 const photoList=s=>{const n=PHOTOS[s]||1;const base=BASE+((BY[s]&&BY[s].img)||s);return Array.from({length:n},(_,i)=>base+"-"+i+".jpg");};
 // nr artisti per act (default_artists din catalog); implicit 1
-const ART={butterflies:2,goldButt:2,trioButt:3,phoenix:2,angels:2,ledrobots:2,trShowV1:3,trShowV2:3};
+const ART={butterflies:2,goldButt:2,trioButt:3,phoenix:2,phoenixSol:2,angels:2,ledrobots:2,trShowV1:3,trShowV2:3};
 // detalii show (card sub sloturi când pachetul conține un show)
 const SHOWINFO={
   trShowV2:{
