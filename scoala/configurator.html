@@ -113,7 +113,14 @@
   .addslot:hover{background:#f6edff;border-color:var(--magenta)}
   .addslot .plus{font-size:26px;line-height:1}
 
-  .incluse{margin:26px 0 0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:0 8px 26px rgba(30,16,54,.05)}
+  .showdet{margin:16px 0 0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:0 10px 30px rgba(30,16,54,.07)}
+  .showdet .badge2{display:inline-block;font-family:var(--body);font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;padding:6px 12px;border-radius:999px;background:var(--grad)}
+  .showdet h4{font-family:var(--disp);font-weight:600;font-size:22px;line-height:1.15;margin:13px 0 5px}
+  .showdet .sd-desc{font-size:14.5px;color:var(--muted);line-height:1.55;margin-bottom:14px}
+  .showdet ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .showdet li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:#3a3350;line-height:1.4}
+  .showdet .sd-note{margin-top:16px;background:#f6f1fc;border:1px solid var(--line);border-radius:12px;padding:12px 15px;font-size:12.5px;color:var(--muted);line-height:1.5}
+  .showdet .sd-note b{color:var(--ink)}
   .incluse .t{font-family:var(--disp);font-weight:600;font-size:15px;margin-bottom:12px}
   .incluse ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
   .incluse li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:#3a3350}
@@ -246,6 +253,8 @@
 
   <div class="slots" id="slots"></div>
 
+  <div class="showdet" id="showdet" style="display:none"></div>
+
   <div class="incluse">
     <div class="t" id="inclTitle"></div>
     <ul id="incluse"></ul>
@@ -334,6 +343,25 @@ if(CFG){ Object.keys(BY).forEach(s=>{ if(CFG[s]&&typeof CFG[s].price==='number')
 const img=s=>BASE+((BY[s]&&BY[s].img)||s)+"-0.jpg";
 // nr artisti per act (default_artists din catalog); implicit 1
 const ART={butterflies:2,goldButt:2,trioButt:3,phoenix:2,angels:2,ledrobots:2,trShowV1:3,trShowV2:3};
+// detalii show (card sub sloturi când pachetul conține un show)
+const SHOWINFO={
+  trShowV2:{
+    ro:{eye:"Show Transformers V2",title:"Roboți de 2,50 m, pe picioroange",desc:"Din ultimul film Transformers. Tun mare de fum și momentul cu balonul jumbo, spart cu arma laser.",
+      feat:["Roboți pe picioroange, înălțime 2,50 m","Show dans și muzică, 45 min","Microfon și sonorizare incluse","Sesiune foto/video (Meet&Greet) cu publicul","Tun mare de fum","Moment special cu Balon Jumbo plin de confetti, spart cu Arma Laser","3 artiști: 2 roboți și prezentatorul"],
+      note:"Formatul complet are <b>45 de minute</b>. Dacă aveți alt interval, îl potrivim."},
+    en:{eye:"Transformers V2 show",title:"2.50 m robots, on stilts",desc:"Straight from the latest Transformers film. Big fog cannon and the jumbo-balloon moment, popped with a laser gun.",
+      feat:["Robots on stilts, 2.50 m tall","Dance & music show, 45 min","Microphone and sound included","Photo/video session (Meet&Greet) with the audience","Big fog cannon","Special moment with a Jumbo Balloon full of confetti, popped with a Laser Gun","3 artists: 2 robots and the host"],
+      note:"Full format is <b>45 minutes</b>. If you need another slot, we adapt it."},
+  },
+  trShowV1:{
+    ro:{eye:"Show Transformers V1",title:"Roboți Transformers, pe picioroange",desc:"Roboții Transformers clasici. Tun de fum și momentul cu balonul jumbo, spart cu arma laser.",
+      feat:["Roboți pe picioroange","Show dans și muzică, 45 min","Microfon și sonorizare incluse","Sesiune foto/video (Meet&Greet) cu publicul","Tun mare de fum","Moment special cu Balon Jumbo plin de confetti, spart cu Arma Laser","3 artiști: 2 roboți și prezentatorul"],
+      note:"Formatul complet are <b>45 de minute</b>. Dacă aveți alt interval, îl potrivim."},
+    en:{eye:"Transformers V1 show",title:"Transformers robots, on stilts",desc:"The classic Transformers robots. Fog cannon and the jumbo-balloon moment, popped with a laser gun.",
+      feat:["Robots on stilts","Dance & music show, 45 min","Microphone and sound included","Photo/video session (Meet&Greet) with the audience","Big fog cannon","Special moment with a Jumbo Balloon full of confetti, popped with a Laser Gun","3 artists: 2 robots and the host"],
+      note:"Full format is <b>45 minutes</b>. If you need another slot, we adapt it."},
+  },
+};
 const artists=s=>(CFG&&CFG[s]&&typeof CFG[s].artists==='number')?CFG[s].artists:(ART[s]||1);
 
 const PACKS=[
@@ -560,6 +588,16 @@ function render(){
   const inc=[[T.incl[0],true],[T.incl[1],true],[T.incl[2],true], hasMC?[T.mcOn,true]:[T.mcOff,false]];
   $("incluse").innerHTML=inc.map(([t,on])=>
     `<li class="${on?'':'off'}"><span class="chk ${on?'':'chk-off'}">${on?'✓':'—'}</span> ${t}</li>`).join('');
+  // card detaliu show (dacă pachetul conține un show cu detalii)
+  const showSlug=slots.find(s=>SHOWINFO[s]);
+  if(showSlug){
+    const d=SHOWINFO[showSlug][L]||SHOWINFO[showSlug].ro;
+    $("showdet").innerHTML=`<span class="badge2">${d.eye}</span>
+      <h4>${d.title}</h4><div class="sd-desc">${d.desc}</div>
+      <ul>${d.feat.map(x=>`<li><span class="chk">✓</span> ${x}</li>`).join('')}</ul>
+      <div class="sd-note">${d.note}</div>`;
+    $("showdet").style.display='';
+  } else { $("showdet").style.display='none'; }
   const perHour=slots.filter(s=>!BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
   const flatSum=slots.filter(s=>BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
   const net=perHour*entries+flatSum, tva=Math.round(net*1.21);
