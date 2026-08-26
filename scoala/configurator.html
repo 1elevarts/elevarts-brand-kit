@@ -179,11 +179,6 @@
   .totalbar .tva{font-size:12.5px;color:#c9c2e0;margin-top:6px}
   .totalbar .tva b{color:#fff}
   .totalbar .wa{margin:0}
-  .tbtns{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  .totalbar .copy{border:1.5px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06);color:#fff;
-    font-family:var(--body);font-weight:700;font-size:14px;padding:12px 18px;border-radius:999px;cursor:pointer;transition:.14s;display:inline-flex;align-items:center;gap:8px}
-  .totalbar .copy::before{content:"⧉";font-size:15px}
-  .totalbar .copy:hover{border-color:#fff;background:rgba(255,255,255,.13)}
 
   .note{margin:26px 0 0;background:#fff6e0;border:1px solid #f3e2ac;color:#7a5a00;border-radius:14px;padding:12px 16px;font-size:12.5px;text-align:center}
 
@@ -319,10 +314,7 @@
       <div class="amt" id="total">0 <small>€ net</small></div>
       <div class="tva" id="tva"></div>
     </div>
-    <div class="tbtns">
-      <button class="copy" id="copylink" onclick="copyPkLink(this)"></button>
-      <a class="wa" id="send" href="#"></a>
-    </div>
+    <a class="wa" id="send" href="#"></a>
   </div>
 </div>
 
@@ -704,19 +696,13 @@ function render(){
   const text=T.waMsg(pkName(cur),T.loc[loc],T.ent(entries),lines,money(net),money(tva),link);
   const href='https://wa.me/40770115511?text='+encodeURIComponent(text);
   $("send").href=href; $("wa-top").href=href;
-  // link per pachet (pagina de share are og:image-ul pachetului; ?o= duce configurația exactă)
-  const dir=location.pathname.replace(/[^/]*$/,'');
-  const key=['esential','complet','premium'][cur];
-  window.__shareLink = key ? location.origin+dir+key+'.html?o='+encodeState() : link;
-  const cb=$("copylink"); if(cb) cb.textContent=T.copy;
-  // păstrează alegerile la refresh (doar în modul build, nu pe linkul-sumar)
-  if(mode!=='summary'){ try{localStorage.setItem('elv_cfg',encodeState());}catch(e){} }
-}
-function copyPkLink(btn){
-  const url=window.__shareLink||location.href;
-  const done=()=>{btn.textContent=T.copied;setTimeout(()=>btn.textContent=T.copy,1700);};
-  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done).catch(()=>{prompt('Copiază linkul:',url);});}
-  else{prompt('Copiază linkul:',url);}
+  // în modul build, URL-ul din bară devine linkul paginii de share a pachetului curent
+  // (are og:image-ul pachetului pt WhatsApp; ?o= duce configurația exactă; b=1 = reintră în builder)
+  if(mode!=='summary'){
+    try{localStorage.setItem('elv_cfg',encodeState());}catch(e){}
+    const key=['esential','complet','premium'][cur];
+    if(key){ try{history.replaceState(null,'',key+'.html?o='+encodeState());}catch(e){} }
+  }
 }
 function rmSlot(i){slots.splice(i,1);render();}
 function addSlot(){slots.push(slots[slots.length-1]||"unicorn");render();openPick(slots.length-1);}
@@ -741,10 +727,10 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
 
 (function init(){
   const q=new URLSearchParams(location.search);
-  let st=null, fromLink=false, pkOnly=false;
+  let st=null, fromLink=false, buildFlag=q.get('b')==='1';
   if(q.has('o')){ st=decodeState(q.get('o')); fromLink=true; }
   else if(q.has('c')){ st=[parseInt(q.get('p'))||0,q.get('loc'),parseInt(q.get('e')),q.get('c').split(',')]; fromLink=true; }
-  else if(q.has('pk')){ const i=Math.max(0,Math.min(PACKS.length-1,parseInt(q.get('pk'))||0)); st=[i,'buc',LOC.buc.min,[...PACKS[i].slots]]; pkOnly=true; } // link per pachet: deschide builder-ul pe pachet
+  else if(q.has('pk')){ const i=Math.max(0,Math.min(PACKS.length-1,parseInt(q.get('pk'))||0)); st=[i,'buc',LOC.buc.min,[...PACKS[i].slots]]; buildFlag=true; } // link per pachet: deschide builder-ul pe pachet
   else { try{const saved=localStorage.getItem('elv_cfg'); if(saved) st=decodeState(saved);}catch(e){} } // refresh: reia ce era
   if(st){
     cur=Math.max(0,Math.min(PACKS.length-1,parseInt(st[0])||0));
@@ -754,7 +740,7 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
     entries=Math.max(LOC[loc].min,parseInt(st[2])||LOC[loc].min);
     if(st[4]==='en'||st[4]==='ro'){L=st[4];T=TXT[L];}
     if(st[5]==='RON'||st[5]==='EUR'){CURR=st[5];}
-    if(fromLink) mode='summary'; // linkul din WhatsApp deschide direct oferta aleasă (read-only); refresh-ul rămâne editabil
+    if(fromLink && !buildFlag) mode='summary'; // ?o simplu (WhatsApp către firmă) = sumar read-only; ?o&b=1 (link pachet) = builder editabil
   } else { slots=[...PACKS[0].slots]; }
   applyLang();
   // curs BNR live: bnr-rate.json e lângă pagină (same-origin, fără CORS), updatat de cron zilnic
