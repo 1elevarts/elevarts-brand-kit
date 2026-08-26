@@ -113,11 +113,10 @@
   .addslot:hover{background:#f6edff;border-color:var(--magenta)}
   .addslot .plus{font-size:26px;line-height:1}
 
-  .showdet{margin:16px 0 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(30,16,54,.07)}
-  .showdet .sc-media{position:relative;aspect-ratio:4/3;background:#f2ecfb center/cover no-repeat}
-  .showdet .sc-badge{position:absolute;top:14px;left:14px;background:var(--grad);color:#fff;font-size:11px;letter-spacing:.14em;font-weight:700;text-transform:uppercase;padding:6px 12px;border-radius:999px}
-  .showdet .sc-body{padding:24px}
-  .showdet .sc-k{font-size:12px;letter-spacing:.2em;font-weight:700;text-transform:uppercase;color:var(--muted);margin:0}
+  .showdet{margin:14px 0 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(30,16,54,.07)}
+  .showdet .sc-badge{display:inline-block;background:var(--grad);color:#fff;font-size:10px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-right:8px;vertical-align:middle}
+  .showdet .sc-body{padding:22px 24px}
+  .showdet .sc-k{font-size:12px;letter-spacing:.16em;font-weight:700;text-transform:uppercase;color:var(--muted);margin:0;display:flex;align-items:center}
   .showdet .sc-t{font-family:var(--disp);font-weight:600;font-size:24px;line-height:1.15;margin:6px 0 0}
   .showdet .sc-lead{margin:10px 0 0;font-size:15.5px;color:var(--muted);line-height:1.5}
   .showdet .sc-checks{list-style:none;margin:20px 0 0;padding:0}
@@ -601,9 +600,8 @@ function render(){
     const chk=`<svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg>`;
     const clock=`<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
     $("showdet").innerHTML=`
-      <div class="sc-media" style="background-image:url('${img(showSlug)}')"><span class="sc-badge">${d.eye}</span></div>
       <div class="sc-body">
-        <p class="sc-k">${d.kick}</p>
+        <p class="sc-k"><span class="sc-badge">${d.eye}</span> ${d.kick}</p>
         <h4 class="sc-t">${d.title}</h4>
         <p class="sc-lead">${d.desc}</p>
         <ul class="sc-checks">${d.feat.map(x=>`<li>${chk}<span>${x}</span></li>`).join('')}</ul>
