@@ -10,9 +10,12 @@
 <meta property="og:title" content="Prima zi de școală · Construiește-ți pachetul">
 <meta property="og:description" content="Alege personajele, vezi prețul pe loc — de tot restul ne ocupăm noi.">
 <meta property="og:image" content="https://1elevarts.github.io/elevarts-brand-kit/scoala/og-configurator.jpg">
+<meta property="og:image:secure_url" content="https://1elevarts.github.io/elevarts-brand-kit/scoala/og-configurator.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Pachete ELEVARTS pentru prima zi de școală">
+<meta property="og:locale" content="ro_RO">
 <meta property="og:site_name" content="ELEVARTS">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -176,6 +179,11 @@
   .totalbar .tva{font-size:12.5px;color:#c9c2e0;margin-top:6px}
   .totalbar .tva b{color:#fff}
   .totalbar .wa{margin:0}
+  .tbtns{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .totalbar .copy{border:1.5px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06);color:#fff;
+    font-family:var(--body);font-weight:700;font-size:14px;padding:12px 18px;border-radius:999px;cursor:pointer;transition:.14s;display:inline-flex;align-items:center;gap:8px}
+  .totalbar .copy::before{content:"⧉";font-size:15px}
+  .totalbar .copy:hover{border-color:#fff;background:rgba(255,255,255,.13)}
 
   .note{margin:26px 0 0;background:#fff6e0;border:1px solid #f3e2ac;color:#7a5a00;border-radius:14px;padding:12px 16px;font-size:12.5px;text-align:center}
 
@@ -311,7 +319,10 @@
       <div class="amt" id="total">0 <small>€ net</small></div>
       <div class="tva" id="tva"></div>
     </div>
-    <a class="wa" id="send" href="#"></a>
+    <div class="tbtns">
+      <button class="copy" id="copylink" onclick="copyPkLink(this)"></button>
+      <a class="wa" id="send" href="#"></a>
+    </div>
   </div>
 </div>
 
@@ -472,6 +483,7 @@ const TXT={
   totalLbl:"Total pachet",
   vat:"Cu TVA 21%",orNoVat:"sau fără TVA dacă e mai simplu",
   send:"Trimite pachetul pe WhatsApp →",
+  copy:"Copiază link",copied:"Link copiat ✓",
   note:"Prototip de lucru — prețuri exacte din catalog (EUR, net fără TVA). Câteva costume au variante sol/picioroange de confirmat. Pozele finale = shooting studio pe fundal Elevarts, nu decupaje.",
   footer:"Royal Entertainment · București · (+40) 0770 115 511 · ask@elevarts.com",
   pickTitle:"Alege personajul",pickSub:"Prețul pachetului se actualizează instant.",all:"Toate",
@@ -509,6 +521,7 @@ const TXT={
   totalLbl:"Package total",
   vat:"With 21% VAT",orNoVat:"or without VAT if simpler",
   send:"Send package on WhatsApp →",
+  copy:"Copy link",copied:"Link copied ✓",
   note:"Working prototype — exact catalogue prices (EUR, net without VAT). A few costumes have ground/stilt variants to confirm. Final photos = studio shoot on the Elevarts backdrop, not cut-outs.",
   footer:"Royal Entertainment · Bucharest · (+40) 0770 115 511 · ask@elevarts.com",
   pickTitle:"Choose a character",pickSub:"The package price updates instantly.",all:"All",
@@ -691,8 +704,19 @@ function render(){
   const text=T.waMsg(pkName(cur),T.loc[loc],T.ent(entries),lines,money(net),money(tva),link);
   const href='https://wa.me/40770115511?text='+encodeURIComponent(text);
   $("send").href=href; $("wa-top").href=href;
+  // link per pachet (pagina de share are og:image-ul pachetului; ?o= duce configurația exactă)
+  const dir=location.pathname.replace(/[^/]*$/,'');
+  const key=['esential','complet','premium'][cur];
+  window.__shareLink = key ? location.origin+dir+key+'.html?o='+encodeState() : link;
+  const cb=$("copylink"); if(cb) cb.textContent=T.copy;
   // păstrează alegerile la refresh (doar în modul build, nu pe linkul-sumar)
   if(mode!=='summary'){ try{localStorage.setItem('elv_cfg',encodeState());}catch(e){} }
+}
+function copyPkLink(btn){
+  const url=window.__shareLink||location.href;
+  const done=()=>{btn.textContent=T.copied;setTimeout(()=>btn.textContent=T.copy,1700);};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done).catch(()=>{prompt('Copiază linkul:',url);});}
+  else{prompt('Copiază linkul:',url);}
 }
 function rmSlot(i){slots.splice(i,1);render();}
 function addSlot(){slots.push(slots[slots.length-1]||"unicorn");render();openPick(slots.length-1);}
