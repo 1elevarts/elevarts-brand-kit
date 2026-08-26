@@ -92,6 +92,13 @@
   .slot{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
     position:relative;display:flex;flex-direction:column;box-shadow:0 8px 26px rgba(30,16,54,.06)}
   .slot .ph{aspect-ratio:4/5;background:#efe9f7 center/cover no-repeat;position:relative}
+  .slot .ph.gal{overflow:hidden}
+  .slot .ph.gal .gwrap{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .slot .ph.gal .gwrap::-webkit-scrollbar{display:none}
+  .slot .ph.gal .gwrap img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;object-position:center 22%;scroll-snap-align:center}
+  .slot .ph.gal .dots{position:absolute;left:0;right:0;bottom:9px;z-index:3;display:flex;gap:5px;justify-content:center}
+  .slot .ph.gal .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.6);box-shadow:0 1px 3px rgba(0,0,0,.3);transition:.18s}
+  .slot .ph.gal .dots i.on{background:#fff;width:17px;border-radius:3px}
   .slot.dark .ph{background-color:#141024}
   .slot .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,32,0) 55%,rgba(19,17,32,.5) 100%)}
   .badge{position:absolute;left:11px;top:11px;z-index:2;font-size:10px;font-weight:700;letter-spacing:.12em;
@@ -358,6 +365,9 @@ const BY={}; D.forEach(x=>BY[x[0]]={slug:x[0],name:x[1],price:x[2],cat:x[3],flat
 const CFG=(typeof window!=='undefined'&&window.CFG_COSTUMES)||null;
 if(CFG){ Object.keys(BY).forEach(s=>{ if(CFG[s]&&typeof CFG[s].price==='number') BY[s].price=CFG[s].price; }); }
 const img=s=>BASE+((BY[s]&&BY[s].img)||s)+"-0.jpg";
+// show-uri cu galerie (mai multe poze): slug -> nr. poze (nume: slug-0.jpg ... slug-(n-1).jpg)
+const PHOTOS={magicomedie:3,jonglerie:3};
+const photoList=s=>{const n=PHOTOS[s]||1;const base=BASE+((BY[s]&&BY[s].img)||s);return Array.from({length:n},(_,i)=>base+"-"+i+".jpg");};
 // nr artisti per act (default_artists din catalog); implicit 1
 const ART={butterflies:2,goldButt:2,trioButt:3,phoenix:2,angels:2,ledrobots:2,trShowV1:3,trShowV2:3};
 // detalii show (card sub sloturi când pachetul conține un show)
@@ -627,15 +637,20 @@ function render(){
       </div>`;
       if(SHOWINFO[s].yt) yt=`<a class="sc-yt" href="${SHOWINFO[s].yt}" target="_blank" rel="noopener"><span class="pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>${d.ytLabel}</a>`;
     }
+    const rmBtn=slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:'';
+    const ph=(PHOTOS[s]>1)
+      ? `<div class="ph gal"><div class="gwrap">${photoList(s).map(u=>`<img src="${u}" loading="lazy" alt="">`).join('')}</div><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>${rmBtn}<div class="dots">${photoList(s).map((_,i)=>`<i class="${i===0?'on':''}"></i>`).join('')}</div></div>`
+      : `<div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>${rmBtn}</div>`;
     return `<div class="slot ${dk}">
-      <div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>
-        ${slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:''}</div>
+      ${ph}
       <div class="body2"><div class="nm">${nm(s)}</div>
         <div class="pr">${c.flat?`<b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
         <div class="art">${T.artists(artists(s))}</div>
         ${det}
         <div class="sc-foot2">${yt}<button class="swap" onclick="openPick(${idx})">${T.swap}</button></div></div></div>`;
   }).join("") + `<button class="addslot" onclick="addSlot()"><span class="plus">＋</span>${T.add}</button>`;
+  // sincronizează punctele galeriei la scroll
+  document.querySelectorAll('.ph.gal').forEach(g=>{const w=g.querySelector('.gwrap');w.onscroll=()=>{const i=Math.round(w.scrollLeft/w.clientWidth);[...g.querySelectorAll('.dots i')].forEach((d,j)=>d.classList.toggle('on',j===i));};});
   const hasMC=slots.some(s=>BY[s].flat);
   const inc=[[T.incl[0],true],[T.incl[1],true],[T.incl[2],true], hasMC?[T.mcOn,true]:[T.mcOff,false]];
   $("incluse").innerHTML=inc.map(([t,on])=>
