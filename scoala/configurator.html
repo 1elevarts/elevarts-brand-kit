@@ -4,6 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Construiește-ți pachetul · ELEVARTS</title>
+<meta name="description" content="Alege personajele, vezi prețul pe loc — de tot restul ne ocupăm noi. Prima zi de școală, cu ELEVARTS.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://1elevarts.github.io/elevarts-brand-kit/scoala/configurator.html">
+<meta property="og:title" content="Prima zi de școală · Construiește-ți pachetul">
+<meta property="og:description" content="Alege personajele, vezi prețul pe loc — de tot restul ne ocupăm noi.">
+<meta property="og:image" content="https://1elevarts.github.io/elevarts-brand-kit/scoala/og-configurator.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:site_name" content="ELEVARTS">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -706,9 +717,10 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
 
 (function init(){
   const q=new URLSearchParams(location.search);
-  let st=null, fromLink=false;
+  let st=null, fromLink=false, pkOnly=false;
   if(q.has('o')){ st=decodeState(q.get('o')); fromLink=true; }
   else if(q.has('c')){ st=[parseInt(q.get('p'))||0,q.get('loc'),parseInt(q.get('e')),q.get('c').split(',')]; fromLink=true; }
+  else if(q.has('pk')){ const i=Math.max(0,Math.min(PACKS.length-1,parseInt(q.get('pk'))||0)); st=[i,'buc',LOC.buc.min,[...PACKS[i].slots]]; pkOnly=true; } // link per pachet: deschide builder-ul pe pachet
   else { try{const saved=localStorage.getItem('elv_cfg'); if(saved) st=decodeState(saved);}catch(e){} } // refresh: reia ce era
   if(st){
     cur=Math.max(0,Math.min(PACKS.length-1,parseInt(st[0])||0));
