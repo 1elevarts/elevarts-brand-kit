@@ -391,7 +391,7 @@ const TXT={
   ent:n=>n+(n===1?" intrare":" intrări"),
   artists:n=>n+(n===1?" artist":" artiști"),
   waMsg:(P,l,e,lines,net,tva,link)=>"Bună! Am construit un pachet pentru prima zi de școală.\nPachet: "+P+" · "+l+" · "+e+"\n"+lines+"\nTotal: "+net+" net (cu TVA 21%: "+tva+").\nOferta mea (deschide să vezi exact ce am ales): "+link,
-  waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — de la "+pr+", preț fix":" — "+pr+"/intrare"),
+  waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — "+pr+", preț fix":" — "+pr+"/intrare"),
  },
  en:{
   title:"Build your package · ELEVARTS",
@@ -428,7 +428,7 @@ const TXT={
   ent:n=>n+" "+(n===1?"entry":"entries"),
   artists:n=>n+" "+(n===1?"artist":"artists"),
   waMsg:(P,l,e,lines,net,tva,link)=>"Hi! I built a package for the first day of school.\nPackage: "+P+" · "+l+" · "+e+"\n"+lines+"\nTotal: "+net+" net (with 21% VAT: "+tva+").\nMy offer (open to see exactly what I picked): "+link,
-  waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — from "+pr+", fixed price":" — "+pr+"/entry"),
+  waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — "+pr+", fixed price":" — "+pr+"/entry"),
  },
 };
 
@@ -495,7 +495,7 @@ function renderSummary(){
     return `<div class="sitem">
       <div class="sph ${dk}" style="background-image:url('${img(s)}')"></div>
       <div class="sinfo"><div class="snm">${nm(s)}</div><div class="sart">${T.artists(artists(s))}</div></div>
-      <div class="spr">${c.flat?`${T.from} <b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
+      <div class="spr">${c.flat?`<b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
     </div>`;}).join('');
   const perHour=slots.filter(s=>!BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
   const flatSum=slots.filter(s=>BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
@@ -552,7 +552,7 @@ function render(){
       <div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>
         ${slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:''}</div>
       <div class="body2"><div class="nm">${nm(s)}</div>
-        <div class="pr">${c.flat?`${T.from} <b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
+        <div class="pr">${c.flat?`<b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
         <div class="art">${T.artists(artists(s))}</div>
         <button class="swap" onclick="openPick(${idx})">${T.swap}</button></div></div>`;
   }).join("") + `<button class="addslot" onclick="addSlot()"><span class="plus">＋</span>${T.add}</button>`;
@@ -585,7 +585,7 @@ function renderPicker(){
     const dk=DARK.has(x[0])?'dark':'';
     return `<div class="pick ${dk}" onclick="choose('${x[0]}')">
       <div class="ph" style="background-image:url('${img(x[0])}')"></div>
-      <div class="nm">${nm(x[0])}</div><div class="pr">${x[4]?`${T.from} <b>${money(x[2])}</b>`:`<b>${money(x[2])}</b>`}</div><div class="art">${T.artists(artists(x[0]))}</div></div>`;
+      <div class="nm">${nm(x[0])}</div><div class="pr">${x[4]?`<b>${money(x[2])}</b>`:`<b>${money(x[2])}</b>`}</div><div class="art">${T.artists(artists(x[0]))}</div></div>`;
   }).join("");
 }
 function setFilter(k){filter=k;renderPicker();}
