@@ -630,6 +630,8 @@ function render(){
   const text=T.waMsg(pkName(cur),T.loc[loc],T.ent(entries),lines,money(net),money(tva),link);
   const href='https://wa.me/40770115511?text='+encodeURIComponent(text);
   $("send").href=href; $("wa-top").href=href;
+  // păstrează alegerile la refresh (doar în modul build, nu pe linkul-sumar)
+  if(mode!=='summary'){ try{localStorage.setItem('elv_cfg',encodeState());}catch(e){} }
 }
 function rmSlot(i){slots.splice(i,1);render();}
 function addSlot(){slots.push(slots[slots.length-1]||"unicorn");render();openPick(slots.length-1);}
@@ -654,9 +656,10 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
 
 (function init(){
   const q=new URLSearchParams(location.search);
-  let st=null;
-  if(q.has('o')) st=decodeState(q.get('o'));
-  else if(q.has('c')) st=[parseInt(q.get('p'))||0,q.get('loc'),parseInt(q.get('e')),q.get('c').split(',')];
+  let st=null, fromLink=false;
+  if(q.has('o')){ st=decodeState(q.get('o')); fromLink=true; }
+  else if(q.has('c')){ st=[parseInt(q.get('p'))||0,q.get('loc'),parseInt(q.get('e')),q.get('c').split(',')]; fromLink=true; }
+  else { try{const saved=localStorage.getItem('elv_cfg'); if(saved) st=decodeState(saved);}catch(e){} } // refresh: reia ce era
   if(st){
     cur=Math.max(0,Math.min(PACKS.length-1,parseInt(st[0])||0));
     loc=LOC[st[1]]?st[1]:'buc';
@@ -665,7 +668,7 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
     entries=Math.max(LOC[loc].min,parseInt(st[2])||LOC[loc].min);
     if(st[4]==='en'||st[4]==='ro'){L=st[4];T=TXT[L];}
     if(st[5]==='RON'||st[5]==='EUR'){CURR=st[5];}
-    mode='summary'; // linkul din WhatsApp deschide direct oferta aleasă (read-only)
+    if(fromLink) mode='summary'; // linkul din WhatsApp deschide direct oferta aleasă (read-only); refresh-ul rămâne editabil
   } else { slots=[...PACKS[0].slots]; }
   applyLang();
   // curs BNR live: bnr-rate.json e lângă pagină (same-origin, fără CORS), updatat de cron zilnic
