@@ -98,7 +98,10 @@
     text-transform:uppercase;color:#fff;padding:5px 10px;border-radius:999px;background:var(--grad)}
   .slot .rm{position:absolute;top:9px;right:9px;z-index:2;width:26px;height:26px;border-radius:50%;
     border:none;background:rgba(19,17,32,.62);color:#fff;font-size:15px;cursor:pointer;line-height:1;backdrop-filter:blur(4px)}
-  .slot .body2{padding:12px 14px 14px}
+  .slot .body2{padding:12px 14px 14px;flex:1;display:flex;flex-direction:column}
+  .sc-foot2{margin-top:auto;display:flex;flex-direction:column;gap:9px;padding-top:12px}
+  .sc-foot2 .swap{margin-top:0}
+  .sc-foot2 .sc-yt{margin-top:0;justify-content:center}
   .slot .nm{font-family:var(--disp);font-weight:600;font-size:14.5px;line-height:1.2;min-height:34px}
   .slot .pr{color:var(--ink);font-weight:700;font-size:14px;margin-top:4px}
   .slot .pr b{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -592,7 +595,7 @@ function render(){
   const dash=`<svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg>`;
   $("slots").innerHTML=slots.map((s,idx)=>{
     const c=BY[s];const dk=DARK.has(s)?'dark':'';
-    let det='';
+    let det='',yt='';
     if(SHOWINFO[s]){ const d=SHOWINFO[s][L]||SHOWINFO[s].ro;
       det=`<div class="sc-det">
         <p class="sc-k"><span class="sc-badge">${d.eye}</span> ${d.kick}</p>
@@ -600,8 +603,9 @@ function render(){
         <p class="sc-lead">${d.desc}</p>
         <ul class="sc-checks">${d.feat.map(x=>{const off=typeof x==='object'&&x.off;const t=off?x.t:x;return `<li class="${off?'off':''}">${off?dash:chk}<span>${t}</span></li>`;}).join('')}</ul>
         <div class="sc-adapt">${clock}<span>${d.note}</span></div>
-        ${SHOWINFO[s].yt?`<a class="sc-yt" href="${SHOWINFO[s].yt}" target="_blank" rel="noopener"><span class="pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>${d.ytLabel}</a>`:''}
-      </div>`; }
+      </div>`;
+      if(SHOWINFO[s].yt) yt=`<a class="sc-yt" href="${SHOWINFO[s].yt}" target="_blank" rel="noopener"><span class="pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>${d.ytLabel}</a>`;
+    }
     return `<div class="slot ${dk}">
       <div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>
         ${slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:''}</div>
@@ -609,7 +613,7 @@ function render(){
         <div class="pr">${c.flat?`<b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
         <div class="art">${T.artists(artists(s))}</div>
         ${det}
-        <button class="swap" onclick="openPick(${idx})">${T.swap}</button></div></div>`;
+        <div class="sc-foot2">${yt}<button class="swap" onclick="openPick(${idx})">${T.swap}</button></div></div></div>`;
   }).join("") + `<button class="addslot" onclick="addSlot()"><span class="plus">＋</span>${T.add}</button>`;
   const hasMC=slots.some(s=>BY[s].flat);
   const inc=[[T.incl[0],true],[T.incl[1],true],[T.incl[2],true], hasMC?[T.mcOn,true]:[T.mcOff,false]];
