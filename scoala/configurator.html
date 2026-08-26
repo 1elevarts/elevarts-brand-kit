@@ -113,19 +113,27 @@
   .addslot:hover{background:#f6edff;border-color:var(--magenta)}
   .addslot .plus{font-size:26px;line-height:1}
 
-  .showdet{margin:14px 0 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(30,16,54,.07)}
-  .showdet .sc-badge{display:inline-block;background:var(--grad);color:#fff;font-size:10px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-right:8px;vertical-align:middle}
-  .showdet .sc-body{padding:22px 24px}
-  .showdet .sc-k{font-size:12px;letter-spacing:.16em;font-weight:700;text-transform:uppercase;color:var(--muted);margin:0;display:flex;align-items:center}
-  .showdet .sc-t{font-family:var(--disp);font-weight:600;font-size:24px;line-height:1.15;margin:6px 0 0}
-  .showdet .sc-lead{margin:10px 0 0;font-size:15.5px;color:var(--muted);line-height:1.5}
-  .showdet .sc-checks{list-style:none;margin:20px 0 0;padding:0}
-  .showdet .sc-checks li{display:flex;gap:11px;align-items:flex-start;padding:8px 0;font-size:15px;color:#3a3350;line-height:1.4}
-  .showdet .sc-checks svg{width:19px;height:19px;flex:0 0 auto;margin-top:2px;stroke:#2fae6b;fill:none}
-  .showdet .sc-checks b{font-weight:700;color:var(--ink)}
-  .showdet .sc-adapt{margin-top:18px;display:flex;gap:10px;align-items:flex-start;background:#f6f2fc;border-radius:10px;padding:12px 14px;font-size:14px;color:var(--muted);line-height:1.5}
-  .showdet .sc-adapt svg{width:17px;height:17px;flex:0 0 auto;margin-top:2px;stroke:#645faa;fill:none}
-  .showdet .sc-adapt b{color:var(--ink);font-weight:600}
+  .slot.showfull{grid-column:1/-1;display:flex;flex-direction:column}
+  .slot.showfull .ph{aspect-ratio:auto;height:auto;padding:0}
+  .slot.showfull .ph img{display:block;width:100%;height:auto;max-height:420px;object-fit:cover;object-position:center 28%}
+  .slot.showfull .ph::after{content:none}
+  .sc-body{padding:22px 24px}
+  .sc-badge{display:inline-block;background:var(--grad);color:#fff;font-size:10px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-right:8px;vertical-align:middle}
+  .sc-k{font-size:12px;letter-spacing:.16em;font-weight:700;text-transform:uppercase;color:var(--muted);margin:0;display:flex;align-items:center}
+  .sc-t{font-family:var(--disp);font-weight:600;font-size:24px;line-height:1.15;margin:8px 0 0}
+  .sc-lead{margin:10px 0 0;font-size:15.5px;color:var(--muted);line-height:1.5}
+  .sc-checks{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px}
+  .sc-checks li{display:flex;gap:11px;align-items:flex-start;padding:8px 0;font-size:15px;color:#3a3350;line-height:1.4}
+  .sc-checks svg{width:19px;height:19px;flex:0 0 auto;margin-top:2px;stroke:#2fae6b;fill:none}
+  .sc-checks b{font-weight:700;color:var(--ink)}
+  .sc-adapt{margin-top:16px;display:flex;gap:10px;align-items:flex-start;background:#f6f2fc;border-radius:10px;padding:12px 14px;font-size:14px;color:var(--muted);line-height:1.5}
+  .sc-adapt svg{width:17px;height:17px;flex:0 0 auto;margin-top:2px;stroke:#645faa;fill:none}
+  .sc-adapt b{color:var(--ink);font-weight:600}
+  .sc-foot{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .sc-price b{font-family:var(--disp);font-weight:600;font-size:26px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .sc-price span{color:var(--muted);font-size:13px;font-weight:600;margin-left:6px}
+  .slot.showfull .swap{margin-top:0;width:auto;padding:11px 22px}
+  @media(max-width:560px){.sc-checks{grid-template-columns:1fr}}
   .incluse .t{font-family:var(--disp);font-weight:600;font-size:15px;margin-bottom:12px}
   .incluse ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
   .incluse li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:#3a3350}
@@ -258,7 +266,6 @@
 
   <div class="slots" id="slots"></div>
 
-  <div class="showdet" id="showdet" style="display:none"></div>
 
   <div class="incluse">
     <div class="t" id="inclTitle"></div>
@@ -579,11 +586,28 @@ function render(){
   $("b-eyebrow").textContent=T.pkLbl+" "+(cur+1)+" · "+pkName(cur);
   $("b-title").textContent=pkName(cur);
   $("b-lead").textContent=pkLead(cur);
+  const chk=`<svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg>`;
+  const clock=`<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
   $("slots").innerHTML=slots.map((s,idx)=>{
     const c=BY[s];const dk=DARK.has(s)?'dark':'';
+    const rm=slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:'';
+    if(SHOWINFO[s]){ // show = UN card, poza sus + tot detaliul dedesubt (ca pe ofertaspectrum)
+      const d=SHOWINFO[s][L]||SHOWINFO[s].ro;
+      return `<div class="slot showfull ${dk}">
+        <div class="ph"><img src="${img(s)}" alt=""><span class="badge">SHOW</span>${rm}</div>
+        <div class="sc-body">
+          <p class="sc-k"><span class="sc-badge">${d.eye}</span> ${d.kick}</p>
+          <h4 class="sc-t">${d.title}</h4>
+          <p class="sc-lead">${d.desc}</p>
+          <ul class="sc-checks">${d.feat.map(x=>`<li>${chk}<span>${x}</span></li>`).join('')}</ul>
+          <div class="sc-adapt">${clock}<span>${d.note}</span></div>
+          <div class="sc-foot"><div class="sc-price"><b>${money(c.price)}</b> <span>${T.fixed} · ${T.artists(artists(s))}</span></div>
+            <button class="swap" onclick="openPick(${idx})">${T.swap}</button></div>
+        </div></div>`;
+    }
     return `<div class="slot ${dk}">
       <div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>
-        ${slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:''}</div>
+        ${rm}</div>
       <div class="body2"><div class="nm">${nm(s)}</div>
         <div class="pr">${c.flat?`<b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
         <div class="art">${T.artists(artists(s))}</div>
@@ -593,22 +617,6 @@ function render(){
   const inc=[[T.incl[0],true],[T.incl[1],true],[T.incl[2],true], hasMC?[T.mcOn,true]:[T.mcOff,false]];
   $("incluse").innerHTML=inc.map(([t,on])=>
     `<li class="${on?'':'off'}"><span class="chk ${on?'':'chk-off'}">${on?'✓':'—'}</span> ${t}</li>`).join('');
-  // card detaliu show, dedesubtul sloturilor (când pachetul conține un show cu detalii)
-  const showSlug=slots.find(s=>SHOWINFO[s]);
-  if(showSlug){
-    const d=SHOWINFO[showSlug][L]||SHOWINFO[showSlug].ro;
-    const chk=`<svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg>`;
-    const clock=`<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
-    $("showdet").innerHTML=`
-      <div class="sc-body">
-        <p class="sc-k"><span class="sc-badge">${d.eye}</span> ${d.kick}</p>
-        <h4 class="sc-t">${d.title}</h4>
-        <p class="sc-lead">${d.desc}</p>
-        <ul class="sc-checks">${d.feat.map(x=>`<li>${chk}<span>${x}</span></li>`).join('')}</ul>
-        <div class="sc-adapt">${clock}<span>${d.note}</span></div>
-      </div>`;
-    $("showdet").style.display='';
-  } else { $("showdet").style.display='none'; }
   const perHour=slots.filter(s=>!BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
   const flatSum=slots.filter(s=>BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
   const net=perHour*entries+flatSum, tva=Math.round(net*1.21);
