@@ -113,14 +113,18 @@
   .addslot:hover{background:#f6edff;border-color:var(--magenta)}
   .addslot .plus{font-size:26px;line-height:1}
 
-  .showdet{margin:16px 0 0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:0 10px 30px rgba(30,16,54,.07)}
-  .showdet .badge2{display:inline-block;font-family:var(--body);font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;padding:6px 12px;border-radius:999px;background:var(--grad)}
-  .showdet h4{font-family:var(--disp);font-weight:600;font-size:22px;line-height:1.15;margin:13px 0 5px}
-  .showdet .sd-desc{font-size:14.5px;color:var(--muted);line-height:1.55;margin-bottom:14px}
-  .showdet ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-  .showdet li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:#3a3350;line-height:1.4}
-  .showdet .sd-note{margin-top:16px;background:#f6f1fc;border:1px solid var(--line);border-radius:12px;padding:12px 15px;font-size:12.5px;color:var(--muted);line-height:1.5}
-  .showdet .sd-note b{color:var(--ink)}
+  /* card show lat, cu detalii sub „N artiști" */
+  .slot.showcard{grid-column:1/-1;flex-direction:row}
+  .slot.showcard .ph{aspect-ratio:auto;width:250px;flex:none;align-self:stretch;border-radius:0}
+  .slot.showcard .body2{flex:1;padding:20px 24px}
+  .slot.showcard .sdt{font-family:var(--disp);font-weight:600;font-size:19px;line-height:1.15;margin:14px 0 4px}
+  .slot.showcard .sdd{font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:12px}
+  .slot.showcard ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  .slot.showcard li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#3a3350;line-height:1.4}
+  .slot.showcard .sdn{margin-top:14px;background:#f6f1fc;border:1px solid var(--line);border-radius:11px;padding:11px 14px;font-size:12px;color:var(--muted);line-height:1.5}
+  .slot.showcard .sdn b{color:var(--ink)}
+  .slot.showcard .swap{max-width:280px;margin-top:14px}
+  @media(max-width:600px){.slot.showcard{flex-direction:column}.slot.showcard .ph{width:100%;aspect-ratio:4/5}}
   .incluse .t{font-family:var(--disp);font-weight:600;font-size:15px;margin-bottom:12px}
   .incluse ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
   .incluse li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:#3a3350}
@@ -252,8 +256,6 @@
   <p class="hint" id="hint"></p>
 
   <div class="slots" id="slots"></div>
-
-  <div class="showdet" id="showdet" style="display:none"></div>
 
   <div class="incluse">
     <div class="t" id="inclTitle"></div>
@@ -576,11 +578,21 @@ function render(){
   $("b-lead").textContent=pkLead(cur);
   $("slots").innerHTML=slots.map((s,idx)=>{
     const c=BY[s];const dk=DARK.has(s)?'dark':'';
-    return `<div class="slot ${dk}">
-      <div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>
-        ${slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:''}</div>
-      <div class="body2"><div class="nm">${nm(s)}</div>
-        <div class="pr">${c.flat?`<b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
+    const info=SHOWINFO[s]?(SHOWINFO[s][L]||SHOWINFO[s].ro):null;
+    const rm=slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:'';
+    const head=`<div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>${rm}</div>`;
+    const price=`<div class="pr">${c.flat?`<b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>`;
+    if(info){ // card lat cu detalii sub „N artiști"
+      return `<div class="slot showcard ${dk}">${head}
+        <div class="body2"><div class="nm">${nm(s)}</div>${price}
+          <div class="art">${T.artists(artists(s))}</div>
+          <div class="sdt">${info.title}</div><div class="sdd">${info.desc}</div>
+          <ul>${info.feat.map(x=>`<li><span class="chk">✓</span> ${x}</li>`).join('')}</ul>
+          <div class="sdn">${info.note}</div>
+          <button class="swap" onclick="openPick(${idx})">${T.swap}</button></div></div>`;
+    }
+    return `<div class="slot ${dk}">${head}
+      <div class="body2"><div class="nm">${nm(s)}</div>${price}
         <div class="art">${T.artists(artists(s))}</div>
         <button class="swap" onclick="openPick(${idx})">${T.swap}</button></div></div>`;
   }).join("") + `<button class="addslot" onclick="addSlot()"><span class="plus">＋</span>${T.add}</button>`;
@@ -588,16 +600,6 @@ function render(){
   const inc=[[T.incl[0],true],[T.incl[1],true],[T.incl[2],true], hasMC?[T.mcOn,true]:[T.mcOff,false]];
   $("incluse").innerHTML=inc.map(([t,on])=>
     `<li class="${on?'':'off'}"><span class="chk ${on?'':'chk-off'}">${on?'✓':'—'}</span> ${t}</li>`).join('');
-  // card detaliu show (dacă pachetul conține un show cu detalii)
-  const showSlug=slots.find(s=>SHOWINFO[s]);
-  if(showSlug){
-    const d=SHOWINFO[showSlug][L]||SHOWINFO[showSlug].ro;
-    $("showdet").innerHTML=`<span class="badge2">${d.eye}</span>
-      <h4>${d.title}</h4><div class="sd-desc">${d.desc}</div>
-      <ul>${d.feat.map(x=>`<li><span class="chk">✓</span> ${x}</li>`).join('')}</ul>
-      <div class="sd-note">${d.note}</div>`;
-    $("showdet").style.display='';
-  } else { $("showdet").style.display='none'; }
   const perHour=slots.filter(s=>!BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
   const flatSum=slots.filter(s=>BY[s].flat).reduce((a,s)=>a+BY[s].price,0);
   const net=perHour*entries+flatSum, tva=Math.round(net*1.21);
