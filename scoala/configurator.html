@@ -334,6 +334,8 @@ const D=[
   ["ledrobots","Roboți LED",500,"led"],
   ["trShowV1","Transformers V1 — Show",1000,"show",true,"transformers"],
   ["trShowV2","Transformers V2 — Show",1250,"show",true,"transformersV2"],
+  ["magicomedie","MagiComedie — Show",750,"show",true,"magicomedie"],
+  ["jonglerie","Roți în mișcare — Show",500,"show",true,"jonglerie"],
 ];
 const EN_NAME={
   unicorn:"Inflatable Unicorn",stitch:"Inflatable Stitch",panda:"Inflatable Panda",
@@ -348,6 +350,7 @@ const EN_NAME={
   optimusV2:"Optimus Prime V2",bumblebee:"Bumblebee V1",bumblebeeV2:"Bumblebee V2",
   phoenix:"Pheonyx Birds (stilts)",angels:"White Angels (stilts)",ledrobots:"LED Robots",
   trShowV1:"Transformers V1 — Show",trShowV2:"Transformers V2 — Show",
+  magicomedie:"MagiComedie — Show",jonglerie:"Wheels in Motion — Show",
 };
 const BY={}; D.forEach(x=>BY[x[0]]={slug:x[0],name:x[1],price:x[2],cat:x[3],flat:x[4]||false,img:x[5]||x[0]});
 // Sursă unică de adevăr din catalog (cfg-data.js): suprascrie doar preț + nr. artiști.
@@ -376,6 +379,24 @@ const SHOWINFO={
     en:{eye:"Version V1",kick:"Standard version",ytLabel:"Watch the V1 show",title:"2.25 m robots, on platforms",desc:"The same 45-minute show, with a small fog cannon and without the jumbo-balloon finale.",
       feat:["Robots on <b>platforms</b>, <b>2.25 m</b> tall","Dance & music show <b>45 min</b>","Microphone and sound included","Photo/video session (Meet&Greet) with the audience","<b>Small</b> fog cannon",{t:"No Jumbo Balloon confetti moment",off:true},"<b>3 artists</b>: 2 robots and the host"],
       note:"Full format is <b>45 minutes</b>. If you need another slot, we adapt it."},
+  },
+  magicomedie:{
+    yt:"https://www.youtube.com/watch?v=-YVLmcVR2-o",
+    ro:{eye:"MagiComedie",kick:"Magie & comedie pe scenă",ytLabel:"Vezi show-ul",title:"Magie și iluzionism, pe scenă",desc:"Spectacol de scenă, momentul culminant al evenimentului — numere de magie în prezentări originale.",
+      feat:["<b>35–40 minute</b> de spectacol de scenă","Show <b>100% interactiv</b>, plin de umor","Numere de magie <b>originale, atipice</b>","Pentru <b>orice vârstă</b>, audiență de scenă","„Spectacolul <b>care îți rămâne în minte</b>”","Microfon și sonorizare incluse","<b>1 artist</b>: magicianul"],
+      note:"Formatul complet are <b>35–40 de minute</b>. Dacă aveți alt interval, îl potrivim."},
+    en:{eye:"MagiComedy",kick:"Magic & comedy on stage",ytLabel:"Watch the show",title:"Magic and illusion, on stage",desc:"A stage show — the highlight of your event, with magic acts in original, unexpected framings.",
+      feat:["<b>35–40 minutes</b> of stage show","<b>100% interactive</b> show, full of humour","<b>Original, unexpected</b> magic acts","For <b>any age</b>, stage audience","„The show <b>you'll remember</b>”","Microphone and sound included","<b>1 artist</b>: the magician"],
+      note:"Full format is <b>35–40 minutes</b>. If you need another slot, we adapt it."},
+  },
+  jonglerie:{
+    yt:"https://vimeo.com/1041977886",
+    ro:{eye:"Roți în mișcare",kick:"Jonglerie & monociclu",ytLabel:"Vezi show-ul pe video",title:"De la 3 mingi la 7, pe monociclu",desc:"Începe simplu și urcă în complexitate — popice, pălării, jonglerie de contact și trei tipuri de monociclu.",
+      feat:["Spectacol de scenă <b>30–35 min</b>, crește în complexitate","Jonglerie de la <b>trei mingi până la șapte</b>","<b>Popice, pălării</b> și jonglerie de contact","<b>Trei tipuri de monociclu</b>: clasic, „girafă” și „ultimate wheel”","Un truc de <b>iluzionism</b> și un moment de <b>„jonglerie gastronomică”</b>","Muzică antrenantă, artistul interacționează la microfon","<b>1 artist</b>: jonglerul"],
+      note:"Formatul complet are <b>30–35 de minute</b>. Dacă aveți alt interval, îl potrivim."},
+    en:{eye:"Wheels in Motion",kick:"Juggling & unicycle",ytLabel:"Watch the show",title:"From 3 balls to 7, on a unicycle",desc:"Starts simple and climbs in complexity — clubs, hats, contact juggling and three types of unicycle.",
+      feat:["<b>30–35 min</b> stage show that grows in complexity","Juggling from <b>three balls up to seven</b>","<b>Clubs, hats</b> and contact juggling","<b>Three types of unicycle</b>: classic, „giraffe” and „ultimate wheel”","An <b>illusion</b> trick and a „<b>gastronomic juggling</b>” moment","Upbeat music, the artist works the crowd on mic","<b>1 artist</b>: the juggler"],
+      note:"Full format is <b>30–35 minutes</b>. If you need another slot, we adapt it."},
   },
 };
 const artists=s=>(CFG&&CFG[s]&&typeof CFG[s].artists==='number')?CFG[s].artists:(ART[s]||1);
