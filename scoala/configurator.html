@@ -125,6 +125,11 @@
   .sc-adapt{margin-top:12px;display:flex;gap:8px;align-items:flex-start;background:#f6f2fc;border-radius:10px;padding:10px 12px;font-size:12px;color:var(--muted);line-height:1.45}
   .sc-adapt svg{width:15px;height:15px;flex:0 0 auto;margin-top:2px;stroke:#645faa;fill:none}
   .sc-adapt b{color:var(--ink);font-weight:600}
+  .sc-yt{margin-top:12px;display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+    background:#ff0000;color:#fff;font-family:var(--body);font-weight:700;font-size:12.5px;padding:9px 15px;border-radius:999px;transition:.14s}
+  .sc-yt:hover{filter:brightness(1.06)}
+  .sc-yt .pl{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#fff;border-radius:50%}
+  .sc-yt .pl svg{width:11px;height:11px;color:#ff0000;margin-left:1px}
   .incluse .t{font-family:var(--disp);font-weight:600;font-size:15px;margin-bottom:12px}
   .incluse ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
   .incluse li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:#3a3350}
@@ -349,18 +354,20 @@ const ART={butterflies:2,goldButt:2,trioButt:3,phoenix:2,angels:2,ledrobots:2,tr
 // detalii show (card sub sloturi când pachetul conține un show)
 const SHOWINFO={
   trShowV2:{
-    ro:{eye:"Versiunea V2",kick:"Cea mai spectaculoasă",title:"Roboți de 2,50 m, pe picioroange",desc:"Din ultimul film Transformers. Tun mare de fum și momentul cu balonul jumbo, spart cu arma laser.",
+    yt:"https://www.youtube.com/shorts/X2kIFu8qQ84",
+    ro:{eye:"Versiunea V2",kick:"Cea mai spectaculoasă",ytLabel:"Vezi show-ul V2",title:"Roboți de 2,50 m, pe picioroange",desc:"Din ultimul film Transformers. Tun mare de fum și momentul cu balonul jumbo, spart cu arma laser.",
       feat:["Roboți pe <b>picioroange</b>, înălțime <b>2,50 m</b>","Show dans și muzică <b>45 min</b>","Microfon și sonorizare incluse","Sesiune foto/video (Meet&Greet) cu publicul","Tun <b>mare</b> de fum","Moment special cu <b>Balon Jumbo</b> plin de confetti, spart cu Arma Laser","<b>3 artiști</b>: 2 roboți și prezentatorul"],
       note:"Formatul complet are <b>45 de minute</b>. Dacă aveți alt interval, îl potrivim."},
-    en:{eye:"Version V2",kick:"The most spectacular",title:"2.50 m robots, on stilts",desc:"Straight from the latest Transformers film. Big fog cannon and the jumbo-balloon moment, popped with a laser gun.",
+    en:{eye:"Version V2",kick:"The most spectacular",ytLabel:"Watch the V2 show",title:"2.50 m robots, on stilts",desc:"Straight from the latest Transformers film. Big fog cannon and the jumbo-balloon moment, popped with a laser gun.",
       feat:["Robots on <b>stilts</b>, <b>2.50 m</b> tall","Dance & music show <b>45 min</b>","Microphone and sound included","Photo/video session (Meet&Greet) with the audience","<b>Big</b> fog cannon","Special moment with a <b>Jumbo Balloon</b> full of confetti, popped with a Laser Gun","<b>3 artists</b>: 2 robots and the host"],
       note:"Full format is <b>45 minutes</b>. If you need another slot, we adapt it."},
   },
   trShowV1:{
-    ro:{eye:"Versiunea V1",kick:"Show-ul clasic",title:"Roboți Transformers, pe picioroange",desc:"Roboții Transformers clasici. Tun de fum și momentul cu balonul jumbo, spart cu arma laser.",
+    yt:"https://www.youtube.com/shorts/Wy6KJWEokdg",
+    ro:{eye:"Versiunea V1",kick:"Show-ul clasic",ytLabel:"Vezi show-ul V1",title:"Roboți Transformers, pe picioroange",desc:"Roboții Transformers clasici. Tun de fum și momentul cu balonul jumbo, spart cu arma laser.",
       feat:["Roboți pe <b>picioroange</b>","Show dans și muzică <b>45 min</b>","Microfon și sonorizare incluse","Sesiune foto/video (Meet&Greet) cu publicul","Tun <b>mare</b> de fum","Moment special cu <b>Balon Jumbo</b> plin de confetti, spart cu Arma Laser","<b>3 artiști</b>: 2 roboți și prezentatorul"],
       note:"Formatul complet are <b>45 de minute</b>. Dacă aveți alt interval, îl potrivim."},
-    en:{eye:"Version V1",kick:"The classic show",title:"Transformers robots, on stilts",desc:"The classic Transformers robots. Fog cannon and the jumbo-balloon moment, popped with a laser gun.",
+    en:{eye:"Version V1",kick:"The classic show",ytLabel:"Watch the V1 show",title:"Transformers robots, on stilts",desc:"The classic Transformers robots. Fog cannon and the jumbo-balloon moment, popped with a laser gun.",
       feat:["Robots on <b>stilts</b>","Dance & music show <b>45 min</b>","Microphone and sound included","Photo/video session (Meet&Greet) with the audience","<b>Big</b> fog cannon","Special moment with a <b>Jumbo Balloon</b> full of confetti, popped with a Laser Gun","<b>3 artists</b>: 2 robots and the host"],
       note:"Full format is <b>45 minutes</b>. If you need another slot, we adapt it."},
   },
@@ -589,6 +596,7 @@ function render(){
         <p class="sc-lead">${d.desc}</p>
         <ul class="sc-checks">${d.feat.map(x=>`<li>${chk}<span>${x}</span></li>`).join('')}</ul>
         <div class="sc-adapt">${clock}<span>${d.note}</span></div>
+        ${SHOWINFO[s].yt?`<a class="sc-yt" href="${SHOWINFO[s].yt}" target="_blank" rel="noopener"><span class="pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>${d.ytLabel}</a>`:''}
       </div>`; }
     return `<div class="slot ${dk}">
       <div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>
