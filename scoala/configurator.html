@@ -99,6 +99,11 @@
   .slot .ph.gal .dots{position:absolute;left:0;right:0;bottom:9px;z-index:3;display:flex;gap:5px;justify-content:center}
   .slot .ph.gal .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.6);box-shadow:0 1px 3px rgba(0,0,0,.3);transition:.18s}
   .slot .ph.gal .dots i.on{background:#fff;width:17px;border-radius:3px}
+  .slot .ph.gal .garr{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:30px;height:30px;border:none;border-radius:50%;
+    background:rgba(19,17,32,.5);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px);padding-bottom:2px}
+  .slot .ph.gal .garr:hover{background:rgba(19,17,32,.78)}
+  .slot .ph.gal .garr.prev{left:8px}
+  .slot .ph.gal .garr.next{right:8px}
   .slot.dark .ph{background-color:#141024}
   .slot .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,32,0) 55%,rgba(19,17,32,.5) 100%)}
   .badge{position:absolute;left:11px;top:11px;z-index:2;font-size:10px;font-weight:700;letter-spacing:.12em;
@@ -639,7 +644,7 @@ function render(){
     }
     const rmBtn=slots.length>1?`<button class="rm" onclick="rmSlot(${idx})">×</button>`:'';
     const ph=(PHOTOS[s]>1)
-      ? `<div class="ph gal"><div class="gwrap">${photoList(s).map(u=>`<img src="${u}" loading="lazy" alt="">`).join('')}</div><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>${rmBtn}<div class="dots">${photoList(s).map((_,i)=>`<i class="${i===0?'on':''}"></i>`).join('')}</div></div>`
+      ? `<div class="ph gal"><div class="gwrap">${photoList(s).map(u=>`<img src="${u}" loading="lazy" alt="">`).join('')}</div><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>${rmBtn}<button class="garr prev" aria-label="Anterior">‹</button><button class="garr next" aria-label="Următor">›</button><div class="dots">${photoList(s).map((_,i)=>`<i class="${i===0?'on':''}"></i>`).join('')}</div></div>`
       : `<div class="ph" style="background-image:url('${img(s)}')"><span class="badge">${c.flat?'SHOW':catL(c.cat)}</span>${rmBtn}</div>`;
     return `<div class="slot ${dk}">
       ${ph}
@@ -649,8 +654,17 @@ function render(){
         ${det}
         <div class="sc-foot2">${yt}<button class="swap" onclick="openPick(${idx})">${T.swap}</button></div></div></div>`;
   }).join("") + `<button class="addslot" onclick="addSlot()"><span class="plus">＋</span>${T.add}</button>`;
-  // sincronizează punctele galeriei la scroll
-  document.querySelectorAll('.ph.gal').forEach(g=>{const w=g.querySelector('.gwrap');w.onscroll=()=>{const i=Math.round(w.scrollLeft/w.clientWidth);[...g.querySelectorAll('.dots i')].forEach((d,j)=>d.classList.toggle('on',j===i));};});
+  // galerie: puncte + săgeți (click pe desktop, swipe pe telefon)
+  document.querySelectorAll('.ph.gal').forEach(g=>{
+    const w=g.querySelector('.gwrap');
+    const cur=()=>Math.round(w.scrollLeft/w.clientWidth);
+    const go=i=>{const n=w.children.length;i=Math.max(0,Math.min(n-1,i));w.scrollTo({left:i*w.clientWidth,behavior:'smooth'});};
+    w.onscroll=()=>{const i=cur();[...g.querySelectorAll('.dots i')].forEach((d,j)=>d.classList.toggle('on',j===i));};
+    g.querySelectorAll('.dots i').forEach((d,j)=>d.onclick=e=>{e.stopPropagation();go(j);});
+    const p=g.querySelector('.prev'),nx=g.querySelector('.next');
+    if(p)p.onclick=e=>{e.stopPropagation();go(cur()-1);};
+    if(nx)nx.onclick=e=>{e.stopPropagation();go(cur()+1);};
+  });
   const hasMC=slots.some(s=>BY[s].flat);
   const inc=[[T.incl[0],true],[T.incl[1],true],[T.incl[2],true], hasMC?[T.mcOn,true]:[T.mcOff,false]];
   $("incluse").innerHTML=inc.map(([t,on])=>
