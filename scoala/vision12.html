@@ -833,7 +833,7 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
    '<a class="pb-tt" href="https://tiktok.com/@1elevarts" target="_blank" rel="noopener">TikTok</a>'+
    '<a class="pb-yt" href="https://www.youtube.com/@ELEVARTS" target="_blank" rel="noopener">YouTube</a>'+
    '</div>';
- b.insertBefore(t,b.firstChild);
+ var tb0=document.querySelector('.totalbar');tb0.parentNode.insertBefore(t,tb0);t.setAttribute('data-keep','1');
  if(window.innerWidth>=1060){
    b.classList.add('railgrid');
    var left=document.createElement('div');var rail=document.createElement('div');rail.className='rail';
@@ -842,7 +842,7 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
      if(c===left||c===rail) return;
      if(c.classList.contains('totalbar')) rail.appendChild(c); else left.appendChild(c);
    });
-   b.appendChild(left);b.appendChild(rail);
+   b.appendChild(left);b.appendChild(rail);var pbk=document.querySelector('.proofbar[data-keep]');if(pbk){rail.insertBefore(pbk,rail.querySelector('.totalbar'));}
  }
 },350));</script>
 </body>
