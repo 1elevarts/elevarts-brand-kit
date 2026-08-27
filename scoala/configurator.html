@@ -510,7 +510,7 @@ const TXT={
   locLbl:"Unde e evenimentul?",
   locNote:"Minim <b>2 intrări în București</b> · minim <b>3 în afara Bucureștiului</b>. O intrare = o oră: <b>45 min activitate + 15 min pauză</b>.",
   entLbl:"Câte intrări?",
-  entNote:"Prețul din carduri e pentru <b>o intrare</b>. Fiecare intrare în plus se adună la total.",
+  entNote:"Prețul din carduri e pentru <b>o intrare</b> (o oră). Fiecare intrare în plus se adună la total. Tarifele pornesc de la <b>150 €/artist/oră</b>.",
   hint:"Apasă <b>Schimbă</b> pe orice personaj ca să-l înlocuiești. Poți adăuga sau scoate personaje — prețul se recalculează instant.",
   inclTitle:"Ce aducem cu noi",
   incl:["Costumele și personajele pe care le alegi","Energie și voie bună de la echipă","Timp alocat pentru poze cu personajele (cu telefonul vostru)"],
@@ -534,6 +534,7 @@ const TXT={
   sumEyebrow:"Oferta aleasă de client",editLink:"Deschide în configurator (modifică) →",
   ent:n=>n+(n===1?" intrare":" intrări"),
   artists:n=>n+(n===1?" artist":" artiști"),
+  perArtist:"/artist",fromArtist:"De la 150 €/artist/oră",
   waMsg:(P,l,e,lines,net,tva,link)=>"Bună! Am construit un pachet pentru prima zi de școală.\nPachet: "+P+" · "+l+" · "+e+"\n"+lines+"\nTotal: "+net+" net (cu TVA 21%: "+tva+").\nOferta mea (deschide să vezi exact ce am ales): "+link,
   waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — "+pr+", preț fix":" — "+pr+"/intrare"),
  },
@@ -550,7 +551,7 @@ const TXT={
   locLbl:"Where's the event?",
   locNote:"Minimum <b>2 entries in Bucharest</b> · minimum <b>3 outside Bucharest</b>. One entry = one hour: <b>45 min of activity + 15 min break</b>.",
   entLbl:"How many entries?",
-  entNote:"The card price is for <b>one entry</b>. Each extra entry adds to the total.",
+  entNote:"The card price is for <b>one entry</b> (one hour). Each extra entry adds to the total. Rates start from <b>150 €/artist/hour</b>.",
   hint:"Tap <b>Swap</b> on any character to replace it. You can add or remove characters — the price recalculates instantly.",
   inclTitle:"What we bring",
   incl:["The costumes and characters you pick","Energy and good vibes from the team","Time set aside for photos with the characters (on your own phone)"],
@@ -574,6 +575,7 @@ const TXT={
   sumEyebrow:"The client's chosen offer",editLink:"Open in configurator (edit) →",
   ent:n=>n+" "+(n===1?"entry":"entries"),
   artists:n=>n+" "+(n===1?"artist":"artists"),
+  perArtist:"/artist",fromArtist:"From 150 €/artist/hour",
   waMsg:(P,l,e,lines,net,tva,link)=>"Hi! I built a package for the first day of school.\nPackage: "+P+" · "+l+" · "+e+"\n"+lines+"\nTotal: "+net+" net (with 21% VAT: "+tva+").\nMy offer (open to see exactly what I picked): "+link,
   waLine:(nm,pr,flat,art)=>"• "+nm+" ("+art+")"+(flat?" — "+pr+", fixed price":" — "+pr+"/entry"),
  },
@@ -719,7 +721,7 @@ function render(){
       ${ph}
       <div class="body2"><div class="nm">${nm(s)}</div>
         <div class="pr">${c.flat?`<b>${money(c.price)}</b> · ${T.fixed}`:`<b>${money(c.price)}</b>`}</div>
-        <div class="art">${T.artists(artists(s))}</div>
+        <div class="art">${T.artists(artists(s))}${c.flat?'':` · ${money(Math.round(c.price/artists(s)))}${T.perArtist}`}</div>
         ${det}
         <div class="sc-foot2">${yt}<button class="swap" onclick="openPick(${idx})">${T.swap}</button></div></div></div>`;
   }).join("") + `<button class="addslot" onclick="addSlot()"><span class="plus">＋</span>${T.add}</button>`;
@@ -770,7 +772,7 @@ function renderPicker(){
     const dk=DARK.has(x[0])?'dark':'';
     return `<div class="pick ${dk}" onclick="choose('${x[0]}')">
       <div class="ph" style="background-image:url('${img(x[0])}')"></div>
-      <div class="nm">${nm(x[0])}</div><div class="pr">${x[4]?`<b>${money(x[2])}</b>`:`<b>${money(x[2])}</b>`}</div><div class="art">${T.artists(artists(x[0]))}</div></div>`;
+      <div class="nm">${nm(x[0])}</div><div class="pr">${x[4]?`<b>${money(x[2])}</b>`:`<b>${money(x[2])}</b>`}</div><div class="art">${T.artists(artists(x[0]))}${x[4]?'':` · ${money(Math.round(x[2]/artists(x[0])))}${T.perArtist}`}</div></div>`;
   }).join("");
 }
 function setFilter(k){filter=k;renderPicker();}
