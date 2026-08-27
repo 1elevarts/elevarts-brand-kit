@@ -94,13 +94,20 @@
     font-size:14px;padding:9px 16px;border-radius:9px;cursor:pointer;transition:.14s;white-space:nowrap}
   .durseg button.on{background:#fff;color:var(--ink);box-shadow:0 3px 10px rgba(30,16,54,.12)}
 
-  .catbox{margin:22px 0 0;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
-    background:linear-gradient(100deg,#fbf4ff,#fff6ef);border:1px solid var(--line);border-radius:16px;padding:16px 20px}
-  .catbox .ct{font-family:var(--disp);font-weight:600;font-size:15px}
-  .catbox .cs{font-size:13px;color:var(--muted);margin-top:2px}
-  .catbtn{flex:none;display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#fff;
-    background:var(--grad);font-weight:700;font-size:14px;padding:12px 20px;border-radius:999px}
-  .catbtn:hover{filter:brightness(1.05)}
+  .catsec{margin:34px 0 0}
+  .catsec .cat-eye{font-weight:700;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--magenta)}
+  .catsec .ct{font-family:var(--disp);font-weight:600;font-size:clamp(20px,3vw,26px);line-height:1.15;margin-top:9px}
+  .catsec .cs{font-size:15px;color:var(--muted);margin-top:9px;max-width:60ch;line-height:1.5}
+  .cats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+  .cat{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 26px rgba(30,16,54,.06);transition:.16s}
+  .cat:hover{box-shadow:0 14px 36px rgba(30,16,54,.13);transform:translateY(-2px)}
+  .cat img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+  .cat__b{padding:15px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .cat__t{font-family:var(--disp);font-weight:600;font-size:17px;color:var(--ink)}
+  .cat__d{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .cat__go{width:40px;height:40px;border-radius:999px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .cat__go svg{width:18px;height:18px;stroke:#fff}
+  @media(max-width:560px){.cats{grid-template-columns:1fr}}
 
   .slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(184px,1fr));gap:16px;margin:18px 0 0}
   .slot{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
@@ -300,12 +307,22 @@
     <ul id="incluse"></ul>
   </div>
 
-  <div class="catbox">
-    <div>
-      <div class="ct" id="catCt"></div>
-      <div class="cs" id="catCs"></div>
+  <div class="catsec">
+    <div class="cat-eye" id="catEye"></div>
+    <div class="ct" id="catCt"></div>
+    <div class="cs" id="catCs"></div>
+    <div class="cats">
+      <a class="cat" href="https://drive.google.com/file/d/1izQMPMm3KWu2JgZ6_JpP3hx-WT1d_TV9/view" target="_blank" rel="noopener">
+        <img src="img/cat-colorful.jpg" alt="Colorful Collection" width="900" height="506" loading="lazy">
+        <div class="cat__b"><div><div class="cat__t" id="catColT"></div><div class="cat__d" id="catColD"></div></div>
+          <span class="cat__go"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="cat" href="https://drive.google.com/file/d/1HnMaAytd78tXfqJz1hUr1DLbVcy8GzjS/view" target="_blank" rel="noopener">
+        <img src="img/cat-general.jpg" alt="Catalog general Elevarts" width="900" height="506" loading="lazy">
+        <div class="cat__b"><div><div class="cat__t" id="catGenT"></div><div class="cat__d" id="catGenD"></div></div>
+          <span class="cat__go"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+      </a>
     </div>
-    <a class="catbtn" id="catBtn" href="https://drive.google.com/file/d/1izQMPMm3KWu2JgZ6_JpP3hx-WT1d_TV9/view" target="_blank" rel="noopener"></a>
   </div>
 
   <div class="totalbar">
@@ -477,9 +494,11 @@ const TXT={
   incl:["Costumele și personajele pe care le alegi","Energie și voie bună de la echipă","Timp alocat pentru poze cu personajele (cu telefonul vostru)"],
   mcOn:"MC / prezentator — inclus în show-ul de Transformers",
   mcOff:"MC / prezentator — doar la show-ul de Transformers",
-  catCt:"Vrei să vezi chiar tot ce avem?",
-  catCs:"Peste 200 de costume și show-uri în catalogul complet Colorful.",
-  catBtn:"Vezi catalogul Colorful →",
+  catEye:"Mai multe opțiuni",
+  catCt:"Vrei să vezi tot ce avem?",
+  catCs:"Cele trei pachete sunt alese pentru prima zi de școală. În cataloage stau toate celelalte, dacă vrei să le răsfoiești.",
+  catColT:"Colorful Collection",catColD:"Costume colorate, explozie de culoare · PDF",
+  catGenT:"Catalog general",catGenD:"Toate personajele și momentele · PDF",
   totalLbl:"Total pachet",
   vat:"Cu TVA 21%",orNoVat:"sau fără TVA dacă e mai simplu",
   send:"Trimite pachetul pe WhatsApp →",
@@ -515,9 +534,11 @@ const TXT={
   incl:["The costumes and characters you pick","Energy and good vibes from the team","Time set aside for photos with the characters (on your own phone)"],
   mcOn:"MC / host — included in the Transformers show",
   mcOff:"MC / host — only with the Transformers show",
+  catEye:"More options",
   catCt:"Want to see everything we have?",
-  catCs:"Over 200 costumes and shows in the full Colorful catalogue.",
-  catBtn:"See the Colorful catalogue →",
+  catCs:"The three packages are picked for the first day of school. Everything else lives in the catalogues, if you want to browse.",
+  catColT:"Colorful Collection",catColD:"Colourful costumes, a burst of colour · PDF",
+  catGenT:"General catalogue",catGenD:"All characters and moments · PDF",
   totalLbl:"Package total",
   vat:"With 21% VAT",orNoVat:"or without VAT if simpler",
   send:"Send package on WhatsApp →",
@@ -575,9 +596,11 @@ function applyLang(){
   $("entNote").innerHTML=T.entNote;
   $("hint").innerHTML=T.hint;
   $("inclTitle").textContent=T.inclTitle;
+  $("catEye").textContent=T.catEye;
   $("catCt").textContent=T.catCt;
   $("catCs").textContent=T.catCs;
-  $("catBtn").textContent=T.catBtn;
+  $("catColT").textContent=T.catColT; $("catColD").textContent=T.catColD;
+  $("catGenT").textContent=T.catGenT; $("catGenD").textContent=T.catGenD;
   $("totalLbl").textContent=T.totalLbl;
   $("send").textContent=T.send;
   $("footerText").textContent=T.footer;
