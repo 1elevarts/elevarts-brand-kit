@@ -248,10 +248,14 @@
     .hbody{padding:12px 0 2px}
     .wa{margin:12px 0 2px}
     .body{padding:12px 0 0}
-    /* pachetele pe un rand, swipe, ca sa nu impinga pozele in jos */
-    .picks{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding:10px 0 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-    .picks::-webkit-scrollbar{display:none}
-    .pk{flex:0 0 80%;scroll-snap-align:center}
+    /* toate 3 pachetele vizibile pe un rand, compact — fara swipe ascuns */
+    .picks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 0 12px}
+    .pk{padding:10px 9px}
+    .pk .lbl{font-size:8.5px;letter-spacing:.08em}
+    .pk h3{font-size:13.5px;margin:3px 0 1px}
+    .pk .d{display:none}
+    .pk .p{font-size:13px;margin-top:4px}
+    .pk .p small{display:none}
   }
   /* desktop: pachetele in dreapta hero-ului (umple golul, urca pozele) — tot continutul ramane */
   @media(min-width:880px){
