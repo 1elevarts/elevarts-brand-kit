@@ -536,7 +536,7 @@ const TXT={
  },
 };
 
-let cur=0, slots=[], pickIndex=null, filter="all", loc="buc", entries=2, L="ro", T=TXT.ro, mode="build", CURR="EUR";
+let cur=0, slots=[], pickIndex=null, pickAdding=false, filter="all", loc="buc", entries=2, L="ro", T=TXT.ro, mode="build", CURR="EUR";
 let RATE=5.2536;  // curs BNR EUR→RON (fallback; actualizat din bnr-rate.json — cron zilnic)
 const $=id=>document.getElementById(id);
 const fmt=n=>n.toLocaleString(L==="en"?"en-US":"ro-RO");
@@ -713,9 +713,9 @@ function render(){
   }
 }
 function rmSlot(i){slots.splice(i,1);render();}
-function addSlot(){slots.push(slots[slots.length-1]||"unicorn");render();openPick(slots.length-1);}
-function openPick(i){pickIndex=i;filter="all";renderPicker();$("modal").classList.add("open");}
-function closePick(){$("modal").classList.remove("open");}
+function addSlot(){const i=slots.length;slots.push(slots[slots.length-1]||"unicorn");render();openPick(i,true);}
+function openPick(i,adding){pickIndex=i;pickAdding=!!adding;filter="all";renderPicker();$("modal").classList.add("open");}
+function closePick(){ if(pickAdding){ slots.splice(pickIndex,1); pickAdding=false; render(); } $("modal").classList.remove("open"); }
 function renderPicker(){
   const cats=["all",...Object.keys(T.cat)];
   $("filters").innerHTML=cats.map(k=>`<div class="chip ${k==filter?'on':''}" onclick="setFilter('${k}')">${k=='all'?T.all:T.cat[k]}</div>`).join("");
@@ -729,7 +729,7 @@ function renderPicker(){
   }).join("");
 }
 function setFilter(k){filter=k;renderPicker();}
-function choose(slug){slots[pickIndex]=slug;closePick();render();}
+function choose(slug){slots[pickIndex]=slug;pickAdding=false;closePick();render();}
 $("close").onclick=closePick;
 $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
 
