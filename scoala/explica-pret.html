@@ -1,0 +1,79 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Variante · Explicație preț & minim intrări</title>
+<style>
+:root{--bg:#faf8fd;--ink:#16122a;--muted:#6b6482;--hero:#131120;--pink:#ff8ab8;--magenta:#c1397d;
+--grad:linear-gradient(96deg,#d6413a,#862d91,#645faa,#6ba3d7);--green:#25d366;--line:#ece5f4;--card:#fff;
+--disp:'General Sans',Manrope,sans-serif;--body:'Manrope',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);padding:26px}
+.wrap{max-width:760px;margin:0 auto}
+h1{font-family:var(--disp);font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:13px;margin:0 0 26px}
+.vlabel{font:700 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);margin:30px 0 10px}
+b{font-weight:700}
+/* V1 — cifre mari */
+.v1{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:0 8px 26px rgba(30,16,54,.06)}
+.v1 .row{display:flex;gap:26px;flex-wrap:wrap}
+.v1 .n{flex:1;min-width:180px}
+.v1 .big{font-family:var(--disp);font-weight:600;font-size:46px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-bottom:.06em}
+.v1 .nl{font-weight:700;font-size:14px;margin-top:4px}.v1 .nd{color:var(--muted);font-size:12.5px}
+.v1 .pr{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:15px}
+.v1 .pr b{font-family:var(--disp);font-size:19px}
+/* V2 — banda dark cu pastile */
+.v2{background:var(--hero);border-radius:18px;padding:20px 22px;color:#fff;
+background-image:radial-gradient(60% 120% at 90% 0,rgba(134,45,145,.5),transparent 60%)}
+.v2 .t{font:700 11px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--pink);margin-bottom:12px}
+.v2 .pills{display:flex;gap:10px;flex-wrap:wrap}
+.v2 .pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:11px 15px;font-size:13.5px}
+.v2 .pill b{display:block;font-family:var(--disp);font-size:17px;margin-bottom:2px}
+.v2 .pill.hot{background:var(--grad);border:none}
+/* V3 — callout cald */
+.v3{background:linear-gradient(100deg,#fbf4ff,#fff6ef);border:1px solid var(--line);border-radius:18px;padding:20px 24px;border-left:4px solid transparent;border-image:var(--grad) 1}
+.v3 h3{font-family:var(--disp);font-weight:600;font-size:17px;margin:0 0 8px}
+.v3 p{margin:0;font-size:14.5px;line-height:1.6;color:#3a3350}
+.v3 b{color:var(--magenta)}
+/* V4 — card cu linii + iconuri */
+.v4{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px 22px;box-shadow:0 8px 26px rgba(30,16,54,.06)}
+.v4 .li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.v4 .li:last-child{border-bottom:none}
+.v4 .ic{width:40px;height:40px;border-radius:12px;background:#f6f1fc;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.v4 .ic svg{width:20px;height:20px;stroke:var(--magenta);fill:none;stroke-width:1.8}
+.v4 .tx{font-size:14.5px}.v4 .tx b{font-family:var(--disp)}
+.v4 .tx small{display:block;color:var(--muted);font-size:12.5px;margin-top:1px}
+/* V5 — inline slim */
+.v5{background:var(--card);border:1px dashed #d9c9ec;border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.v5 .ib{width:34px;height:34px;border-radius:50%;background:var(--grad);flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:var(--disp)}
+.v5 .tt{font-size:14px}.v5 .tt b{color:var(--ink)}.v5 .tt span{color:var(--muted)}
+</style></head>
+<body><div class="wrap">
+<h1>5 variante · minim intrări + preț de pornire</h1>
+<p class="sub">Toate spun: minim 2 intrări în București / 3 în afară · de la 150 €/artist/oră.</p>
+
+<div class="vlabel">V1 · Cifre mari</div>
+<div class="v1"><div class="row">
+  <div class="n"><div class="big">2</div><div class="nl">intrări minim · București</div><div class="nd">o intrare = o oră (45 min activitate + 15 min pauză)</div></div>
+  <div class="n"><div class="big">3</div><div class="nl">intrări minim · în afara Bucureștiului</div><div class="nd">deplasarea cere un minim mai mare</div></div>
+</div><div class="pr">Prețurile pornesc de la <b>150 € / artist / oră</b>. Alegi personajele și vezi totalul pe loc.</div></div>
+
+<div class="vlabel">V2 · Bandă cu pastile</div>
+<div class="v2"><div class="t">Cum se calculează</div><div class="pills">
+  <div class="pill"><b>Min. 2 intrări</b>în București</div>
+  <div class="pill"><b>Min. 3 intrări</b>în afara Bucureștiului</div>
+  <div class="pill hot"><b>de la 150 €</b>per artist / oră</div>
+</div></div>
+
+<div class="vlabel">V3 · Callout cald</div>
+<div class="v3"><h3>Cum funcționează, pe scurt</h3>
+<p>O intrare = o oră de show (45 min activitate + 15 min pauză). În <b>București</b> pornim de la <b>2 intrări</b>, în <b>afara lui</b> de la <b>3</b>. Prețul începe de la <b>150 € pe artist, pe oră</b> — alegi personajele și vezi totalul pe loc.</p></div>
+
+<div class="vlabel">V4 · Card cu linii</div>
+<div class="v4">
+  <div class="li"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div class="tx"><b>București: minim 2 intrări</b><small>o intrare = o oră (45 min activitate + 15 min pauză)</small></div></div>
+  <div class="li"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 13l2-5h11l3 5"/><path d="M3 13h16v4H3z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="16" cy="17.5" r="1.6"/></svg></div><div class="tx"><b>În afara Bucureștiului: minim 3 intrări</b><small>deplasarea cere un minim mai mare</small></div></div>
+  <div class="li"><div class="ic"><svg viewBox="0 0 24 24"><path d="M20 12l-8.5 8.5a2 2 0 0 1-3 0L4 16V7h9l7 5z"/><circle cx="9" cy="11" r="1.4"/></svg></div><div class="tx"><b>De la 150 € / artist / oră</b><small>alegi personajele și vezi totalul pe loc</small></div></div>
+</div>
+
+<div class="vlabel">V5 · Inline subțire</div>
+<div class="v5"><div class="ib">i</div><div class="tt"><b>Minim 2 intrări în București · 3 în afara lui · de la 150 €/artist/oră.</b> <span>O intrare = o oră (45 min activitate + 15 min pauză).</span></div></div>
+
+</div></body></html>
