@@ -266,10 +266,13 @@
     .pk .d{min-height:auto}
   }
 
-.truststrip{display:flex;gap:10px;flex-wrap:nowrap;margin:0 0 18px;overflow-x:auto;scrollbar-width:none}
-.truststrip::-webkit-scrollbar{display:none}
-.truststrip span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 15px;font:600 12.5px var(--body);color:var(--ink);display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(30,16,54,.05);white-space:nowrap;flex:0 0 auto}
-.truststrip span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--grad);flex:0 0 auto}
+.proofbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:0 0 20px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px;box-shadow:0 6px 20px rgba(30,16,54,.05)}
+.proofbar .pt{font-size:14px;color:#3a3350;line-height:1.4}
+.proofbar .pt b{color:var(--ink)}
+.proofbar .plinks{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.proofbar a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#fff;font:700 12px var(--body);padding:8px 14px;border-radius:999px}
+.proofbar a .d{width:6px;height:6px;border-radius:50%;background:#fff}
+.pb-ig{background:#e1306c}.pb-tt{background:#111}.pb-yt{background:#ff0000}
 @media(min-width:1060px){
  .body.railgrid{display:grid;grid-template-columns:1fr 300px;gap:34px;align-items:start}
  .body.railgrid .rail{position:sticky;top:20px}
@@ -823,8 +826,13 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
 
 <script>addEventListener('load',()=>setTimeout(()=>{
  var b=document.querySelector('.body');
- var t=document.createElement('div');t.className='truststrip';
- t.innerHTML='<span>Se văd de la poartă</span><span>Copiii nu-i uită</span><span>Tu, doar spectator</span>';
+ var t=document.createElement('div');t.className='proofbar';
+ t.innerHTML='<div class="pt"><b>Nu ne crede pe cuvânt — uită-te.</b> Show-uri reale, filmate la evenimente:</div>'+
+   '<div class="plinks">'+
+   '<a class="pb-ig" href="https://instagram.com/elevarts" target="_blank" rel="noopener">Instagram</a>'+
+   '<a class="pb-tt" href="https://tiktok.com/@1elevarts" target="_blank" rel="noopener">TikTok</a>'+
+   '<a class="pb-yt" href="https://www.youtube.com/@ELEVARTS" target="_blank" rel="noopener">YouTube</a>'+
+   '</div>';
  b.insertBefore(t,b.firstChild);
  if(window.innerWidth>=1060){
    b.classList.add('railgrid');
