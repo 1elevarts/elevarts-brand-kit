@@ -265,9 +265,27 @@
     .picks{grid-column:2;grid-template-columns:1fr;gap:12px;padding:0;margin-top:6px}
     .pk .d{min-height:auto}
   }
+
+.proofbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:0 0 20px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px;box-shadow:0 6px 20px rgba(30,16,54,.05)}
+.proofbar .pt{font-size:14px;color:#3a3350;line-height:1.4}
+.proofbar .pt b{color:var(--ink)}
+.proofbar .plinks{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.proofbar a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#fff;font:700 12px var(--body);padding:8px 14px;border-radius:999px}
+.proofbar a .d{width:6px;height:6px;border-radius:50%;background:#fff}
+.pb-ig{background:#e1306c}.pb-tt{background:#111}.pb-yt{background:#ff0000}
+@media(min-width:1060px){
+ .body.railgrid{display:grid;grid-template-columns:1fr 300px;gap:34px;align-items:start}
+ .body.railgrid .rail{position:sticky;top:20px}
+ .body.railgrid .rail .totalbar{position:static;bottom:auto;margin:0;flex-direction:column;align-items:flex-start;gap:14px;width:100%;box-shadow:0 18px 44px rgba(19,17,32,.4)}
+ .body.railgrid .rail .totalbar .amt{font-size:40px}
+ .body.railgrid .rail .totalbar .wa{width:100%;justify-content:center}
+ .body.railgrid .rail .rlabel{font:700 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);margin:0 0 10px}
+}
+
 </style>
 </head>
 <body>
+<script>history.replaceState=function(){};history.pushState=function(){};</script>
 <header class="hero">
  <div class="wrap">
   <div class="htop">
@@ -805,5 +823,27 @@ $("modal").onclick=e=>{if(e.target.id=="modal")closePick();};
   }).catch(()=>{});
 })();
 </script>
+
+<script>(function layoutRail(){
+ var b=document.querySelector('.body');
+ var t=document.createElement('div');t.className='proofbar';
+ t.innerHTML='<div class="pt"><b>Nu ne crede pe cuvânt — uită-te.</b> Show-uri reale, filmate la evenimente:</div>'+
+   '<div class="plinks">'+
+   '<a class="pb-ig" href="https://instagram.com/elevarts" target="_blank" rel="noopener">Instagram</a>'+
+   '<a class="pb-tt" href="https://tiktok.com/@1elevarts" target="_blank" rel="noopener">TikTok</a>'+
+   '<a class="pb-yt" href="https://www.youtube.com/@ELEVARTS" target="_blank" rel="noopener">YouTube</a>'+
+   '</div>';
+ var tb0=document.querySelector('.totalbar');tb0.parentNode.insertBefore(t,tb0.nextSibling);t.setAttribute('data-keep','1');
+ if(window.innerWidth>=1060){
+   b.classList.add('railgrid');
+   var left=document.createElement('div');var rail=document.createElement('div');rail.className='rail';
+   var lab=document.createElement('div');lab.className='rlabel';lab.textContent='Rezumatul tău';rail.appendChild(lab);
+   Array.prototype.slice.call(b.children).forEach(function(c){
+     if(c===left||c===rail) return;
+     if(c.classList.contains('totalbar')) rail.appendChild(c); else left.appendChild(c);
+   });
+   b.appendChild(left);b.appendChild(rail);var pbk=document.querySelector('.proofbar[data-keep]');if(pbk){rail.appendChild(pbk);}
+ }
+})();</script>
 </body>
 </html>
