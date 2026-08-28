@@ -112,11 +112,11 @@
   .slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(184px,1fr));gap:16px;margin:18px 0 0}
   .slot{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
     position:relative;display:flex;flex-direction:column;box-shadow:0 8px 26px rgba(30,16,54,.06)}
-  .slot .ph{aspect-ratio:4/5;background:#efe9f7 center/cover no-repeat;position:relative}
+  .slot .ph{aspect-ratio:4/5;background:#fff center/contain no-repeat;position:relative}
   .slot .ph.gal{overflow:hidden}
   .slot .ph.gal .gwrap{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .slot .ph.gal .gwrap::-webkit-scrollbar{display:none}
-  .slot .ph.gal .gwrap img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;object-position:center 22%;scroll-snap-align:center}
+  .slot .ph.gal .gwrap img{flex:0 0 100%;width:100%;height:100%;object-fit:contain;background:#fff;scroll-snap-align:center}
   .slot .ph.gal .dots{position:absolute;left:0;right:0;bottom:9px;z-index:3;display:flex;gap:5px;justify-content:center}
   .slot .ph.gal .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.6);box-shadow:0 1px 3px rgba(0,0,0,.3);transition:.18s}
   .slot .ph.gal .dots i.on{background:#fff;width:17px;border-radius:3px}
@@ -232,7 +232,7 @@
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
   .pick{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;cursor:pointer;transition:.13s;position:relative}
   .pick:hover{border-color:var(--magenta);transform:translateY(-3px);box-shadow:0 12px 24px rgba(193,57,125,.16)}
-  .pick .ph{aspect-ratio:4/5;background:#efe9f7 center/cover no-repeat}
+  .pick .ph{aspect-ratio:4/5;background:#fff center/contain no-repeat}
   .pick.dark .ph{background-color:#141024}
   .pick .nm{padding:9px 10px 2px;font-family:var(--disp);font-weight:600;font-size:12.5px;line-height:1.2;min-height:30px}
   .pick .pr{padding:0 10px 10px;font-weight:700;font-size:12.5px}
