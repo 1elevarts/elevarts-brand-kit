@@ -57,6 +57,7 @@
   .hsub{color:#d7d0ea;font-size:15px;line-height:1.5;max-width:540px;margin:10px 0 0}
   .meta{display:flex;gap:18px;flex-wrap:wrap;color:#c9c2e0;font-size:13px;margin:12px 0 0}
   .meta span{display:inline-flex;align-items:center;gap:7px}
+  .meta .mico{width:16px;height:16px;object-fit:contain;flex:0 0 auto}
   .wa{display:inline-flex;align-items:center;gap:9px;background:var(--green);color:#08301a;
     font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;text-decoration:none;margin:22px 0 4px}
   .wa:hover{filter:brightness(1.04)}
@@ -273,6 +274,10 @@
 .proofbar a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#fff;font:700 12px var(--body);padding:8px 14px;border-radius:999px}
 .proofbar a .d{width:6px;height:6px;border-radius:50%;background:#fff}
 .pb-ig{background:#e1306c}.pb-tt{background:#111}.pb-yt{background:#ff0000}
+@media(max-width:640px){
+  .proofbar{justify-content:center;text-align:center}
+  .proofbar .plinks{margin-left:0;width:100%;justify-content:center}
+}
 @media(min-width:1060px){
  .body.railgrid{display:grid;grid-template-columns:1fr 300px;gap:34px;align-items:start}
  .body.railgrid .rail{position:sticky;top:20px}
@@ -521,7 +526,7 @@ const TXT={
   heroEyebrow:"Prima zi de școală · Septembrie 2026",
   heroH1:'Construiește-ți<br><span class="gt">pachetul perfect</span>',
   heroSub:"Se apropie prima zi de școală și nu știi cu ce să începi? Lasă pe noi. Alege un pachet gata-făcut, potrivește-l în câteva secunde — prețul se mișcă live — și ni-l trimiți pe WhatsApp. Confirmăm în aceeași zi.",
-  meta:["◆ 3 pachete gata-făcute","◆ Peste 30 de personaje","◆ Ofertă fermă în 24h"],
+  meta:["3 pachete gata-făcute","Peste 30 de personaje","Ofertă fermă în 24h"],
   waTop:"Scrie-ne pe WhatsApp",
   introEyebrow:"Nu mai căuta ore întregi",
   introH2:"Ți-am pregătit deja pachetele.<br>Tu doar le potrivești.",
@@ -562,7 +567,7 @@ const TXT={
   heroEyebrow:"First day of school · September 2026",
   heroH1:'Build your<br><span class="gt">perfect package</span>',
   heroSub:"First day of school is almost here and you're not sure where to begin? Leave it to us. Pick a ready-made package, tweak it in seconds — the price updates live — and send it to us on WhatsApp. We reply the same day.",
-  meta:["◆ 3 ready-made packages","◆ 30+ characters","◆ Firm quote in 24h"],
+  meta:["3 ready-made packages","30+ characters","Firm quote in 24h"],
   waTop:"Message us on WhatsApp",
   introEyebrow:"Stop hunting for hours",
   introH2:"We've already built the packages.<br>You just tweak them.",
@@ -628,7 +633,7 @@ function applyLang(){
   $("heroEyebrow").textContent=T.heroEyebrow;
   $("heroH1").innerHTML=T.heroH1;
   $("heroSub").textContent=T.heroSub;
-  $("metaWrap").innerHTML=T.meta.map(m=>`<span>${m}</span>`).join("");
+  $("metaWrap").innerHTML=T.meta.map(m=>`<span><img class="mico" src="https://raw.githubusercontent.com/1elevarts/elevarts-brand-kit/main/web/icon/color/icon-64.png" alt="" width="16" height="16" loading="lazy">${m}</span>`).join("");
   $("wa-top").textContent=T.waTop;
   $("introEyebrow").textContent=T.introEyebrow;
   $("introH2").innerHTML=T.introH2;
