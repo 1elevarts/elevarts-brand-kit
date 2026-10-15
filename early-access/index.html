@@ -54,7 +54,6 @@
 </style>
 </head>
 <body>
-<div class="testbar">TEST — formularul nu salvează încă datele în CRM</div>
 
 <header>
   <img src="https://1elevarts.github.io/elevarts-brand-kit/web/wordmark/color/wordmark-480.png" alt="ELEVARTS">
@@ -102,8 +101,7 @@
 
 <script>
 (function(){
-  // TEST: fără ENDPOINT, pagina simulează trimiterea. În varianta finală: ENDPOINT = 'https://app.elevarts.com/api/public/early-access'
-  var ENDPOINT = '';
+  var ENDPOINT = 'https://app.elevarts.com/api/public/early-access';
   var qs = new URLSearchParams(location.search);
   var utm = {}; ['utm_source','utm_medium','utm_campaign'].forEach(function(k){ if(qs.get(k)) utm[k]=qs.get(k); });
   var site = new URL('https://elevarts.ai-ai.ro/ro/');
