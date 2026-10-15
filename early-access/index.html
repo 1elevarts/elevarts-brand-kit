@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Tu îl vezi primul · ELEVARTS</title>
+<link rel="icon" href="https://elevarts.ai-ai.ro/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1a0a2e;--mov:#a259d9;--port:#ff6b35;--mag:#c1397d;--aur:#f7c948;--txt:#2a1740;--soft:#5a4a70;--err:#d93a3a;--ok:#1f9d6b}
+  *{box-sizing:border-box}
+  html{background:#1a0a2e}
+  html,body{margin:0}
+  body{min-height:100vh;font-family:Montserrat,'Segoe UI',Arial,sans-serif;color:#fff;background-color:var(--navy);
+    background-image:radial-gradient(ellipse 110% 70% at 50% 115%,#ff6b35 0%,#c1397d 32%,#4a1a8e 62%,#1a0a2e 100%);background-attachment:fixed;
+    display:flex;flex-direction:column;align-items:center;padding:0 16px 40px}
+  .testbar{width:calc(100% + 32px);background:#f7c948;color:#1a0a2e;font-size:12px;font-weight:700;text-align:center;padding:7px 12px;letter-spacing:.3px}
+  header{text-align:center;max-width:480px;padding:32px 0 22px}
+  header img{width:190px;height:auto;display:block;margin:0 auto}
+  .eyebrow{margin-top:18px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--aur);font-weight:700}
+  h1{margin:8px 0 0;font-size:32px;line-height:1.15;font-weight:800}
+  .sub{margin:10px 0 0;font-size:15px;line-height:1.5;color:#e9d9f5}
+  .card{width:100%;max-width:440px;background:#fff;color:var(--txt);border-radius:18px;padding:24px 22px 22px;box-shadow:0 18px 50px rgba(10,0,30,.45)}
+  label.f{display:block;font-size:13px;font-weight:700;margin:0 0 6px}
+  .field{margin-bottom:14px}
+  input[type=text],input[type=tel],input[type=email]{width:100%;font:500 16px Montserrat,Arial,sans-serif;color:var(--txt);padding:12px 14px;border:1.5px solid #e2d6f2;border-radius:11px;background:#faf6ff;outline:none;transition:border-color .15s,box-shadow .15s}
+  input:focus{border-color:var(--mov);box-shadow:0 0 0 3px rgba(162,89,217,.18);background:#fff}
+  .field.bad input{border-color:var(--err);background:#fff6f6}
+  .msg{display:none;font-size:12.5px;color:var(--err);font-weight:600;margin-top:5px}
+  .field.bad .msg,.consent.bad .msg{display:block}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--soft);margin:4px 0 18px;flex-wrap:wrap}
+  .consent input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--mov);flex:0 0 auto}
+  .consent label{flex:1 1 0;min-width:0}
+  .consent .msg{flex-basis:100%;margin:0 0 0 30px}
+  .consent a{color:var(--mag)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  button{width:100%;border:0;border-radius:40px;padding:15px 20px;font:800 16px Montserrat,Arial,sans-serif;color:#fff;cursor:pointer;
+    background:linear-gradient(90deg,var(--mov),var(--port));transition:transform .12s,opacity .15s}
+  button:active{transform:scale(.98)}
+  button:disabled{opacity:.7;cursor:progress}
+  .note{text-align:center;font-size:12px;color:var(--soft);margin-top:10px}
+  .status{display:none;margin-top:14px;padding:12px 14px;border-radius:11px;font-size:14px;line-height:1.45}
+  .status.err{display:block;background:#fff1f1;color:#8c1f1f}
+  .status a{color:inherit;font-weight:700}
+  .done{display:none;text-align:center;padding:10px 4px 4px}
+  .done .tick{width:56px;height:56px;border-radius:50%;margin:0 auto 12px;background:linear-gradient(135deg,var(--mov),var(--port));display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;font-weight:800}
+  .done h2{margin:0 0 6px;font-size:22px;color:var(--navy)}
+  .done p{margin:0;color:var(--soft);font-size:14.5px;line-height:1.5}
+  .done a{color:var(--mag);font-weight:700}
+  .proof{max-width:440px;text-align:center;font-size:11.5px;color:#f7c948;font-weight:700;letter-spacing:.3px;line-height:1.6;margin-top:22px}
+  @media (max-width:380px){h1{font-size:27px}.card{padding:20px 16px}}
+</style>
+</head>
+<body>
+<div class="testbar">TEST — formularul nu salvează încă datele în CRM</div>
+
+<header>
+  <img src="https://1elevarts.github.io/elevarts-brand-kit/web/wordmark/color/wordmark-480.png" alt="ELEVARTS">
+  <div class="eyebrow">Înainte de lansare</div>
+  <h1>Tu îl vezi primul</h1>
+  <p class="sub">Lasă-ne numele, telefonul și emailul și intri pe noul site Elevarts înaintea tuturor.</p>
+</header>
+
+<main class="card">
+  <form id="f" novalidate>
+    <div class="field" data-f="name">
+      <label class="f" for="name">Nume</label>
+      <input type="text" id="name" name="name" autocomplete="name" placeholder="Cum te cheamă?">
+      <div class="msg">Scrie-ne numele tău.</div>
+    </div>
+    <div class="field" data-f="phone">
+      <label class="f" for="phone">Telefon</label>
+      <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx">
+      <div class="msg">Numărul pare incomplet — verifică cifrele.</div>
+    </div>
+    <div class="field" data-f="email">
+      <label class="f" for="email">Email</label>
+      <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="nume@exemplu.ro">
+      <div class="msg">Verifică adresa de email — pare că lipsește ceva.</div>
+    </div>
+    <div class="hp" aria-hidden="true"><label>Site <input type="text" name="hp_site" tabindex="-1" autocomplete="off"></label></div>
+    <div class="consent" data-f="consent">
+      <input type="checkbox" id="consent" name="consent">
+      <label for="consent">Sunt de acord să fiu contactat de Elevarts. Vezi <a href="https://elevarts.ai-ai.ro/ro/confidentialitate/" target="_blank" rel="noopener">politica de confidențialitate</a>.</label>
+      <div class="msg">Bifează acordul ca să putem continua.</div>
+    </div>
+    <button type="submit" id="go">Intră primul</button>
+    <div class="note">Durează 20 de secunde. Fără cont, fără parolă.</div>
+    <div class="status" id="status" role="alert"></div>
+  </form>
+
+  <div class="done" id="done" aria-live="polite">
+    <div class="tick">✓</div>
+    <h2>Te-am trecut pe listă.</h2>
+    <p>Intri pe site în <b id="sec">3</b> secunde…<br><a id="now" href="https://elevarts.ai-ai.ro/ro/">Sau intră acum →</a></p>
+  </div>
+</main>
+
+<div class="proof">Am creat momente pentru UNTOLD · Neversea · SAGA · Coca-Cola · McDonald's · Samsung · Audi · Vodafone &amp; more</div>
+
+<script>
+(function(){
+  // TEST: fără ENDPOINT, pagina simulează trimiterea. În varianta finală: ENDPOINT = 'https://app.elevarts.com/api/public/early-access'
+  var ENDPOINT = '';
+  var qs = new URLSearchParams(location.search);
+  var utm = {}; ['utm_source','utm_medium','utm_campaign'].forEach(function(k){ if(qs.get(k)) utm[k]=qs.get(k); });
+  var site = new URL('https://elevarts.ai-ai.ro/ro/');
+  site.searchParams.set('utm_source', utm.utm_source || 'early-access');
+  site.searchParams.set('utm_medium', utm.utm_medium || 'email');
+  site.searchParams.set('utm_campaign', utm.utm_campaign || 'early-access');
+  var SITE = site.toString();
+  document.getElementById('now').href = SITE;
+
+  var f = document.getElementById('f'), btn = document.getElementById('go'), st = document.getElementById('status');
+  var digits = function(s){ return (s||'').replace(/\D/g,''); };
+  var checks = {
+    name: function(){ return f.name.value.trim().length >= 2; },
+    phone: function(){ var d = digits(f.phone.value); return d.length >= 9 && d.length <= 15; },
+    email: function(){ return /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(f.email.value.trim()); },
+    consent: function(){ return f.consent.checked; }
+  };
+  function mark(k){ var ok = checks[k](); document.querySelector('[data-f="'+k+'"]').classList.toggle('bad', !ok); return ok; }
+  Object.keys(checks).forEach(function(k){
+    var el = k === 'consent' ? f.consent : f[k];
+    el.addEventListener(k === 'consent' ? 'change' : 'blur', function(){ if (k==='consent' || el.value) mark(k); });
+    el.addEventListener('input', function(){ var w = document.querySelector('[data-f="'+k+'"]'); if (w.classList.contains('bad')) mark(k); });
+  });
+
+  function fail(text){
+    st.className = 'status err';
+    st.innerHTML = text + ' Sau <a href="https://wa.me/40770115511?text=' + encodeURIComponent('Bună! Vreau acces la noul site Elevarts.') + '">scrie-ne pe WhatsApp</a>.';
+    btn.disabled = false; btn.textContent = 'Intră primul';
+  }
+  function done(){
+    f.style.display = 'none';
+    document.getElementById('done').style.display = 'block';
+    var n = 3, s = document.getElementById('sec');
+    var t = setInterval(function(){ n--; s.textContent = n; if (n <= 0){ clearInterval(t); location.href = SITE; } }, 1000);
+  }
+
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    st.className = 'status';
+    var bad = Object.keys(checks).filter(function(k){ return !mark(k); });
+    if (bad.length){ var w = document.querySelector('[data-f="'+bad[0]+'"] input'); if (w) w.focus(); return; }
+    btn.disabled = true; btn.textContent = 'Se trimite…';
+    var body = Object.assign({ name: f.name.value.trim(), phone: f.phone.value.trim(), email: f.email.value.trim(),
+      consent: true, hp_site: f.hp_site.value, page: location.pathname }, utm);
+    if (!ENDPOINT){ setTimeout(done, 700); return; }
+    if (!navigator.onLine){ fail('Pare că nu ai internet acum. Verifică conexiunea și mai apasă o dată.'); return; }
+    var ctl = new AbortController(), tm = setTimeout(function(){ ctl.abort(); }, 15000);
+    fetch(ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body), signal: ctl.signal })
+      .then(function(r){ clearTimeout(tm);
+        if (r.ok) return done();
+        if (r.status === 400) return fail('Unul dintre câmpuri n-a trecut verificarea. Verifică numele, telefonul și emailul.');
+        if (r.status === 429) return fail('Ai trimis de mai multe ori în scurt timp. Așteaptă un minut și încearcă din nou.');
+        fail('Avem o problemă la noi, nu la tine. Încearcă din nou peste un minut.');
+      })
+      .catch(function(){ clearTimeout(tm); fail('Trimiterea n-a ajuns la noi — conexiunea s-a întrerupt. Mai apasă o dată.'); });
+  });
+})();
+</script>
+</body>
+</html>
