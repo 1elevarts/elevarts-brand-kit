@@ -22,4 +22,13 @@ iframe{width:100%;height:1500px;border:0;border-radius:14px;background:#fff;box-
 <div class="col" id="h3"><h2><b>H3</b> · Invitația</h2><p>Bilet cu Ce · Când · Intrarea.</p><iframe src="h3.html" loading="lazy" title="H3"></iframe></div>
 <div class="col" id="h4"><h2><b>H4</b> · Scena</h2><p>Întunecat, cu o poză reală de show LED.</p><iframe src="h4.html" loading="lazy" title="H4"></iframe></div>
 <div class="col" id="h5"><h2><b>H5</b> · Antet simplu</h2><p>Logo mic, linie gradient, titlu. Cel mai sobru.</p><iframe src="h5.html" loading="lazy" title="H5"></iframe></div>
-</div></body></html>
+</div><script>
+/* fiecare previzualizare capătă exact înălțimea mailului din ea (paginile sunt pe același domeniu) */
+(function(){
+  function fit(f){try{var d=f.contentDocument;if(!d||!d.documentElement)return;var h=Math.max(d.documentElement.scrollHeight,d.body?d.body.scrollHeight:0);if(h>200)f.style.height=(h+4)+'px';}catch(e){}}
+  function wire(f){f.addEventListener('load',function(){fit(f);setTimeout(function(){fit(f)},600);setTimeout(function(){fit(f)},2500);});if(f.contentDocument&&f.contentDocument.readyState==='complete')fit(f);}
+  document.querySelectorAll('iframe').forEach(wire);
+  window.addEventListener('resize',function(){document.querySelectorAll('iframe').forEach(fit)});
+})();
+</script>
+</body></html>

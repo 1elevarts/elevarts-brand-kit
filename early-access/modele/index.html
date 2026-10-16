@@ -27,4 +27,13 @@ iframe{width:100%;height:1750px;border:0;border-radius:14px;background:#fff;box-
 document.querySelectorAll('.tg').forEach(function(g){g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
 g.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
 g.parentNode.querySelector('iframe').src=g.dataset.m+b.dataset.v+'.html';});});
-</script></body></html>
+</script><script>
+/* fiecare previzualizare capătă exact înălțimea mailului din ea (paginile sunt pe același domeniu) */
+(function(){
+  function fit(f){try{var d=f.contentDocument;if(!d||!d.documentElement)return;var h=Math.max(d.documentElement.scrollHeight,d.body?d.body.scrollHeight:0);if(h>200)f.style.height=(h+4)+'px';}catch(e){}}
+  function wire(f){f.addEventListener('load',function(){fit(f);setTimeout(function(){fit(f)},600);setTimeout(function(){fit(f)},2500);});if(f.contentDocument&&f.contentDocument.readyState==='complete')fit(f);}
+  document.querySelectorAll('iframe').forEach(wire);
+  window.addEventListener('resize',function(){document.querySelectorAll('iframe').forEach(fit)});
+})();
+</script>
+</body></html>
