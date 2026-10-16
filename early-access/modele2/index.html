@@ -31,7 +31,7 @@ g.parentNode.querySelector('iframe').src=g.dataset.m+b.dataset.v+'.html';});});
 </script><script>
 /* fiecare previzualizare capătă exact înălțimea mailului din ea (paginile sunt pe același domeniu) */
 (function(){
-  function fit(f){try{var d=f.contentDocument;if(!d||!d.documentElement)return;var h=Math.max(d.documentElement.scrollHeight,d.body?d.body.scrollHeight:0);if(h>200)f.style.height=(h+4)+'px';}catch(e){}}
+  function fit(f){try{var d=f.contentDocument;if(!d||!d.body)return;var b=0;[].forEach.call(d.body.children,function(k){if(k.tagName==='SCRIPT'||k.tagName==='STYLE')return;var r=k.getBoundingClientRect();if(r.height>0&&r.bottom>b)b=r.bottom;});if(b>200)f.style.height=Math.ceil(b+16)+'px';}catch(e){}}
   function wire(f){f.addEventListener('load',function(){fit(f);setTimeout(function(){fit(f)},600);setTimeout(function(){fit(f)},2500);});if(f.contentDocument&&f.contentDocument.readyState==='complete')fit(f);}
   document.querySelectorAll('iframe').forEach(wire);
   window.addEventListener('resize',function(){document.querySelectorAll('iframe').forEach(fit)});
