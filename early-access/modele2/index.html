@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><title>5 modele noi de newsletter · Avem site</title>
+<style>
+:root{--bg:#f5f0ff;--ink:#1a0a2e;--soft:#5a4a70;--mov:#a259d9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Segoe UI',Arial,sans-serif}
+header{padding:18px 16px 10px;max-width:1500px;margin:0 auto}
+h1{margin:0;font-size:20px}p{margin:6px 0 0;color:var(--soft);font-size:14px}
+nav{position:sticky;top:0;z-index:2;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding:10px 16px;border-bottom:1px solid #e6dcf5}
+nav a{flex:0 0 auto;text-decoration:none;color:var(--ink);background:#fff;border:1.5px solid #e2d6f2;border-radius:30px;padding:8px 14px;font-size:13px;font-weight:700}
+nav a b{color:var(--mov)}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(400px,1fr));gap:16px;padding:16px;overflow-x:auto}
+.col h2{margin:0 0 4px;font-size:15px}.col h2 b{color:var(--mov)}.col p{margin:0 0 8px;font-size:12.5px}
+.tg{display:inline-flex;gap:4px;margin:0 0 8px}.tg button{font:700 12px 'Segoe UI',Arial,sans-serif;border:1.5px solid #e2d6f2;background:#fff;color:#1a0a2e;border-radius:20px;padding:5px 12px;cursor:pointer}.tg button.on{background:#a259d9;border-color:#a259d9;color:#fff}
+iframe{width:100%;height:1750px;border:0;border-radius:14px;background:#fff;box-shadow:0 6px 24px rgba(26,10,46,.08)}
+@media (max-width:900px){.grid{grid-template-columns:1fr;overflow:visible}iframe{height:1700px}}
+</style></head><body>
+<header><h1>5 modele noi de newsletter — „Te-ai săturat de X? Avem site.”</h1><p>Alte structuri, același text. Pe telefon sunt una sub alta; sari la una cu butoanele de mai jos. La N4 poți comuta între captura site-ului și loading-ul lui animat. Butoanele din mailuri duc la formularul real.</p></header>
+<nav><a href="#n1"><b>N1</b> Lista tăiată</a><a href="#n2"><b>N2</b> Până acum / Acum</a><a href="#n3"><b>N3</b> Poster</a><a href="#n4"><b>N4</b> Fereastră de browser</a><a href="#n5"><b>N5</b> Trei pași</a></nav>
+<div class="grid">
+<div class="col" id="n1"><h2><b>N1</b> · Lista tăiată</h2><p>Ce lăsăm în urmă, tăiat, apoi „Avem site.”.</p><iframe src="n1.html" loading="lazy" title="N1"></iframe></div>
+<div class="col" id="n2"><h2><b>N2</b> · Până acum / Acum</h2><p>Tabel de comparație: problema din stânga, soluția din dreapta.</p><iframe src="n2.html" loading="lazy" title="N2"></iframe></div>
+<div class="col" id="n3"><h2><b>N3</b> · Poster</h2><p>Litere uriașe „Avem site.” pe fundal spotlight.</p><iframe src="n3.html" loading="lazy" title="N3"></iframe></div>
+<div class="col" id="n4"><h2><b>N4</b> · Fereastră de browser</h2><p>Site-ul într-un cadru de browser, ca să se vadă că e un site.</p><div class="tg" data-m="n4"><button class="on" data-v="">Captura site-ului</button><button data-v="-loading">Loading (GIF)</button></div><iframe src="n4.html" loading="lazy" title="N4"></iframe></div>
+<div class="col" id="n5"><h2><b>N5</b> · Trei pași</h2><p>Cum intri primul, în trei pași numerotați.</p><iframe src="n5.html" loading="lazy" title="N5"></iframe></div>
+</div>
+<script>
+document.querySelectorAll('.tg').forEach(function(g){g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+g.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+g.parentNode.querySelector('iframe').src=g.dataset.m+b.dataset.v+'.html';});});
+</script></body></html>
