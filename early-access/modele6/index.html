@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>R3 · bilețelul „Psst!” și textul butonului</title>
+<style>
+:root{--bg:#f5f0ff;--ink:#1a0a2e;--soft:#5a4a70;--mov:#a259d9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Segoe UI',Arial,sans-serif}
+header{padding:18px 16px 6px;max-width:1500px;margin:0 auto}h1{margin:0;font-size:20px}p.l{margin:6px 0 0;color:var(--soft);font-size:14px}
+h2{margin:24px 16px 6px;max-width:1500px;font-size:17px}.wrap{max-width:1500px;margin:0 auto;padding:0 16px}
+.top{display:flex;justify-content:center;padding:12px 0}iframe{width:min(100%,640px);height:700px;border:0;border-radius:14px;box-shadow:0 6px 24px rgba(26,10,46,.12);background:#1d1226}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px;padding:6px 0 40px}
+.k{background:#1d1226;color:#f1e8fb;border-radius:16px;padding:18px 16px 20px;text-align:center;position:relative}
+.k .n{position:absolute;top:10px;left:12px;font-weight:800;color:#a259d9}.k .d{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#cdb8e6;margin:2px 0 14px}
+.k p{margin:0 0 14px;font-size:15px;line-height:1.45}
+.k .b{display:inline-block;padding:12px 30px;border-radius:40px;font-weight:700;font-size:14.5px;color:#fff;background:linear-gradient(90deg,#a259d9,#ff6b35)}
+</style></head><body>
+<header><h1>R3 · bilețelul „Psst!”, cu textul care se scrie singur</h1><p class="l">Mailul de mai jos are acum aceeași animație ca R1: bilețelul se lipește pe scenă, apoi textul se scrie literă cu literă. Sub el sunt variante pentru propoziția de deasupra butonului și pentru textul butonului.</p></header>
+<div class="wrap"><div class="top"><iframe id="m" src="r3b.html" title="R3 cu bilețel animat"></iframe></div></div>
+<h2>Texte pentru buton (propoziția de deasupra + butonul)</h2>
+<div class="wrap"><div class="grid"><div class="k"><div class="n">1</div><div class="d">Textul de acum</div><p>Nu spune la nimeni. Încă.</p><span class="b">Vreau să aflu</span></div><div class="k"><div class="n">2</div><div class="d">Direct: spune unde e secretul</div><p>Secretul e pe site.</p><span class="b">Îl dezvălui</span></div><div class="k"><div class="n">3</div><div class="d">Personal, aproape o confesiune</div><p>Doar pentru ochii tăi.</p><span class="b">Mă uit</span></div><div class="k"><div class="n">4</div><div class="d">Leagă butonul de bilețel</div><p>Bilețelul continuă pe site.</p><span class="b">Citesc restul</span></div><div class="k"><div class="n">5</div><div class="d">Jucăuș: omul devine complice</div><p>Un secret ține mai bine în doi.</p><span class="b">Intru în secret</span></div><div class="k"><div class="n">6</div><div class="d">Umor: promisiune de păstrare</div><p>Promitem să nu povestim mai departe.</p><span class="b">Spune-mi</span></div><div class="k"><div class="n">7</div><div class="d">Reduce frica de efort</div><p>Ai 20 de secunde? Atât îți trebuie.</p><span class="b">Hai să văd</span></div><div class="k"><div class="n">8</div><div class="d">Urgență blândă, fără presiune</div><p>Nu-ți ținem secretul mai mult de-atât.</p><span class="b">Intru acum</span></div><div class="k"><div class="n">9</div><div class="d">Curiozitate: „de ce eu?”</div><p>Te-am ales pe tine.</p><span class="b">Aflu de ce</span></div></div></div>
+<script>
+(function(){var f=document.getElementById('m');function fit(){try{var d=f.contentDocument,b=0;[].forEach.call(d.body.children,function(k){if(k.tagName==='SCRIPT'||k.tagName==='STYLE')return;var r=k.getBoundingClientRect();if(r.height>0&&r.bottom>b)b=r.bottom;});if(b>200)f.style.height=Math.ceil(b+16)+'px';}catch(e){}}
+f.addEventListener('load',function(){fit();setTimeout(fit,600);setTimeout(fit,2500);});window.addEventListener('resize',fit);})();
+</script></body></html>
